@@ -1,0 +1,4 @@
+GROUP=1000
+HOME=/home
+SKEL=/etc/skel
+SHELL=/bin/zsh
