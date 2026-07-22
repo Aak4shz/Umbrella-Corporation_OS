@@ -1,0 +1,44 @@
+# Umbrella OS — Git Ignore Configuration
+
+# Runtimes & Environments
+.venv/
+venv/
+ENV/
+env/
+node_modules/
+
+# Python Cache & Build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Aider logs & configs
+.aider*
+.aider.chat.history.md
+.aider.input.history
+
+# IDE & Editor Configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Build Output & Temp directories
+/out/
+/dist/
+/build/
+*.iso
+work/
+tmp/
+*.log
+
+# System Files
+.DS_Store
+Thumbs.db
