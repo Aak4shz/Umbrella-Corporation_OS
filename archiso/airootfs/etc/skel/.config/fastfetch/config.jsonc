@@ -11,14 +11,14 @@
     "modules": [
         "title",
         "separator",
-        { "type": "os",       "key": "🔴 OS      " },
-        { "type": "kernel",   "key": "⚡ Kernel  " },
-        { "type": "uptime",   "key": "⏱  Uptime  " },
-        { "type": "shell",    "key": "💀 Shell   " },
-        { "type": "de",       "key": "🖥  Desktop " },
-        { "type": "cpu",      "key": "🔥 CPU     " },
-        { "type": "memory",   "key": "🧬 RAM     " },
-        { "type": "disk",     "key": "💾 Disk    " },
+        { "type": "os",       "key": "OS       " },
+        { "type": "kernel",   "key": "Kernel   " },
+        { "type": "uptime",   "key": "Uptime   " },
+        { "type": "shell",    "key": "Shell    " },
+        { "type": "de",       "key": "Desktop  " },
+        { "type": "cpu",      "key": "CPU      " },
+        { "type": "memory",   "key": "RAM      " },
+        { "type": "disk",     "key": "Disk     " },
         { "type": "colors",   "symbol": "circle" }
     ]
 }

@@ -1,4 +1,4 @@
-# 🔴 UMBRELLA OS — Custom Linux Distribution
+# UMBRELLA OS — Custom Linux Distribution
 
 <div align="center">
 
@@ -26,12 +26,12 @@
 
 ---
 
-> **⚠️ PROJECT CLASSIFICATION: FINAL-YEAR ACADEMIC PROJECT**
+> **PROJECT CLASSIFICATION: FINAL-YEAR ACADEMIC PROJECT**
 > This repository documents the complete end-to-end process of building a custom, bootable Linux distribution from scratch using `archiso`. This is an advanced systems-level project demonstrating mastery of Linux internals, system administration, package management, desktop environment customization, and AI tool integration.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Project Overview](#-project-overview)
 2. [Architecture at a Glance](#-architecture-at-a-glance)
@@ -49,7 +49,7 @@
 
 ---
 
-## 🧬 Project Overview
+## Project Overview
 
 ### What is Umbrella OS?
 
@@ -87,7 +87,7 @@ The aesthetic is inspired by the **Umbrella Corporation** from the *Resident Evi
 
 ---
 
-## 🏗️ Architecture at a Glance
+## Architecture at a Glance
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -116,7 +116,7 @@ The aesthetic is inspired by the **Umbrella Corporation** from the *Resident Evi
 
 ---
 
-## 🖥️ Prerequisites & Host Machine Setup
+## Prerequisites & Host Machine Setup
 
 ### Host Machine Requirements
 
@@ -155,11 +155,11 @@ sudo usermod -aG libvirt $(whoami)
 # Log out and back in for this to take effect
 ```
 
-> **⚠️ Pitfall:** If you skip `sudo pacman -Syu` before the build, your installed keyring may be outdated, causing package signature verification failures during the ISO build process. Always update first.
+> **Pitfall:** If you skip `sudo pacman -Syu` before the build, your installed keyring may be outdated, causing package signature verification failures during the ISO build process. Always update first.
 
 ---
 
-## 🎨 Phase 1: Local Environment & Theme Design
+## Phase 1: Local Environment & Theme Design
 
 > **Goal:** Transform your personal Arch Linux installation into the full Umbrella OS experience. Every customization you make here will later be extracted and packaged into the ISO. Build it here first — package it later.
 
@@ -437,7 +437,7 @@ Command=/bin/zsh
 LocalTabTitleFormat=%d — %n
 Name=Red Queen
 Parent=FALLBACK/
-RemoteTabTitleFormat=🔴 %H — %u
+RemoteTabTitleFormat=%H — %u
 
 [Scrolling]
 ScrollBarPosition=2
@@ -626,7 +626,7 @@ alias activate="source ./venv/bin/activate"
 
 # Umbrella OS branding
 echo ""
-echo "  🔴 UMBRELLA CORPORATION"
+echo "  UMBRELLA CORPORATION"
 echo "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  Welcome back, $(whoami | tr '[:lower:]' '[:upper:]')"
 echo "  Authorized Access Granted | $(date '+%A, %B %d %Y — %H:%M:%S')"
@@ -651,11 +651,11 @@ p10k configure
 # - Prompt separators: Slanted
 ```
 
-> **⚠️ Pitfall:** The `echo` block at the top of `.zshrc` (the welcome banner) can sometimes interfere with terminal scripts or non-interactive shells. Wrap it in `[[ $- == *i* ]] && ...` to ensure it only runs in interactive sessions.
+> **Pitfall:** The `echo` block at the top of `.zshrc` (the welcome banner) can sometimes interfere with terminal scripts or non-interactive shells. Wrap it in `[[ $- == *i* ]] && ...` to ensure it only runs in interactive sessions.
 
 ---
 
-## 💻 Phase 2: Dev & AI Stack Installation
+## Phase 2: Dev & AI Stack Installation
 
 > **Goal:** Install and verify every developer tool and AI utility that Umbrella OS will ship pre-configured. Everything installed here will be declared in the archiso `packages.x86_64` file later.
 
@@ -888,14 +888,14 @@ nano ~/.config/fastfetch/config.jsonc
     "modules": [
         "title",
         "separator",
-        { "type": "os",       "key": "🔴 OS      " },
-        { "type": "kernel",   "key": "⚡ Kernel  " },
-        { "type": "uptime",   "key": "⏱  Uptime  " },
-        { "type": "shell",    "key": "💀 Shell   " },
-        { "type": "de",       "key": "🖥  Desktop " },
-        { "type": "cpu",      "key": "🔥 CPU     " },
-        { "type": "memory",   "key": "🧬 RAM     " },
-        { "type": "disk",     "key": "💾 Disk    " },
+        { "type": "os",       "key": "OS      " },
+        { "type": "kernel",   "key": "Kernel  " },
+        { "type": "uptime",   "key": " Uptime  " },
+        { "type": "shell",    "key": "Shell   " },
+        { "type": "de",       "key": " Desktop " },
+        { "type": "cpu",      "key": "CPU     " },
+        { "type": "memory",   "key": "RAM     " },
+        { "type": "disk",     "key": "Disk    " },
         { "type": "colors",   "symbol": "circle" }
     ]
 }
@@ -918,7 +918,7 @@ ${2}                    O P E R A T I N G   S Y S T E M  v1.0
 
 ---
 
-## 🔐 Phase 3: The Secret Sauce — Extracting Dotfiles
+## Phase 3: The Secret Sauce — Extracting Dotfiles
 
 > **Goal:** Carefully extract all configuration files from your customized local machine and organize them into a structure that can be dropped directly into the ISO's `/etc/skel` directory. Every new user created on Umbrella OS will automatically inherit all these configurations.
 
@@ -1129,11 +1129,11 @@ du -sh ~/umbrella-dotfiles/home-skel/
 # - Any cached data accidentally included
 ```
 
-> **⚠️ Critical Pitfall:** Never include `~/.config/dconf/user` in your skel — this is a binary database that is completely machine-specific and will cause KDE to behave unpredictably on other hardware. KDE reads its config from the individual `.config/*rc` files, not dconf.
+> **Critical Pitfall:** Never include `~/.config/dconf/user` in your skel — this is a binary database that is completely machine-specific and will cause KDE to behave unpredictably on other hardware. KDE reads its config from the individual `.config/*rc` files, not dconf.
 
 ---
 
-## 🏛️ Phase 4: Archiso Architecture & Configuration
+## Phase 4: Archiso Architecture & Configuration
 
 > **Goal:** Set up the archiso working directory, populate it with all packages, custom files, and scripts, creating the blueprint for the final ISO image.
 
@@ -1407,7 +1407,7 @@ texinfo
 # ════════════════════════════════════════════════════════════════════════════
 ```
 
-> **⚠️ Pitfall:** AUR packages (like `yay`, `lightly-qt`, `powerlevel10k`) **CANNOT** be listed in `packages.x86_64` — archiso only uses the official Arch repos. AUR packages must be built separately and either included as pre-built `.pkg.tar.zst` files in a local repo, or installed via a custom script that runs inside `airootfs` during the build.
+> **Pitfall:** AUR packages (like `yay`, `lightly-qt`, `powerlevel10k`) **CANNOT** be listed in `packages.x86_64` — archiso only uses the official Arch repos. AUR packages must be built separately and either included as pre-built `.pkg.tar.zst` files in a local repo, or installed via a custom script that runs inside `airootfs` during the build.
 
 ### Step 4.4 — Set Up the `airootfs` Directory Structure
 
@@ -1599,8 +1599,8 @@ sudo plymouth-set-default-theme umbrella-boot 2>/dev/null || true
 sudo mkinitcpio -P 2>/dev/null || true
 
 echo ""
-echo "  ✅ Umbrella OS setup complete!"
-echo "  🔴 Welcome to Umbrella Corporation's Operating System"
+echo "  Umbrella OS setup complete!"
+echo "  Welcome to Umbrella Corporation's Operating System"
 echo ""
 echo "  Next steps:"
 echo "  1. Run 'ollama pull llama3.2' to download a local AI model"
@@ -1644,34 +1644,34 @@ fi
 
 set theme="${prefix}/themes/umbrella/theme.txt"
 
-menuentry "🔴 Umbrella OS — Live Boot" --class umbrella {
+menuentry "Umbrella OS — Live Boot" --class umbrella {
     set gfxpayload=keep
     linux   /%INSTALL_DIR%/boot/x86_64/vmlinuz-linux archisobasedir=%INSTALL_DIR% archisolabel=%ARCHISO_LABEL% quiet splash plymouth.enable=1 loglevel=3 rd.udev.log_level=3
     initrd  /%INSTALL_DIR%/boot/x86_64/initramfs-linux.img
 }
 
-menuentry "🔴 Umbrella OS — Live Boot (RAM)" --class umbrella {
+menuentry "Umbrella OS — Live Boot (RAM)" --class umbrella {
     set gfxpayload=keep
     linux   /%INSTALL_DIR%/boot/x86_64/vmlinuz-linux archisobasedir=%INSTALL_DIR% archisolabel=%ARCHISO_LABEL% quiet splash plymouth.enable=1 copytoram
     initrd  /%INSTALL_DIR%/boot/x86_64/initramfs-linux.img
 }
 
-menuentry "⚙  EFI Firmware Settings" {
+menuentry " EFI Firmware Settings" {
     fwsetup
 }
 
-menuentry "🔁 Reboot" {
+menuentry "Reboot" {
     reboot
 }
 
-menuentry "⏻  Shutdown" {
+menuentry " Shutdown" {
     halt
 }
 ```
 
 ---
 
-## 🔨 Phase 5: Build, Test & Iterate
+## Phase 5: Build, Test & Iterate
 
 > **Goal:** Run the `mkarchiso` command to produce the final `.iso` file, test it extensively in a virtual machine, and resolve all issues before presenting.
 
@@ -1682,24 +1682,24 @@ Before running `mkarchiso`, run through this checklist:
 ```bash
 cd ~/umbrella-os-build
 
-# ✅ Verify profile structure
+# Verify profile structure
 ls -la
 # Must see: airootfs/ efiboot/ grub/ packages.x86_64 pacman.conf profiledef.sh
 
-# ✅ Verify skel contents are present
+# Verify skel contents are present
 ls -la airootfs/etc/skel/
 # Must see your .zshrc, .config/, .local/, etc.
 
-# ✅ Verify packages.x86_64 has no blank lines at the end causing issues
+# Verify packages.x86_64 has no blank lines at the end causing issues
 wc -l packages.x86_64
 
-# ✅ Check that no AUR package names slipped into packages.x86_64
+# Check that no AUR package names slipped into packages.x86_64
 # (AUR packages aren't in official repos and will cause build failure)
 
-# ✅ Verify profiledef.sh is executable
+# Verify profiledef.sh is executable
 chmod +x profiledef.sh
 
-# ✅ Check total size of airootfs — if it's too large, the ISO will be huge
+# Check total size of airootfs — if it's too large, the ISO will be huge
 du -sh airootfs/
 ```
 
@@ -1854,7 +1854,7 @@ sudo mkarchiso -v -w /tmp/umbrella-work -o ~/umbrella-iso-output ~/umbrella-os-b
 
 ---
 
-## 🎓 Phase 6: Academic Presentation Strategy
+## Phase 6: Academic Presentation Strategy
 
 > **Goal:** Structure your demonstration to maximize marks from college evaluators. Present this not just as a "cool project" but as a technically rigorous demonstration of core Computer Science concepts.
 
@@ -1972,7 +1972,7 @@ Prepare this table for your viva/evaluation:
 Prepare these as part of your academic submission:
 
 ```
-📁 Umbrella OS — Academic Submission Package
+Umbrella OS — Academic Submission Package
 ├── README.md                        ← This file
 ├── report/
 │   ├── project-report.pdf           ← Full technical report (20-30 pages)
@@ -1996,7 +1996,7 @@ Prepare these as part of your academic submission:
 
 ---
 
-## 📁 Project File Structure
+## Project File Structure
 
 Complete reference of every file in the Umbrella OS build system:
 
@@ -2077,7 +2077,7 @@ umbrella-os-build/
 
 ---
 
-## 🛠️ Troubleshooting Reference
+## Troubleshooting Reference
 
 ### Build-Time Issues
 
@@ -2150,7 +2150,7 @@ grep -r "$(whoami)" ~/umbrella-os-build/airootfs/etc/skel/
 
 ---
 
-## 📚 OS Concepts Demonstrated
+## OS Concepts Demonstrated
 
 This section maps Umbrella OS's implementation to textbook OS concepts for academic reference:
 
@@ -2200,7 +2200,7 @@ Docker (pre-installed) demonstrates OS-level process isolation using:
 
 ---
 
-## 📖 Acknowledgements & References
+## Acknowledgements & References
 
 ### Technologies Used
 
@@ -2242,7 +2242,7 @@ Docker (pre-installed) demonstrates OS-level process isolation using:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     UMBRELLA CORPORATION — PROTECTING TOMORROW'S WORLD, TODAY.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       Built with ❤️ and ☕  |  Final Year Academic Project
+       Built for Final Year Academic Project  |  Final Year Academic Project
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 

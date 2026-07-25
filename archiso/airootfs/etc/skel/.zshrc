@@ -60,7 +60,7 @@ alias activate="source ./venv/bin/activate"
 # Umbrella OS Interactive Welcome Banner
 if [[ $- == *i* ]]; then
   echo ""
-  echo "  🔴 UMBRELLA CORPORATION"
+  echo "  UMBRELLA CORPORATION"
   echo "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   echo "  Welcome back, $(whoami | tr '[:lower:]' '[:upper:]')"
   echo "  Authorized Access Granted | $(date '+%A, %B %d %Y — %H:%M:%S')"

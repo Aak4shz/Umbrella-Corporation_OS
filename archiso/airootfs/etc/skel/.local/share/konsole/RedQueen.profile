@@ -9,7 +9,7 @@ Command=/bin/zsh
 LocalTabTitleFormat=%d — %n
 Name=Red Queen
 Parent=FALLBACK/
-RemoteTabTitleFormat=🔴 %H — %u
+RemoteTabTitleFormat=%H — %u
 
 [Scrolling]
 ScrollBarPosition=2
