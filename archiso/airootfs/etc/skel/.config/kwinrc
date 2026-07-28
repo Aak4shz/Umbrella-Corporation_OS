@@ -1,0 +1,7 @@
+[WM]
+BorderlessMaximizedWindows=true
+
+[Plugins]
+blurEnabled=true
+contrastEnabled=true
+translucencyEnabled=true
