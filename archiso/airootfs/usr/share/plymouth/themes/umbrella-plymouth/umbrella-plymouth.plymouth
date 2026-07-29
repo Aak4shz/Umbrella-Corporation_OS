@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Umbrella OS Red Queen Splash
+Description=Umbrella Corporation boot animation featuring rotating logo and crimson progress bar
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/umbrella-plymouth
+ScriptFile=/usr/share/plymouth/themes/umbrella-plymouth/umbrella-plymouth.script
