@@ -52,8 +52,9 @@ if ! command -v claude &>/dev/null; then
     npm install -g @anthropic-ai/claude-code || true
 fi
 
-# ── Install Oh My Zsh ────────────────────────────────────────────────────
-echo "[6/6] Setting up Oh My Zsh..."
+# ── Configure Zsh as default shell ─────────────────────────────────────────
+echo "[6/6] Setting up Zsh & Oh My Zsh..."
+sudo chsh -s /bin/zsh "$USER" 2>/dev/null || chsh -s /bin/zsh 2>/dev/null || true
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended || true
 fi
