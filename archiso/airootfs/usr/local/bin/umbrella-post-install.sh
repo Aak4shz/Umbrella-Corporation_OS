@@ -26,13 +26,16 @@ if ! command -v yay &>/dev/null; then
 fi
 
 # ── Install AUR packages ─────────────────────────────────────────────────
-echo "[2/6] Installing AUR packages..."
+echo "[2/6] Installing AUR packages & Privacy Tools..."
 yay -S --noconfirm \
     lightly-qt \
     powerlevel10k \
     visual-studio-code-bin \
     lazygit \
     gotop \
+    session-desktop-bin \
+    simplex-chat-desktop-bin \
+    briar-gtk \
     plymouth-theme-hexagon-dots-git || true
 
 # ── Install Ollama ───────────────────────────────────────────────────────
