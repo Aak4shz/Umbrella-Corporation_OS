@@ -113,7 +113,7 @@ openjdk21-src
 maven
 gradle
 
-# ── PYTHON DEVELOPMENT STACK ────────────────────────────────────────────────
+# ── PYTHON DEVELOPMENT & ML STACK ───────────────────────────────────────────
 python
 python-pip
 python-virtualenv
@@ -122,6 +122,9 @@ python-numpy
 python-pandas
 python-matplotlib
 python-scikit-learn
+python-pytorch
+python-fastapi
+python-uvicorn
 python-requests
 python-rich
 python-click
@@ -130,6 +133,9 @@ python-pylint
 python-pytest
 ipython
 jupyter-notebook
+
+# ── LOCAL AI INFERENCE & TOOLING ────────────────────────────────────────────
+ollama
 
 # ── NODE.JS & RUNTIMES ──────────────────────────────────────────────────────
 nodejs
@@ -148,6 +154,10 @@ code
 docker
 docker-compose
 docker-buildx
+
+# ── PRIVACY & ENCRYPTED MESSAGING ───────────────────────────────────
+signal-desktop
+element-desktop
 
 # ── DATABASE & NETWORK TOOLS ────────────────────────────────────────────────
 sqlite
