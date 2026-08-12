@@ -125,13 +125,14 @@ flowchart TD
 > **Goal:** Execute `mkarchiso` build engine, generate bootable ISO image, and validate system in Virtual Machine environments.
 
 * **Modules & Tasks:**
+  - [x] Pre-flight QA Audit: Verified `airootfs` tree, `/etc/skel` provisioning, systemd service symlinks, package manifests, and `profiledef.sh` permissions.
+  - [x] Created VM test runner utility (`scripts/run-qemu.sh`) supporting UEFI (OVMF) and BIOS boot verification.
   - [ ] Execute `mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso` on host system.
-  - [ ] Debug and resolve any missing package dependencies or Pacman repository sync errors.
   - [ ] Boot generated ISO in QEMU / KVM and VirtualBox under UEFI and Legacy BIOS modes.
   - [ ] Verify live session desktop load, auto-login, audio (PipeWire), network, terminal, and AI tools.
   - [ ] Measure boot time, ISO size (Target: < 8.0 GB), and memory footprint.
-* **Key Deliverables:** `umbrella-os-1.0.0-x86_64.iso`, VM verification log.
-* **Status:** `[IN PROGRESS]` (Active Phase)
+* **Key Deliverables:** `umbrella-os-1.0.0-x86_64.iso`, `scripts/run-qemu.sh`, VM verification log.
+* **Status:** `[IN PROGRESS]` (Active Phase - Ready for `mkarchiso` build)
 
 ---
 

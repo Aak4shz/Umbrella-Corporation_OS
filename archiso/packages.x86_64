@@ -15,7 +15,9 @@ mkinitcpio-archiso
 
 # ── BOOTLOADER ──────────────────────────────────────────────────────────────
 grub
+syslinux
 efibootmgr
+edk2-shell
 dosfstools
 os-prober
 
@@ -45,7 +47,6 @@ pavucontrol
 xorg-server
 xorg-xrandr
 wayland
-plasma-wayland-session
 sddm
 sddm-kcm
 
@@ -66,7 +67,6 @@ partitionmanager
 # ── KDE THEMING & VISUAL ────────────────────────────────────────────────────
 papirus-icon-theme
 kvantum
-qt5-styleplugins
 
 # ── FONTS ───────────────────────────────────────────────────────────────────
 ttf-jetbrains-mono
@@ -124,7 +124,7 @@ python-matplotlib
 python-scikit-learn
 python-pytorch
 python-fastapi
-python-uvicorn
+uvicorn
 python-requests
 python-rich
 python-click
