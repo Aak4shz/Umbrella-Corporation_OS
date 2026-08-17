@@ -3,22 +3,39 @@
     "logo": {
         "type": "file",
         "source": "~/.config/fastfetch/umbrella-logo.txt",
+        "padding": {
+            "top": 0,
+            "right": 3
+        }
+    },
+    "display": {
+        "separator": " ➜  ",
         "color": {
-            "1": "red",
-            "2": "white"
+            "keys": "red",
+            "title": "red"
         }
     },
     "modules": [
         "title",
         "separator",
-        { "type": "os",       "key": "OS       " },
-        { "type": "kernel",   "key": "Kernel   " },
-        { "type": "uptime",   "key": "Uptime   " },
-        { "type": "shell",    "key": "Shell    " },
-        { "type": "de",       "key": "Desktop  " },
-        { "type": "cpu",      "key": "CPU      " },
-        { "type": "memory",   "key": "RAM      " },
-        { "type": "disk",     "key": "Disk     " },
-        { "type": "colors",   "symbol": "circle" }
+        { "type": "os",        "key": "OS          " },
+        { "type": "kernel",    "key": "Kernel      " },
+        { "type": "uptime",    "key": "Uptime      " },
+        { "type": "packages",  "key": "Packages    " },
+        { "type": "shell",     "key": "Shell       " },
+        { "type": "display",   "key": "Display     " },
+        { "type": "de",        "key": "Desktop     " },
+        { "type": "wm",        "key": "WM          " },
+        { "type": "wmtheme",   "key": "WM Theme    " },
+        { "type": "theme",     "key": "Theme       " },
+        { "type": "icons",     "key": "Icons       " },
+        { "type": "font",      "key": "Font        " },
+        { "type": "terminal",  "key": "Terminal    " },
+        { "type": "cpu",       "key": "CPU         " },
+        { "type": "gpu",       "key": "GPU         " },
+        { "type": "memory",    "key": "Memory      " },
+        { "type": "disk",      "key": "Disk (/)    " },
+        "break",
+        { "type": "colors",    "symbol": "circle" }
     ]
 }
