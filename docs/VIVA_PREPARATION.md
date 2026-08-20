@@ -25,6 +25,9 @@
 ### Q5: Explain the initramfs boot chain and Plymouth splash screen configuration.
 **Answer:** Boot initialization begins with GRUB loading kernel and initramfs images. In `mkinitcpio.conf.d/archiso.conf`, the `plymouth` hook is placed immediately after `udev` to initialize direct rendering manager (DRM) graphics early. Plymouth loads `umbrella-plymouth` graphics theme before mounting rootfs, providing a smooth visual transition from firmware to display manager (`sddm`).
 
+### Q6: How does Umbrella OS handle live session authentication and auto-login?
+**Answer:** Umbrella OS provisions a dedicated live user `umbrella` (UID 1000) with password `umbrella` and passwordless sudo privileges (`/etc/sudoers.d/umbrella`). SDDM is configured with an autologin drop-in (`/etc/sddm.conf.d/autologin.conf`) directing the display manager into the `plasma` session automatically upon boot, while an initialization unit (`umbrella-live-init.service`) ensures `/home/umbrella` is fully populated with `/etc/skel` profile configurations and correct permissions before the desktop starts.
+
 ---
 
 ## 4. Key Academic & System Specifications
