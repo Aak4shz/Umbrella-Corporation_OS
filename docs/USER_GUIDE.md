@@ -19,13 +19,20 @@
 
 ## 3. Installation & Live Session Guide
 
-### Live Boot Session
-1. Flash `umbrella-os-1.0.0-x86_64.iso` to a USB drive using `dd` or Ventoy:
+### Live Boot Session & Default Credentials
+1. **Default Live Credentials:**
+   * **Username:** `umbrella`
+   * **Password:** `umbrella`
+   * **Root Password:** `root`
+   * **Sudo Access:** Full passwordless administrative privileges (`sudo <command>`)
+   * **Auto-Login:** SDDM automatically logs into the `umbrella` KDE Plasma desktop session without requiring credentials.
+
+2. Flash `umbrella-os-1.0.0-x86_64.iso` to a USB drive using `dd` or Ventoy:
    ```bash
    sudo dd if=umbrella-os-1.0.0-x86_64.iso of=/dev/sdX bs=4M status=progress conv=fsync
    ```
-2. Boot from USB in UEFI mode.
-3. System will boot into the Red Queen Plymouth splash screen and auto-login to the KDE Plasma live desktop environment.
+3. Boot from USB in UEFI or BIOS mode.
+4. System will boot into the Red Queen Plymouth splash screen and auto-login directly to the KDE Plasma live desktop environment.
 
 ### Post-Installation & AI Model Provisioning
 1. Launch terminal (Konsole or shortcut `Ctrl+Alt+T`).
