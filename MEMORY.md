@@ -7,7 +7,7 @@
 | **Target Version** | `1.0.0-ACADEMIC` / `1.0.0-RELEASE` |
 | **Active Git Branch** | `main` |
 | **Repository Root** | `/home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS` |
-| **Compiled ISO Output** | `out/umbrella-os-1.0.0-x86_64.iso` (4.24 GB) |
+| **Compiled ISO Output** | `out/umbrella-os-1.0.0-x86_64.iso` (4.0 GB) |
 | **Last Updated** | August 2026 |
 
 ---
@@ -20,11 +20,12 @@ This document serves as the persistent memory engine for the Umbrella OS project
 Umbrella OS is an autonomous, bootable, Arch-based 64-bit Linux distribution compiled using the `archiso` build framework. It is engineered as a zero-configuration workstation for software developers (Java 21 LTS, Python 3.12, Docker) and local artificial intelligence researchers (Ollama, Aider, Claude Code). The visual interface is modeled after the Red Queen AI and Umbrella Corporation aesthetic from *Resident Evil*, featuring a high-contrast dark palette (`#0A0A0A` canvas, `#CC0000` accents).
 
 ### 1.2 Instant Operational Context
-* **Current Lifecycle State:** Complete. The ISO image has been compiled into `out/umbrella-os-1.0.0-x86_64.iso`, verified in QEMU virtual machines under UEFI/BIOS, and documented for Viva Voce evaluation.
+* **Current Lifecycle State:** Phase 9 Active / Hardened. Core ISO compiled (`out/umbrella-os-1.0.0-x86_64.iso` - 4.0 GB). Red Queen Full-Stack Theming and live interactive simulation tooling fully established.
 * **Default Live User:** `umbrella` (Password: `umbrella`, full passwordless sudo).
 * **Default Root User:** `root` (Password: `umbrella`).
 * **Desktop Environment:** KDE Plasma 6 on Wayland/X11 with the `RedQueen` color scheme, KWin blur compositing, and floating dark taskbar.
 * **Shell Environment:** Zsh with Oh-My-Zsh, Powerlevel10k prompt, and custom Fastfetch hardware telemetry HUD.
+* **Theming Subsystem:** 10-layer visual engineering matrix covering GRUB, Plymouth (36-frame radar), SDDM, Look-and-Feel, Plasma style, Konsole, and GTK 3/4.
 
 ```mermaid
 graph TD
@@ -33,15 +34,16 @@ graph TD
         B --> C[airootfs Configuration Overlay]
         C --> D[User Skeleton: /etc/skel]
         C --> E[Systemd Boot Services]
-        C --> F[Red Queen Visual Identity]
+        C --> F[Red Queen Visual Identity & Tokens]
     end
 
     subgraph User Workstation Runtime
         D --> G[KDE Plasma 6 Desktop]
-        D --> H[Konsole + Zsh + Fastfetch]
+        D --> H[Konsole + Zsh + Fastfetch HUD]
         D --> I[VS Code + One Dark Pro]
-        E --> J[Ollama AI Engine on Port 11434]
-        E --> K[SDDM Autologin to Live Session]
+        D --> J[Cross-Toolkit GTK 3/4 Dark Mode]
+        E --> K[Ollama AI Engine on Port 11434]
+        E --> L[SDDM Autologin to Live Session]
     end
 ```
 
@@ -49,17 +51,16 @@ graph TD
 
 ## 2. Command Center and Execution Guide
 
-This section contains every command needed to build, clean, test, verify, and maintain the Umbrella OS distribution. All commands are deterministic and pre-validated.
+This section contains every command needed to build, clean, test, verify, and maintain the Umbrella OS distribution.
 
-### 2.1 ISO Compilation Commands
+### 2.1 Live Interactive Theming & Simulation Tools
 
 ```bash
-# Standard clean build command (recommended)
-sudo mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso
+# 1. Launch Staged Boot Splash Screen Live Preview (Qt6 QML)
+./scripts/preview-splash.sh
 
-# Rebuild after cleaning stale cache
-sudo rm -rf /tmp/archiso-tmp ./work
-sudo mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso
+# 2. Launch Interactive SDDM Security Terminal Login Screen Preview
+./scripts/preview-login.sh
 ```
 
 ### 2.2 Virtual Machine Testing Commands
@@ -71,7 +72,7 @@ sudo mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso
 # Test compiled ISO in BIOS Legacy mode
 ./scripts/run-qemu.sh bios
 
-# Manual direct QEMU launch (4 GB RAM, 4 CPU cores, VirtIO graphics)
+# Direct manual QEMU launch with VirtIO graphics acceleration
 qemu-system-x86_64 \
     -enable-kvm \
     -m 4096 \
@@ -81,7 +82,15 @@ qemu-system-x86_64 \
     -display default,show-cursor
 ```
 
-### 2.3 Physical USB Flashing and Release Verification
+### 2.3 ISO Compilation Commands
+
+```bash
+# Clean stale cache and rebuild release ISO
+sudo rm -rf /tmp/archiso-tmp ./work
+sudo mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso
+```
+
+### 2.4 Physical USB Flashing and Release Verification
 
 ```bash
 # Generate SHA-256 integrity checksum
@@ -94,60 +103,49 @@ sha256sum -c ./out/umbrella-os-1.0.0-x86_64.iso.sha256
 sudo dd bs=4M if=./out/umbrella-os-1.0.0-x86_64.iso of=/dev/sdX status=progress oflag=sync
 ```
 
-### 2.4 Git and Repository Maintenance Commands
-
-```bash
-# Check working tree status
-git status
-
-# Inspect latest commits
-git log --oneline -n 10
-
-# Push updates to GitHub remote
-git push origin main
-```
-
 ---
 
-## 3. Master Project Roadmap and Phase Completion Ledger
-
-All eight engineering phases of Umbrella OS are tracked below:
+## 3. Master Project Roadmap & Milestone Ledger
 
 ```mermaid
 mindmap
   root((Umbrella OS))
     Phase 1: Architecture
       PRD Specification
-      System Architecture Blueprint
-      Engineering Guidelines
+      System Architecture
+      Engineering Rules
     Phase 2: Base System
-      Archiso Directory Layout
+      Archiso Layout
       Package Manifests
-      Multilib Pacman Repositories
+      Multilib Pacman
     Phase 3: Visual Identity
       4K Wallpapers
       GRUB Boot Graphics
-      Plymouth Splash Frames
+      Plymouth 36 Frames
     Phase 4: Red Queen Desktop
-      KDE Plasma Theme
+      Plasma Theme
       Konsole Profile
       Zsh and Fastfetch
     Phase 5: Developer Stack
       JDK 21 LTS
-      Python 3 ML Libraries
-      Ollama Local AI Engine
+      Python 3 ML
+      Ollama Local AI
     Phase 6: Boot Services
       SDDM Autologin
-      Live User Init Script
-      Systemd Service Tree
-    Phase 7: Build and QA
+      Live User Init
+      Systemd Units
+    Phase 7: Build & QA
       ISO Compilation
-      QEMU VM Validation
-      Hardware Audio/Display QA
+      QEMU Validation
+      VirtIO QA
     Phase 8: Documentation
       User Guide
-      Viva Defense Prep
+      Viva Voce Prep
       Design System A-Z
+    Phase 9: Theming Hardening
+      10-Layer Theming Matrix
+      GTK 3/4 Dark Mode
+      Interactive QML Preview Tools
 ```
 
 | Phase Number | Phase Description | Key Deliverables | Status | Completion |
@@ -158,100 +156,60 @@ mindmap
 | **Phase 4** | Red Queen Desktop & `/etc/skel` Provisioning | Plasma color schemes, Konsole profile, `.zshrc`, `.p10k.zsh` | Completed | 100% |
 | **Phase 5** | Developer Stack & Local AI Integration | Java 21, Python 3 ML stack, Docker, Ollama, Aider CLI | Completed | 100% |
 | **Phase 6** | Bootloader, Plymouth & Systemd Integration | `umbrella-live-init.service`, SDDM greeter, `autologin.conf` | Completed | 100% |
-| **Phase 7** | ISO Compilation, VM Testing & Verification | `out/umbrella-os-1.0.0-x86_64.iso` built, QEMU verified | Completed | 100% |
-| **Phase 8** | Documentation, Viva Defense & Final Packaging| `DESIGN.md`, `MEMORY.md`, `USER_GUIDE.md`, `VIVA_PREPARATION.md` | Active / Completed | 100% |
+| **Phase 7** | ISO Compilation, VM Testing & Verification | `out/umbrella-os-1.0.0-x86_64.iso` built (4.0 GB), QEMU verified | Completed | 100% |
+| **Phase 8** | Documentation Suite & Master Memory Ledger | `DESIGN.md`, `MEMORY.md`, `USER_GUIDE.md`, `VIVA_PREPARATION.md` | Completed | 100% |
+| **Phase 9** | Red Queen Theming Hardening & Live QA Tools | `docs/RED_QUEEN_THEME_ARCHITECTURE.md`, `scripts/preview-*.sh` | Active / Ready | 95% |
 
 ---
 
 ## 4. Completed Modules and File Inventory
 
-This inventory documents what has been built, configured, and verified in the codebase:
-
 ```mermaid
 graph LR
-    subgraph Build Pipeline Assets
+    subgraph Build Engine
         A1[archiso/profiledef.sh]
         A2[archiso/pacman.conf]
         A3[archiso/packages.x86_64]
     end
 
-    subgraph System Configurations
-        C1[airootfs/etc/shadow & passwd]
-        C2[airootfs/etc/sudoers.d/umbrella]
-        C3[airootfs/etc/sddm.conf.d/autologin.conf]
-        C4[airootfs/etc/systemd/system/umbrella-live-init.service]
+    subgraph Theming Subsystem
+        T1[look-and-feel: org.umbrella.redqueen.desktop]
+        T2[desktoptheme/RedQueen]
+        T3[color-schemes/RedQueen.colors]
+        T4[sddm/themes/umbrella-sddm]
+        T5[plymouth/themes/umbrella-plymouth]
+        T6[gtk-3.0 & gtk-4.0 settings.ini]
     end
 
-    subgraph Red Queen Desktop Layer
-        D1[airootfs/etc/skel/.config/kdeglobals]
-        D2[airootfs/etc/skel/.config/kwinrc]
-        D3[airootfs/etc/skel/.config/plasmarc]
-        D4[airootfs/etc/skel/.local/share/konsole/RedQueen.profile]
-        D5[airootfs/usr/share/color-schemes/RedQueen.colors]
+    subgraph Interactive QA Suite
+        Q1[scripts/preview-splash.sh & qml]
+        Q2[scripts/preview-login.sh & qml]
+        Q3[scripts/run-qemu.sh]
     end
 
     subgraph Documentation Suite
-        DOC1[DESIGN.md]
-        DOC2[MEMORY.md]
-        DOC3[PHASES.md]
-        DOC4[README.md]
-        DOC5[docs/prd.md & architecture.md]
+        D1[DESIGN.md & MEMORY.md]
+        D2[PHASES.md & README.md]
+        D3[docs/RED_QUEEN_THEME_ARCHITECTURE.md]
+        D4[docs/USER_GUIDE.md & VIVA_PREPARATION.md]
     end
 ```
 
-### 4.1 Build Engine and Package Manifests
-* **`archiso/profiledef.sh`:** Defines ISO name (`umbrella-os`), version (`1.0.0`), squashfs compression (`xz`), and file permission bitmasks for `/etc/shadow`, `/etc/sudoers.d/umbrella`, and `/usr/local/bin/` scripts.
-* **`archiso/pacman.conf`:** Custom pacman configuration with parallel downloads enabled (5 parallel streams), `core`, `extra`, and `multilib` (32-bit compatibility) enabled.
-* **`archiso/packages.x86_64`:** Declarative package list containing Linux LTS kernel, KDE Plasma 6 desktop, SDDM, PipeWire audio, development runtimes (JDK 21, Python 3, Docker, Git, Neovim, VS Code), and system utilities (Fastfetch, Zsh, Plymouth).
+### 4.1 Red Queen Global Theme & Look-and-Feel
+* **`archiso/airootfs/usr/share/plasma/look-and-feel/org.umbrella.redqueen.desktop/`:** Master look-and-feel package binding `defaults`, `Splash.qml`, and `LockScreenUi.qml`.
+* **`archiso/airootfs/usr/share/plasma/desktoptheme/RedQueen/`:** Plasma desktop style with obsidian/crimson color definition table.
+* **`archiso/airootfs/usr/share/color-schemes/RedQueen.colors`:** System-wide color scheme enforcing 60-30-10 palette rules.
+* **`archiso/airootfs/etc/skel/.config/gtk-3.0/settings.ini` & `gtk-4.0/settings.ini`:** Enforces dark GTK styling (`Breeze-Dark`, `Papirus-Dark`, `breeze_cursors`).
+* **`archiso/airootfs/etc/skel/.config/kcminputrc`:** Configures mouse cursor theme (`breeze_cursors` size 24).
 
-### 4.2 User Profile & Skeletal Inheritance (`/etc/skel`)
-* **`airootfs/etc/skel/.zshrc`:** Pre-configured Zsh profile with syntax highlighting, autosuggestions, pre-exported environment variables (`JAVA_HOME`, `PYTHONPATH`), and developer shortcuts.
-* **`airootfs/etc/skel/.p10k.zsh`:** Powerlevel10k configuration rendering crimson directory badges, Git status segments, and command duration monitors.
-* **`airootfs/etc/skel/.config/kdeglobals`:** Plasma global configuration binding the `RedQueen` color scheme, `Papirus-Dark` icon theme, and Roboto font hierarchy.
-* **`airootfs/etc/skel/.config/kwinrc`:** KWin window manager settings enabling Gaussian blur (8px radius), translucency (88 percent opacity), and borderless maximized windows.
-* **`airootfs/etc/skel/.config/plasmarc`:** Plasma desktop theme manifest pointing to `RedQueen`.
-* **`airootfs/etc/skel/.local/share/konsole/`:** Contains `RedQueen.profile` and `RedQueen.colorscheme` with dark crimson canvas and 16-color ANSI definitions.
-* **`airootfs/etc/skel/.config/Code/User/settings.json`:** VS Code editor preferences enforcing One Dark Pro theme, JetBrains Mono ligatures, smooth block cursor, and bracket colorization.
-* **`airootfs/etc/skel/.config/aider/.aider.conf.yml`:** Local AI CLI tool pre-pointed to local Ollama inference port `11434`.
-
-### 4.3 Boot, Display Manager, and Initialization Services
-* **`airootfs/usr/local/bin/umbrella-live-init.sh`:** Startup script executed on live boot. Dynamically initializes user accounts, provisions `/home/umbrella` from `/etc/skel`, ensures file permissions, and initializes daemon states.
-* **`airootfs/etc/systemd/system/umbrella-live-init.service`:** Systemd unit ensuring `umbrella-live-init.sh` executes prior to SDDM display manager startup.
-* **`airootfs/etc/sddm.conf.d/autologin.conf`:** Auto-login configuration directing SDDM to automatically sign in user `umbrella` into the Plasma desktop session.
-* **`airootfs/usr/share/sddm/themes/umbrella-sddm/`:** Custom SDDM greeter with dark laboratory background, centered 128px Umbrella emblem, and crimson input borders.
-* **`airootfs/usr/share/plymouth/themes/umbrella-plymouth/`:** 36-frame hexagonal radar animation sequence rendering smooth 60 FPS kernel boot visuals.
-* **`airootfs/etc/motd` & `airootfs/etc/fastfetch/`:** Security clearance terminal header and Fastfetch ASCII telemetry overlay.
-
-### 4.4 Documentation Suite
-* **`DESIGN.md` & `docs/DESIGN.md`:** Complete A to Z Design System specification (Color tokens, typography scale, spatial grid, elevation, compositing, SDDM, Plymouth, Konsole, Fastfetch, VS Code, motion physics, accessibility, file mapping).
-* **`MEMORY.md`:** Central state ledger, command reference, active file tracker, and project memory engine.
-* **`PHASES.md`:** 8-phase engineering lifecycle roadmap and milestone matrix.
-* **`README.md`:** Master repository documentation with feature breakdown, installation guide, and architectural diagrams.
-* **`docs/prd.md`:** Product Requirements Document defining target personas and functional scope.
-* **`docs/architecture.md`:** System Architecture Specification detailing build-time pipelines and runtime lifecycle.
-* **`docs/rules.md`:** Engineering standards, anti-patterns, and determinism rules.
-* **`docs/USER_GUIDE.md`:** End-user manual covering desktop shortcuts, development workflows, and AI pairing.
-* **`docs/VIVA_PREPARATION.md`:** Technical Viva Voce defense handbook with anticipated questions and answers.
-* **`docs/LIVE_USER_AUTOLOGIN_PLAN.md`:** Engineering plan for live user provisioning and SDDM autologin orchestration.
+### 4.2 Interactive Preview & Verification Suite
+* **`scripts/preview-splash.sh` & `scripts/preview-splash.qml`:** Live QML simulation of staged Red Queen boot splash animation.
+* **`scripts/preview-login.sh` & `scripts/preview-login.qml`:** Live interactive simulation of SDDM authentication terminal.
+* **`scripts/run-qemu.sh`:** Automated VM test runner with OVMF UEFI detection.
 
 ---
 
-## 5. Active Working Context and Currently Tracked Files
-
-This section tracks the files actively being modified or referenced in current development sessions:
-
-| File Name | Location | Current Role / Status | Recent Activity |
-| :--- | :--- | :--- | :--- |
-| **`MEMORY.md`** | `/` (Root) | Master Project Memory & State Ledger | Created to provide persistent state tracking without context rediscovery. |
-| **`DESIGN.md`** | `/` (Root) & `/docs/` | Complete A to Z Design System Specification | Formally documented all color tokens, typography scales, KWin rules, and accessibility standards. |
-| **`PHASES.md`** | `/` (Root) | Phase Roadmap & Milestone Matrix | Updated to reflect Phase 7 & 8 completion status. |
-| **`README.md`** | `/` (Root) | Primary Repository Documentation | Main project overview containing architecture graphs and build commands. |
-| **`scripts/run-qemu.sh`**| `/scripts/` | VM Testing Automation Script | Active script for testing UEFI and BIOS ISO launches in QEMU. |
-| **`out/umbrella-os-1.0.0-x86_64.iso`** | `/out/` | Compiled Bootable System Image | 4.24 GB release binary verified for live boot. |
-
----
-
-## 6. System Defaults, Credentials, and Runtime Environment
+## 5. System Defaults & Runtime Environment
 
 | Property | Default Configuration | Notes / Override Location |
 | :--- | :--- | :--- |
@@ -260,6 +218,7 @@ This section tracks the files actively being modified or referenced in current d
 | **Root User Password** | `umbrella` | Configured in `/etc/shadow` |
 | **Sudo Permissions** | `ALL=(ALL:ALL) NOPASSWD: ALL` | Defined in `/etc/sudoers.d/umbrella` (`0:0:440`) |
 | **Auto-login Session** | `plasma` (KDE Plasma 6) | Defined in `/etc/sddm.conf.d/autologin.conf` |
+| **SDDM Theme** | `umbrella-sddm` | Defined in `/etc/sddm.conf.d/autologin.conf` |
 | **Display Server** | Wayland (with X11 fallback) | Managed by SDDM and KWin |
 | **Audio Server** | PipeWire + WirePlumber | Systemd user service auto-started |
 | **Default Shell** | Zsh (`/usr/bin/zsh`) | Configured in `/etc/passwd` |
@@ -270,13 +229,13 @@ This section tracks the files actively being modified or referenced in current d
 
 ---
 
-## 7. Knowledge Graph and Filesystem Map
+## 6. Knowledge Graph and Filesystem Map
 
 ```text
 Umbrella-Corporation_OS/
 ├── DESIGN.md                          # Master A-Z Design System Specification
 ├── MEMORY.md                          # Master Project Memory & State Ledger
-├── PHASES.md                          # 8-Phase Engineering Lifecycle Roadmap
+├── PHASES.md                          # 9-Phase Engineering Lifecycle Roadmap
 ├── README.md                          # Master Repository Documentation
 ├── archiso/                           # Archiso Build Directory
 │   ├── pacman.conf                    # Pacman Repositories & Parallel Downloads
@@ -289,7 +248,7 @@ Umbrella-Corporation_OS/
 │       │   ├── plymouth/              # Plymouth Splash Daemon Config
 │       │   ├── sddm.conf.d/           # Autologin SDDM Configuration
 │       │   ├── skel/                  # Skeletal Home Directory for New Users
-│       │   │   ├── .config/           # Plasma, KWin, Fastfetch, VS Code, Aider
+│       │   │   ├── .config/           # Plasma, KWin, Fastfetch, VS Code, GTK 3/4, kcminputrc
 │       │   │   ├── .local/share/      # Konsole Red Queen Color Schemes & Profiles
 │       │   │   ├── .p10k.zsh          # Powerlevel10k Prompt Settings
 │       │   │   └── .zshrc             # Interactive Zsh Configuration
@@ -300,7 +259,7 @@ Umbrella-Corporation_OS/
 │           └── share/
 │               ├── color-schemes/     # RedQueen.colors for KDE Plasma
 │               ├── pixmaps/           # System Branding Insignia
-│               ├── plasma/            # Look-and-Feel & Desktop Theme
+│               ├── plasma/            # Look-and-Feel (org.umbrella.redqueen.desktop) & Style
 │               ├── plymouth/themes/   # Umbrella Plymouth 36-Frame Splash
 │               ├── sddm/themes/       # Umbrella SDDM Greeter Theme
 │               └── wallpapers/        # 4K & FHD Curated Wallpapers
@@ -310,48 +269,19 @@ Umbrella-Corporation_OS/
 ├── docs/                              # Project Documentation Suite
 │   ├── DESIGN.md                      # Design System Specification Copy
 │   ├── LIVE_USER_AUTOLOGIN_PLAN.md    # Live User Autologin Architecture
+│   ├── RED_QUEEN_THEME_ARCHITECTURE.md# Master 10-Layer Theming Blueprint
 │   ├── USER_GUIDE.md                  # End-User Manual & Shortcuts
 │   ├── VIVA_PREPARATION.md            # Technical Viva Voce Defense Guide
 │   ├── architecture.md                # System Architecture Specification
 │   ├── prd.md                         # Product Requirements Document
 │   └── rules.md                       # Engineering Standards & Anti-Patterns
 ├── out/                               # Compiled Distribution Output
-│   └── umbrella-os-1.0.0-x86_64.iso   # Compiled Bootable ISO Binary (4.24 GB)
-├── scripts/                           # Automation & Verification Scripts
+│   └── umbrella-os-1.0.0-x86_64.iso   # Compiled Bootable ISO Binary (4.0 GB)
+├── scripts/                           # Automation & Verification Suite
+│   ├── preview-login.qml              # Interactive SDDM Login Screen QML
+│   ├── preview-login.sh               # Live SDDM Login Runner
+│   ├── preview-splash.qml             # Staged Boot Splash QML
+│   ├── preview-splash.sh              # Live Boot Splash Runner
 │   └── run-qemu.sh                    # QEMU Virtual Machine Launch Script
 └── work/                              # Archiso Temporary Build Directory
 ```
-
----
-
-## 8. Common Troubleshooting and Edge-Case Memory
-
-This section records resolved issues, constraints, and solutions discovered during development so they do not need to be re-investigated:
-
-### 8.1 Sudoers Permission Mode
-* **Issue:** Archiso requires `/etc/sudoers.d/umbrella` to have strict octal file permissions `0440` (`0:0:440`). If permissions are looser (e.g., `0644` or `0755`), sudo will reject the file with a syntax/permission error and disable sudo access.
-* **Resolution:** Permission `["/etc/sudoers.d/umbrella"]="0:0:440"` is explicitly declared in `archiso/profiledef.sh`.
-
-### 8.2 Live User Skeleton Provisioning Timing
-* **Issue:** When creating the live user `umbrella` dynamically on boot, copying `/etc/skel` after KDE Plasma starts results in default unmodified user profiles.
-* **Resolution:** `umbrella-live-init.service` is configured with `Before=sddm.service` and `WantedBy=multi-user.target`. It completes user account creation, groups assignment (`wheel`, `audio`, `video`, `storage`), and skeletal copy before SDDM initializes.
-
-### 8.3 QEMU OVMF UEFI Path Variance
-* **Issue:** OVMF firmware binary paths vary across different Linux distributions (`/usr/share/edk2-ovmf/x64/OVMF_CODE.fd` on Arch Linux, `/usr/share/ovmf/x64/OVMF_CODE.fd` on Debian/Ubuntu).
-* **Resolution:** `scripts/run-qemu.sh` checks both paths dynamically and falls back to BIOS legacy emulation if neither is found on the host machine.
-
-### 8.4 SquashFS Build Space Requirements
-* **Issue:** Compiling the 4.24 GB ISO with XZ compression requires at least 15 GB of free disk space in the build directory (`/tmp/archiso-tmp` or `/work`).
-* **Resolution:** Always monitor host disk space before running `sudo mkarchiso`.
-
----
-
-## 9. Continuous Maintenance and Rebuild Protocols
-
-When making updates to Umbrella OS in future sessions:
-
-1. **To Add New Packages:** Edit `archiso/packages.x86_64` and add the exact Arch package name.
-2. **To Modify User Defaults:** Edit the corresponding file in `archiso/airootfs/etc/skel/`. Never edit runtime files directly without updating `/etc/skel`.
-3. **To Update Branding Assets:** Place new wallpapers in `assets/wallpapers/` and copy to `archiso/airootfs/usr/share/wallpapers/UmbrellaOS/`.
-4. **To Recompile the ISO:** Execute `sudo rm -rf /tmp/archiso-tmp ./work && sudo mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso`.
-5. **To Test Output:** Execute `./scripts/run-qemu.sh uefi`.
