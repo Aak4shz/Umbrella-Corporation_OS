@@ -1,13 +1,20 @@
 [General]
 ColorScheme=RedQueen
 Name=Red Queen Dark
+accentColor=204,0,0
 widgetStyle=Breeze
 
 [KDE]
 LookAndFeelPackage=org.umbrella.redqueen.desktop
+contrast=7
+ShowDeleteCommand=true
 
 [Icons]
 Theme=Papirus-Dark
+
+[Mouse]
+cursorTheme=breeze_cursors
+cursorSize=24
 
 [WM]
 activeBackground=26,0,0
