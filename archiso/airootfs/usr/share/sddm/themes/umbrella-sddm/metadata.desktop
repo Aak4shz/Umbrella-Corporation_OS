@@ -1,0 +1,11 @@
+[SDDM Theming]
+Name=Umbrella Red Queen
+Comment=Umbrella Corporation Red Queen AI SDDM Theme
+Author=Umbrella Corporation AI Division
+Email=admin@umbrella.corp
+Website=https://umbrella.corp
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
