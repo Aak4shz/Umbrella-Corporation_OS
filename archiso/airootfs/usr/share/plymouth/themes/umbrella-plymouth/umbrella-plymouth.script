@@ -1,6 +1,6 @@
 # ════════════════════════════════════════════════════════════════════
 # UMBRELLA OS — Plymouth Boot Animation Script
-# Red Queen System Boot Sequence
+# Red Queen Biohazard System Boot Sequence
 # ════════════════════════════════════════════════════════════════════
 
 # Set dark background (#0A0A0A)
@@ -10,7 +10,7 @@ Window.SetBackgroundBottomColor(0.02, 0.02, 0.02);
 screen_width = Window.GetWidth();
 screen_height = Window.GetHeight();
 
-# Load 36 rotated emblem frames
+# Load 36 rotated Biohazard emblem frames
 NUM_FRAMES = 36;
 for (i = 0; i < NUM_FRAMES; i++) {
     spinner_images[i] = Image("spinner-" + i + ".png");
@@ -24,67 +24,67 @@ if (spinner_images[0]) {
     logo_width = spinner_images[0].GetWidth();
     logo_height = spinner_images[0].GetHeight();
     logo_x = (screen_width / 2) - (logo_width / 2);
-    logo_y = (screen_height / 2) - (logo_height / 2) - 40;
+    logo_y = (screen_height / 2) - (logo_height / 2) - 60;
     
     logo_sprite.SetX(logo_x);
     logo_sprite.SetY(logo_y);
     logo_sprite.SetImage(spinner_images[0]);
 }
 
-# Title Text: UMBRELLA CORPORATION
-title_image = Image.Text("UMBRELLA CORPORATION", 0.9, 0.9, 0.9, 1.0, "Monospace Bold 14");
+# Title Text: UMBRELLA CORPORATION (Transformers Movie Font / Sans Bold)
+title_image = Image.Text("UMBRELLA CORPORATION", 1.0, 1.0, 1.0, 1.0, "Transformers Movie Bold 20");
 title_sprite = Sprite(title_image);
 title_sprite.SetX((screen_width / 2) - (title_image.GetWidth() / 2));
 title_sprite.SetY(logo_y + logo_height + 25);
 
-# Subtitle Text: SYSTEM BOOT SEQUENCE ACTIVE
-subtitle_image = Image.Text("AUTHORIZED PERSONNEL ONLY — RED QUEEN AI", 0.8, 0.0, 0.0, 1.0, "Monospace 10");
+# Subtitle Text: AUTHORIZED PERSONNEL ONLY — RED QUEEN (AI removed)
+subtitle_image = Image.Text("AUTHORIZED PERSONNEL ONLY — RED QUEEN", 0.8, 0.0, 0.0, 1.0, "Monospace Bold 11");
 subtitle_sprite = Sprite(subtitle_image);
 subtitle_sprite.SetX((screen_width / 2) - (subtitle_image.GetWidth() / 2));
-subtitle_sprite.SetY(logo_y + logo_height + 50);
+subtitle_sprite.SetY(logo_y + logo_height + 55);
 
-# Progress Bar Setup
-BAR_WIDTH = 320;
-BAR_HEIGHT = 8;
+# Thick Rectangular Progress Bar Setup (100% Upload Style)
+BAR_WIDTH = 460;
+BAR_HEIGHT = 28;
 bar_x = (screen_width / 2) - (BAR_WIDTH / 2);
-bar_y = logo_y + logo_height + 85;
+bar_y = logo_y + logo_height + 95;
 
 # Outer crimson border box
-bar_border_img = Image.Rectangle(BAR_WIDTH + 4, BAR_HEIGHT + 4, 0.8, 0.0, 0.0, 0.8);
+bar_border_img = Image.Rectangle(BAR_WIDTH + 6, BAR_HEIGHT + 6, 0.8, 0.0, 0.0, 1.0);
 bar_border_sprite = Sprite(bar_border_img);
-bar_border_sprite.SetX(bar_x - 2);
-bar_border_sprite.SetY(bar_y - 2);
+bar_border_sprite.SetX(bar_x - 3);
+bar_border_sprite.SetY(bar_y - 3);
 
 # Inner dark trough box
-bar_bg_img = Image.Rectangle(BAR_WIDTH, BAR_HEIGHT, 0.08, 0.08, 0.08, 1.0);
+bar_bg_img = Image.Rectangle(BAR_WIDTH, BAR_HEIGHT, 0.05, 0.05, 0.05, 1.0);
 bar_bg_sprite = Sprite(bar_bg_img);
 bar_bg_sprite.SetX(bar_x);
 bar_bg_sprite.SetY(bar_y);
 
-# Crimson progress fill sprite
+# Crimson laser progress fill sprite
 bar_fill_sprite = Sprite();
-bar_fill_sprite.SetX(bar_x);
-bar_fill_sprite.SetY(bar_y);
+bar_fill_sprite.SetX(bar_x + 2);
+bar_fill_sprite.SetY(bar_y + 2);
 
 # Status Message Sprite
 status_sprite = Sprite();
 
 fun update_progress(duration, progress) {
     # Update progress fill width
-    fill_w = Math.Int(BAR_WIDTH * progress);
-    if (fill_w < 1) fill_w = 1;
-    if (fill_w > BAR_WIDTH) fill_w = BAR_WIDTH;
+    fill_w = Math.Int((BAR_WIDTH - 4) * progress);
+    if (fill_w < 2) fill_w = 2;
+    if (fill_w > (BAR_WIDTH - 4)) fill_w = BAR_WIDTH - 4;
     
-    fill_img = Image.Rectangle(fill_w, BAR_HEIGHT, 0.8, 0.0, 0.0, 1.0);
+    fill_img = Image.Rectangle(fill_w, BAR_HEIGHT - 4, 1.0, 0.0, 0.0, 1.0);
     bar_fill_sprite.SetImage(fill_img);
 }
 
 fun update_status(text) {
     if (text) {
-        msg_img = Image.Text(text, 0.7, 0.7, 0.7, 1.0, "Sans 9");
+        msg_img = Image.Text(text, 0.8, 0.0, 0.0, 1.0, "Monospace Bold 11");
         status_sprite.SetImage(msg_img);
         status_sprite.SetX((screen_width / 2) - (msg_img.GetWidth() / 2));
-        status_sprite.SetY(bar_y + 20);
+        status_sprite.SetY(bar_y + BAR_HEIGHT + 16);
     }
 }
 
@@ -102,10 +102,10 @@ Plymouth.SetUpdateStatusFunction(update_status);
 
 # Fallback Password / Message hooks
 fun display_password_callback(prompt, bullets) {
-    prompt_img = Image.Text(prompt, 1.0, 0.2, 0.2, 1.0, "Sans 10");
+    prompt_img = Image.Text(prompt, 1.0, 0.2, 0.2, 1.0, "Sans Bold 11");
     status_sprite.SetImage(prompt_img);
     status_sprite.SetX((screen_width / 2) - (prompt_img.GetWidth() / 2));
-    status_sprite.SetY(bar_y + 25);
+    status_sprite.SetY(bar_y + BAR_HEIGHT + 16);
 }
 
 Plymouth.SetDisplayPasswordFunction(display_password_callback);
