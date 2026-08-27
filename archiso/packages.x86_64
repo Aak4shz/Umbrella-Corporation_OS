@@ -1,182 +1,168 @@
-# ════════════════════════════════════════════════════════════════════════════
-# UMBRELLA OS — Package List
-# File: packages.x86_64
-# Purpose: All official packages included in the Umbrella OS live environment
-# ════════════════════════════════════════════════════════════════════════════
 
+# File: packages.x86_64
+# Multimedia & Video Splash Support (Qt6 + GStreamer)
+# Purpose: All official packages included in the Umbrella OS live environment
+# UMBRELLA OS — Package List
+# ── ARCHIVE & COMPRESSION ───────────────────────────────────────────────────
+# ── AUDIO (PipeWire stack) ──────────────────────────────────────────────────
 # ── BASE SYSTEM & KERNEL ───────────────────────────────────────────────────
+# ── BOOTLOADER ──────────────────────────────────────────────────────────────
+# ── CODE EDITOR ─────────────────────────────────────────────────────────────
+# ── DATABASE & NETWORK TOOLS ────────────────────────────────────────────────
+# ── DISPLAY SERVER & LOGIN MANAGER ──────────────────────────────────────────
+# ── DOCKER & CONTAINERIZATION ───────────────────────────────────────────────
+# ── DOCUMENTATION & LOCALES ─────────────────────────────────────────────────
+# ── FILE MANAGEMENT & CLI UTILITIES ─────────────────────────────────────────
+# ── FONTS ───────────────────────────────────────────────────────────────────
+# ── GIT & VERSION CONTROL ───────────────────────────────────────────────────
+# ── INIT & CORE SERVICES ────────────────────────────────────────────────────
+# ── JAVA DEVELOPMENT STACK ──────────────────────────────────────────────────
+# ── KDE PLASMA DESKTOP ENVIRONMENT ─────────────────────────────────────────
+# ── KDE THEMING & VISUAL ────────────────────────────────────────────────────
+# ── LOCAL AI INFERENCE & TOOLING ────────────────────────────────────────────
+# ── NETWORKING ──────────────────────────────────────────────────────────────
+# ── NODE.JS & RUNTIMES ──────────────────────────────────────────────────────
+# ── PLYMOUTH (Boot Animation) ────────────────────────────────────────────────
+# ── PRIVACY & ENCRYPTED MESSAGING ───────────────────────────────────
+# ── PYTHON DEVELOPMENT & ML STACK ───────────────────────────────────────────
+# ── SHELL & TERMINAL TOOLS ──────────────────────────────────────────────────
+# ── SYSTEM MONITORING ───────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════════════════
+ark
 base
 base-devel
-linux
-linux-headers
-linux-firmware
-mkinitcpio
-mkinitcpio-archiso
-
-# ── BOOTLOADER ──────────────────────────────────────────────────────────────
-grub
-syslinux
-efibootmgr
-edk2-shell
-dosfstools
-os-prober
-
-# ── INIT & CORE SERVICES ────────────────────────────────────────────────────
-systemd
-systemd-sysvcompat
-dbus
-
-# ── NETWORKING ──────────────────────────────────────────────────────────────
-networkmanager
-network-manager-applet
-nm-connection-editor
-wpa_supplicant
-wireless_tools
-curl
-wget
-
-# ── AUDIO (PipeWire stack) ──────────────────────────────────────────────────
-pipewire
-pipewire-alsa
-pipewire-pulse
-pipewire-jack
-wireplumber
-pavucontrol
-
-# ── DISPLAY SERVER & LOGIN MANAGER ──────────────────────────────────────────
-xorg-server
-xorg-xrandr
-wayland
-sddm
-sddm-kcm
-
-# ── KDE PLASMA DESKTOP ENVIRONMENT ─────────────────────────────────────────
-plasma-meta
-kde-system-meta
-kde-utilities-meta
-konsole
-dolphin
-kate
-ark
-spectacle
-okular
-gwenview
-kcalc
-partitionmanager
-
-# ── KDE THEMING & VISUAL ────────────────────────────────────────────────────
-papirus-icon-theme
-kvantum
-
-# ── FONTS ───────────────────────────────────────────────────────────────────
-ttf-jetbrains-mono
-ttf-jetbrains-mono-nerd
-ttf-fira-code
-noto-fonts
-noto-fonts-emoji
-ttf-roboto
-inter-font
-ttf-font-awesome
-
-# ── SHELL & TERMINAL TOOLS ──────────────────────────────────────────────────
-zsh
-zsh-completions
-zsh-syntax-highlighting
-zsh-autosuggestions
-tmux
 bash-completion
-
-# ── FILE MANAGEMENT & CLI UTILITIES ─────────────────────────────────────────
-tree
-fzf
-ripgrep
-fd
 bat
-eza
-rsync
-zip
-unzip
-p7zip
-ranger
-
-# ── SYSTEM MONITORING ───────────────────────────────────────────────────────
+bind
 btop
+code
+curl
+dbus
+docker
+docker-buildx
+docker-compose
+dolphin
+dosfstools
+edk2-shell
+efibootmgr
+element-desktop
+eza
 fastfetch
-htop
-lsof
-strace
-sysstat
-
-# ── JAVA DEVELOPMENT STACK ──────────────────────────────────────────────────
-jdk21-openjdk
-openjdk21-src
-maven
-gradle
-
-# ── PYTHON DEVELOPMENT & ML STACK ───────────────────────────────────────────
-python
-python-pip
-python-virtualenv
-python-pipx
-python-numpy
-python-pandas
-python-matplotlib
-python-scikit-learn
-python-pytorch
-python-fastapi
-uvicorn
-python-requests
-python-rich
-python-click
-python-black
-python-pylint
-python-pytest
-ipython
-jupyter-notebook
-
-# ── LOCAL AI INFERENCE & TOOLING ────────────────────────────────────────────
-ollama
-
-# ── NODE.JS & RUNTIMES ──────────────────────────────────────────────────────
-nodejs
-npm
-
-# ── GIT & VERSION CONTROL ───────────────────────────────────────────────────
+fd
+ffmpeg
+fzf
 git
 git-lfs
 github-cli
-lazygit
-
-# ── CODE EDITOR ─────────────────────────────────────────────────────────────
-code
-
-# ── DOCKER & CONTAINERIZATION ───────────────────────────────────────────────
-docker
-docker-compose
-docker-buildx
-
-# ── PRIVACY & ENCRYPTED MESSAGING ───────────────────────────────────
-signal-desktop
-element-desktop
-
-# ── DATABASE & NETWORK TOOLS ────────────────────────────────────────────────
-sqlite
-postgresql-libs
-nmap
+gradle
+grub
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+gwenview
+htop
 httpie
-openssh
-net-tools
-traceroute
-bind
-
-# ── PLYMOUTH (Boot Animation) ────────────────────────────────────────────────
-plymouth
-
-# ── ARCHIVE & COMPRESSION ───────────────────────────────────────────────────
-lzop
+inter-font
+ipython
+jdk21-openjdk
+jupyter-notebook
+kate
+kcalc
+kde-system-meta
+kde-utilities-meta
+konsole
+kvantum
+lazygit
+linux
+linux-firmware
+linux-headers
+lsof
 lz4
-
-# ── DOCUMENTATION & LOCALES ─────────────────────────────────────────────────
+lzop
 man-db
 man-pages
+maven
+mkinitcpio
+mkinitcpio-archiso
+net-tools
+network-manager-applet
+networkmanager
+nm-connection-editor
+nmap
+nodejs
+noto-fonts
+noto-fonts-emoji
+npm
+okular
+ollama
+openjdk21-src
+openssh
+os-prober
+p7zip
+papirus-icon-theme
+partitionmanager
+pavucontrol
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+plasma-meta
+plymouth
+postgresql-libs
+python
+python-black
+python-click
+python-fastapi
+python-matplotlib
+python-numpy
+python-pandas
+python-pip
+python-pipx
+python-pylint
+python-pytest
+python-pytorch
+python-requests
+python-rich
+python-scikit-learn
+python-virtualenv
+qt6-multimedia
+qt6-multimedia-gstreamer
+qt6-svg
+ranger
+ripgrep
+rsync
+sddm
+sddm-kcm
+signal-desktop
+spectacle
+sqlite
+strace
+syslinux
+sysstat
+systemd
+systemd-sysvcompat
 texinfo
+tmux
+traceroute
+tree
+ttf-fira-code
+ttf-font-awesome
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
+ttf-roboto
+unzip
+uvicorn
+wayland
+wget
+wireless_tools
+wireplumber
+wpa_supplicant
+xorg-server
+xorg-xrandr
+zip
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting
