@@ -31,23 +31,20 @@ if (spinner_images[0]) {
     logo_sprite.SetImage(spinner_images[0]);
 }
 
-# Title Text: UMBRELLA CORPORATION (Transformers Movie Font / Sans Bold)
-title_image = Image.Text("UMBRELLA CORPORATION", 1.0, 1.0, 1.0, 1.0, "Transformers Movie Bold 20");
+# Title Text: UMBRELLA CORPORATION (CF Glitch City Font)
+title_image = Image.Text("UMBRELLA CORPORATION", 1.0, 1.0, 1.0, 1.0, "CF Glitch City 22");
 title_sprite = Sprite(title_image);
 title_sprite.SetX((screen_width / 2) - (title_image.GetWidth() / 2));
 title_sprite.SetY(logo_y + logo_height + 25);
 
-# Subtitle Text: AUTHORIZED PERSONNEL ONLY — RED QUEEN (AI removed)
-subtitle_image = Image.Text("AUTHORIZED PERSONNEL ONLY — RED QUEEN", 0.8, 0.0, 0.0, 1.0, "Monospace Bold 11");
-subtitle_sprite = Sprite(subtitle_image);
-subtitle_sprite.SetX((screen_width / 2) - (subtitle_image.GetWidth() / 2));
-subtitle_sprite.SetY(logo_y + logo_height + 55);
+# Percentage Text Sprite Setup (CF Glitch City Font)
+percent_sprite = Sprite();
 
 # Thick Rectangular Progress Bar Setup (100% Upload Style)
 BAR_WIDTH = 460;
 BAR_HEIGHT = 28;
 bar_x = (screen_width / 2) - (BAR_WIDTH / 2);
-bar_y = logo_y + logo_height + 95;
+bar_y = logo_y + logo_height + 120;
 
 # Outer crimson border box
 bar_border_img = Image.Rectangle(BAR_WIDTH + 6, BAR_HEIGHT + 6, 0.8, 0.0, 0.0, 1.0);
@@ -77,15 +74,19 @@ fun update_progress(duration, progress) {
     
     fill_img = Image.Rectangle(fill_w, BAR_HEIGHT - 4, 1.0, 0.0, 0.0, 1.0);
     bar_fill_sprite.SetImage(fill_img);
+
+    # Update percentage text in CF Glitch City font
+    pct_val = Math.Int(progress * 100);
+    pct_img = Image.Text(pct_val + " %", 1.0, 0.0, 0.0, 1.0, "CF Glitch City 24");
+    if (pct_img) {
+        percent_sprite.SetImage(pct_img);
+        percent_sprite.SetX((screen_width / 2) - (pct_img.GetWidth() / 2));
+        percent_sprite.SetY(bar_y - pct_img.GetHeight() - 14);
+    }
 }
 
 fun update_status(text) {
-    if (text) {
-        msg_img = Image.Text(text, 0.8, 0.0, 0.0, 1.0, "Monospace Bold 11");
-        status_sprite.SetImage(msg_img);
-        status_sprite.SetX((screen_width / 2) - (msg_img.GetWidth() / 2));
-        status_sprite.SetY(bar_y + BAR_HEIGHT + 16);
-    }
+    # Comment lines removed
 }
 
 fun refresh_callback() {
