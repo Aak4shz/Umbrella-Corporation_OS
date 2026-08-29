@@ -56,11 +56,14 @@ This section contains every command needed to build, clean, test, verify, and ma
 ### 2.1 Live Interactive Theming & Simulation Tools
 
 ```bash
-# 1. Launch Staged Boot Splash Screen Live Preview (Qt6 QML)
-./scripts/preview-splash.sh
+# 1. Launch Early Boot Plymouth Splash Preview (36-Frame Rotating Biohazard + Progress Bar)
+./scripts/preview-plymouth.sh
 
-# 2. Launch Interactive SDDM Security Terminal Login Screen Preview
+# 2. Launch Interactive SDDM Security Terminal Login Screen Preview (Raccoon City Edition)
 ./scripts/preview-login.sh
+
+# 3. Launch Post-Login Cinematic Splash Screen Preview (1080p 60FPS Video with Red Queen AI Voice)
+./scripts/preview-splash.sh
 ```
 
 ### 2.2 Virtual Machine Testing Commands
