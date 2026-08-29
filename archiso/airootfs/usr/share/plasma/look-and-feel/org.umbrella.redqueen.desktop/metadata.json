@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "admin@umbrella.corp",
+                "Name": "Umbrella Corporation AI Division"
+            }
+        ],
+        "Description": "Umbrella Corporation Red Queen AI Global Theme",
+        "Id": "org.umbrella.redqueen.desktop",
+        "Name": "Red Queen",
+        "ServiceTypes": [
+            "Plasma/LookAndFeel"
+        ],
+        "Version": "1.0",
+        "Website": "https://umbrella.corp"
+    },
+    "X-Plasma-MainScript": "defaults"
+}
