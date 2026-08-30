@@ -126,10 +126,10 @@ Rectangle {
                     anchors.fill: parent
                     spacing: 12
 
-                    // Big Animated Biohazard Emblem
+                    // Authentic Umbrella Corporation Emblem
                     Image {
                         Layout.alignment: Qt.AlignHCenter
-                        source: "images/biohazard-logo.png"
+                        source: "images/umbrella-logo.png"
                         sourceSize.width: 90
                         sourceSize.height: 90
                         fillMode: Image.PreserveAspectFit
