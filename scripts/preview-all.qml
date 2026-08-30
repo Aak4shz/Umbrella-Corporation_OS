@@ -204,7 +204,7 @@ Window {
 
                         Image {
                             Layout.alignment: Qt.AlignHCenter
-                            source: "../assets/Resident-Evil-Logo.png"
+                            source: "../assets/branding/umbrella-corporation-logo.png"
                             sourceSize.width: 90; sourceSize.height: 90
                             fillMode: Image.PreserveAspectFit
                         }
