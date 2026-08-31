@@ -62,7 +62,7 @@ This section contains every command needed to build, clean, test, verify, and ma
 # 2. Launch Interactive SDDM Security Terminal Login Screen Preview (Raccoon City Edition)
 ./scripts/preview-login.sh
 
-# 3. Launch Post-Login Cinematic Splash Screen Preview (1080p 60FPS Video with Red Queen AI Voice)
+# 3. Launch Post-Login Native QML Splash Screen Preview (Red Queen Staged Protocol Animation)
 ./scripts/preview-splash.sh
 ```
 
