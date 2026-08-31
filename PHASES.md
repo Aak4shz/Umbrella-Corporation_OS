@@ -183,11 +183,11 @@ mindmap
   - [x] **Master Theme Architecture Spec:** Author [`docs/RED_QUEEN_THEME_ARCHITECTURE.md`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/docs/RED_QUEEN_THEME_ARCHITECTURE.md) detailing the 10-layer matrix, chromatic pipeline, and 60-30-10 color tokens.
   - [x] **Plymouth Boot Splash (Biohazard Edition):** Engineered 36-frame anti-aliased rotating Crimson Biohazard logo, Transformers movie font header, and thick rectangular cyberpunk progress bar with real-time kernel/systemd IPC sync (`scripts/preview-plymouth.sh`).
   - [x] **SDDM Login Greeter (Raccoon City Edition):** Implemented frameless transparent interface over `Welcome_Wallpaper.png`, CF Glitch City uppercase Date & Time HUD, UniNeue typography, and 3D glowing neon vector action buttons (`scripts/preview-login.sh`).
-  - [x] **Post-Login Cinematic Splash Screen:** Integrated 1080p 60 FPS Remastered video with Red Queen AI voice line into `Splash.qml` (`scripts/preview-splash.sh`).
+  - [x] **Post-Login Native QML Splash Screen:** Engineered lightweight, hardware-accelerated Red Queen staged splash screen (`Splash.qml`) with glowing biohazard insignia, real-time stage progress bar, and zero video codec dependency (`scripts/preview-splash.sh`).
   - [x] **Cross-Toolkit GTK Dark Mode:** Standardized `gtk-3.0/settings.ini` and `gtk-4.0/settings.ini` enforcing `Breeze-Dark`, `Papirus-Dark`, and `breeze_cursors`.
   - [x] **Input & Cursor Standardization:** Configured `kcminputrc` and `kdeglobals` with `cursorTheme=breeze_cursors` (size 24) and `accentColor=204,0,0`.
   - [x] **Live QA Simulation Suite:** Created standalone preview harnesses for Plymouth, SDDM Login, Post-Login Splash screen, and Lock Screen.
-  - [ ] **Final ISO Release Rebuild & Verification:** Recompile release ISO image incorporating updated Plymouth, SDDM, video splash, lockscreen, GTK, and cursor assets.
+  - [ ] **Final ISO Release Rebuild & Verification:** Recompile release ISO image incorporating updated Plymouth, SDDM, native splash, lockscreen, GTK, and cursor assets.
 * **Key Deliverables:** [`docs/RED_QUEEN_THEME_ARCHITECTURE.md`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/docs/RED_QUEEN_THEME_ARCHITECTURE.md), [`scripts/preview-plymouth.sh`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/scripts/preview-plymouth.sh), [`scripts/preview-login.sh`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/scripts/preview-login.sh), [`scripts/preview-splash.sh`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/scripts/preview-splash.sh), [`scripts/preview-lockscreen.sh`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/scripts/preview-lockscreen.sh).
 * **Status:** `[COMPLETED & CERTIFIED]` (100%)
 
