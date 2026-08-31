@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "generative-ui": {
+      "source": "himself65/finance-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/ui-tools/skills/generative-ui/SKILL.md",
+      "computedHash": "8b3b4e2f41311194be068fbf64afe42b3324933548a693752514b3c68a6d742b"
+    }
+  }
+}
