@@ -40,7 +40,7 @@ graph TD
         S1[Boot & Session: GRUB / Plymouth / SDDM]
         S2[Desktop Shell: Plasma / KWin / Look-And-Feel]
         S3[Developer HUD: Konsole / Fastfetch / Zsh]
-        S4[IDE & Tooling: VS Code / Aider / Claude Code]
+        S4[IDE & Tooling: VS Code / Aider / Claude Code / OpenCode]
     end
 
     P1 --> S1
@@ -233,7 +233,7 @@ flowchart TD
         J1[JetBrains Mono / Nerd Font] --> CODE_ED[VS Code Editor Core]
         J1 --> TERM_SH[Konsole Shell & Zsh Prompt]
         J1 --> HUD_FF[Fastfetch ASCII & Stats Engine]
-        J1 --> AI_CLI[Aider & Claude Code Interfaces]
+        J1 --> AI_CLI[Aider, Claude Code & OpenCode Interfaces]
     end
 ```
 
@@ -544,9 +544,10 @@ The default VS Code configuration located in `/etc/skel/.config/Code/User/settin
 * **Cursor Dynamics:** `smooth` blinking animation with a solid `block` cursor for exact terminal-style insertion feedback.
 * **Bracket Pair Colorization:** Rainbow bracket matching with active depth guide lines to simplify complex AST navigation in nested Java and Python code.
 
-### 9.2 AI Coding Terminals (Aider CLI and Claude Code)
+### 9.2 AI Coding Terminals (Aider CLI, Claude Code, and OpenCode)
 
-* **Configuration:** `.config/aider/.aider.conf.yml` pre-configured for local Ollama endpoints.
+* **Configuration:** `.config/aider/.aider.conf.yml` and `.config/opencode/config.json` pre-configured for local Ollama endpoints (`http://127.0.0.1:11434/v1`).
+* **OpenCode Agent:** Autonomous coding CLI integrated natively into developer PATH and terminal shortcuts.
 * **Syntax Output:** Dark-mode optimized diff output where deletions are rendered in soft crimson (`#800000` backing, `#FF8080` text) and additions are rendered in soft forest emerald (`#005020` backing, `#80FF80` text).
 * **Streaming Text Tokens:** Real-time token streaming rendered in crisp `#E6E6E6` with markdown tables formatted using clean ASCII dividers.
 
@@ -643,6 +644,7 @@ The following table provides an exhaustive index connecting every design system 
 | **Powerlevel10k Prompt** | `archiso/airootfs/etc/skel/.p10k.zsh` | `/etc/skel/.p10k.zsh` |
 | **VS Code Preferences** | `archiso/airootfs/etc/skel/.config/Code/User/settings.json` | `/etc/skel/.config/Code/User/settings.json` |
 | **Aider AI Preferences** | `archiso/airootfs/etc/skel/.config/aider/.aider.conf.yml` | `/etc/skel/.config/aider/.aider.conf.yml` |
+| **OpenCode Preferences** | `archiso/airootfs/etc/skel/.config/opencode/config.json` | `/etc/skel/.config/opencode/config.json` |
 | **SDDM Greeter Theme** | `archiso/airootfs/usr/share/sddm/themes/umbrella-sddm/theme.conf` | `/usr/share/sddm/themes/umbrella-sddm/theme.conf` |
 | **SDDM QML Viewport** | `archiso/airootfs/usr/share/sddm/themes/umbrella-sddm/Main.qml` | `/usr/share/sddm/themes/umbrella-sddm/Main.qml` |
 | **Plymouth Boot Splash** | `archiso/airootfs/usr/share/plymouth/themes/umbrella-plymouth/` | `/usr/share/plymouth/themes/umbrella-plymouth/` |
