@@ -44,9 +44,11 @@
    ```bash
    ollama pull llama3.2
    ```
-4. Start an AI pair-programming session with Aider:
+4. Start an AI pair-programming session with Aider or OpenCode:
    ```bash
    aider
+   # or launch OpenCode autonomous coding agent
+   opencode
    ```
 
 ---
@@ -57,6 +59,7 @@
 | :--- | :--- |
 | `ai` | Launch interactive local Ollama shell (`ollama run llama3.2`) |
 | `aider` | Start Aider pair programmer pre-pointed to local Ollama |
+| `opencode` | Start OpenCode AI autonomous coding agent CLI |
 | `jrun <file.jar>` | Run Java executable JAR file |
 | `mci` / `mcp` | Maven clean install / package shortcuts |
 | `venv` | Create Python virtual environment (`python3 -m venv venv`) |
