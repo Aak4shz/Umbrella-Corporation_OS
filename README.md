@@ -157,6 +157,7 @@ graph LR
 ### 5.2 Local Artificial Intelligence Engine
 * **Ollama Daemon:** Pre-installed systemd service (`ollama.service`) exposing local REST endpoints at `http://127.0.0.1:11434`.
 * **Aider CLI:** Terminal pair-programmer pre-configured (`.config/aider/.aider.conf.yml`) to communicate directly with local Ollama model instances.
+* **OpenCode CLI:** The open-source autonomous coding agent pre-configured (`.config/opencode/config.json`) with local Ollama backends.
 * **Claude Code CLI:** Anthropic developer CLI pre-integrated for cloud-assisted engineering sessions.
 
 ### 5.3 Privacy and Secure Communication
