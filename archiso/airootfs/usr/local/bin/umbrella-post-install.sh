@@ -63,7 +63,7 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
 fi
 
 # ── Configure Plymouth ───────────────────────────────────────────────────
-sudo plymouth-set-default-theme umbrella-boot 2>/dev/null || true
+sudo plymouth-set-default-theme umbrella-plymouth 2>/dev/null || true
 sudo mkinitcpio -P 2>/dev/null || true
 
 echo ""
