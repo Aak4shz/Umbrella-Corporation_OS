@@ -45,6 +45,7 @@ alias gl="git log --oneline --graph --decorate --all"
 # AI shortcuts
 alias ai="ollama run llama3.2"
 alias aider="aider --model ollama/llama3.2"
+alias opencode="opencode"
 
 # Java shortcuts
 alias jrun="java -jar"
