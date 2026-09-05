@@ -5,3 +5,6 @@ BorderlessMaximizedWindows=true
 blurEnabled=true
 contrastEnabled=true
 translucencyEnabled=true
+
+[org.kde.kdecoration2]
+theme=RedQueen
