@@ -1,0 +1,10 @@
+/* Red Queen GTK 4 Theme Accent Overrides */
+@define-color accent_color #cc0000;
+@define-color accent_bg_color #cc0000;
+@define-color accent_fg_color #ffffff;
+@define-color destructive_color #e60000;
+@define-color destructive_bg_color #cc0000;
+@define-color destructive_fg_color #ffffff;
+@define-color success_color #00c850;
+@define-color warning_color #ffa500;
+@define-color error_color #e60000;
