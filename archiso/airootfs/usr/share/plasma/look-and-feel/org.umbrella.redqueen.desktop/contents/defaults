@@ -6,12 +6,14 @@ widgetStyle=Breeze
 
 [kdeglobals][KDE]
 LookAndFeelPackage=org.umbrella.redqueen.desktop
+contrast=7
+ShowDeleteCommand=true
 
 [kdeglobals][Icons]
 Theme=Papirus-Dark
 
 [kdeglobals][Mouse]
-cursorTheme=breeze_cursors
+cursorTheme=RedQueen-Cursors
 cursorSize=24
 
 [kdeglobals][Font]
@@ -33,7 +35,7 @@ inactiveForeground=160,160,160
 name=RedQueen
 
 [kwinrc][org.kde.kdecoration2]
-theme=Breeze
+theme=RedQueen
 
 [kwinrc][Plugins]
 blurEnabled=true
