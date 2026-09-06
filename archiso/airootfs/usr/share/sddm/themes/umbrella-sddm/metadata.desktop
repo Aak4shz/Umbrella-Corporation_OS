@@ -1,11 +1,15 @@
-[SDDM Theming]
+[SddmGreeterTheme]
 Name=Umbrella Red Queen
-Comment=Umbrella Corporation Red Queen AI SDDM Theme
+Description=Umbrella Corporation Red Queen AI SDDM Theme
 Author=Umbrella Corporation AI Division
 Email=admin@umbrella.corp
 Website=https://umbrella.corp
 Type=sddm-theme
 Version=1.0
+Screenshot=images/Welcome_Wallpaper.png
 MainScript=Main.qml
 ConfigFile=theme.conf
 TranslationsDirectory=translations
+Theme-Id=umbrella-sddm
+Theme-API=2.0
+QtVersion=6
