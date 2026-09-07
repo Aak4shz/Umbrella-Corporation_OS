@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Active elements -->
+  <g id="decoration-top">
+    <rect x="16" y="0" width="32" height="24" fill="#1a0000"/>
+    <line x1="16" y1="0.5" x2="48" y2="0.5" stroke="#cc0000" stroke-width="1"/>
+  </g>
+  <g id="decoration-topleft">
+    <rect x="0" y="0" width="16" height="24" fill="#1a0000"/>
+    <path d="M 0.5 24 L 0.5 0.5 L 16 0.5" stroke="#cc0000" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-topright">
+    <rect x="48" y="0" width="16" height="24" fill="#1a0000"/>
+    <path d="M 48 0.5 L 63.5 0.5 L 63.5 24" stroke="#cc0000" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-left">
+    <rect x="0" y="24" width="2" height="32" fill="#0d0d0d"/>
+    <line x1="0.5" y1="24" x2="0.5" y2="56" stroke="#cc0000" stroke-width="1"/>
+  </g>
+  <g id="decoration-right">
+    <rect x="62" y="24" width="2" height="32" fill="#0d0d0d"/>
+    <line x1="63.5" y1="24" x2="63.5" y2="56" stroke="#cc0000" stroke-width="1"/>
+  </g>
+  <g id="decoration-bottom">
+    <rect x="16" y="56" width="32" height="2" fill="#0d0d0d"/>
+    <line x1="16" y1="57.5" x2="48" y2="57.5" stroke="#cc0000" stroke-width="1"/>
+  </g>
+  <g id="decoration-bottomleft">
+    <rect x="0" y="56" width="16" height="2" fill="#0d0d0d"/>
+    <path d="M 0.5 56 L 0.5 57.5 L 16 57.5" stroke="#cc0000" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-bottomright">
+    <rect x="48" y="56" width="16" height="2" fill="#0d0d0d"/>
+    <path d="M 48 57.5 L 63.5 57.5 L 63.5 56" stroke="#cc0000" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-center">
+    <rect x="16" y="24" width="32" height="32" fill="#0a0a0a"/>
+  </g>
+
+  <!-- Inactive elements (offset by X=64) -->
+  <g id="decoration-inactive-top">
+    <rect x="80" y="0" width="32" height="24" fill="#0d0d0d"/>
+    <line x1="80" y1="0.5" x2="112" y2="0.5" stroke="#282828" stroke-width="1"/>
+  </g>
+  <g id="decoration-inactive-topleft">
+    <rect x="64" y="0" width="16" height="24" fill="#0d0d0d"/>
+    <path d="M 64.5 24 L 64.5 0.5 L 80 0.5" stroke="#282828" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-inactive-topright">
+    <rect x="112" y="0" width="16" height="24" fill="#0d0d0d"/>
+    <path d="M 112 0.5 L 127.5 0.5 L 127.5 24" stroke="#282828" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-inactive-left">
+    <rect x="64" y="24" width="2" height="32" fill="#0d0d0d"/>
+    <line x1="64.5" y1="24" x2="64.5" y2="56" stroke="#282828" stroke-width="1"/>
+  </g>
+  <g id="decoration-inactive-right">
+    <rect x="126" y="24" width="2" height="32" fill="#0d0d0d"/>
+    <line x1="127.5" y1="24" x2="127.5" y2="56" stroke="#282828" stroke-width="1"/>
+  </g>
+  <g id="decoration-inactive-bottom">
+    <rect x="80" y="56" width="32" height="2" fill="#0d0d0d"/>
+    <line x1="80" y1="57.5" x2="112" y2="57.5" stroke="#282828" stroke-width="1"/>
+  </g>
+  <g id="decoration-inactive-bottomleft">
+    <rect x="64" y="56" width="16" height="2" fill="#0d0d0d"/>
+    <path d="M 64.5 56 L 64.5 57.5 L 80 57.5" stroke="#282828" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-inactive-bottomright">
+    <rect x="112" y="56" width="16" height="2" fill="#0d0d0d"/>
+    <path d="M 112 57.5 L 127.5 57.5 L 127.5 56" stroke="#282828" stroke-width="1" fill="none"/>
+  </g>
+  <g id="decoration-inactive-center">
+    <rect x="80" y="24" width="32" height="32" fill="#0a0a0a"/>
+  </g>
+</svg>
