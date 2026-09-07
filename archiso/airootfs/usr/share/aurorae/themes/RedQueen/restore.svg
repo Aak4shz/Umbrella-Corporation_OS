@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="16" viewBox="0 0 64 16">
+  <!-- active-center: 0 0 16 16 -->
+  <g id="active-center">
+    <rect x="0" y="0" width="16" height="16" fill="transparent"/>
+    <circle cx="8" cy="8" r="6" fill="#181818" stroke="#333333" stroke-width="1.2"/>
+    <rect x="5" y="7" width="4" height="4" fill="none" stroke="#cccccc" stroke-width="1"/>
+    <path d="M 7 7 L 7 5 L 11 5 L 11 9 L 9 9" fill="none" stroke="#cccccc" stroke-width="1"/>
+  </g>
+  <!-- inactive-center: 16 0 16 16 -->
+  <g id="inactive-center" transform="translate(16, 0)">
+    <rect x="0" y="0" width="16" height="16" fill="transparent"/>
+    <circle cx="8" cy="8" r="6" fill="#141414" stroke="#282828" stroke-width="1"/>
+    <rect x="5" y="7" width="4" height="4" fill="none" stroke="#777777" stroke-width="1"/>
+    <path d="M 7 7 L 7 5 L 11 5 L 11 9 L 9 9" fill="none" stroke="#777777" stroke-width="1"/>
+  </g>
+  <!-- hover-center: 32 0 16 16 -->
+  <g id="hover-center" transform="translate(32, 0)">
+    <rect x="0" y="0" width="16" height="16" fill="transparent"/>
+    <circle cx="8" cy="8" r="6.5" fill="#303030" stroke="#cc0000" stroke-width="1.2"/>
+    <rect x="5" y="7" width="4" height="4" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+    <path d="M 7 7 L 7 5 L 11 5 L 11 9 L 9 9" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+  </g>
+  <!-- pressed-center: 48 0 16 16 -->
+  <g id="pressed-center" transform="translate(48, 0)">
+    <rect x="0" y="0" width="16" height="16" fill="transparent"/>
+    <circle cx="8" cy="8" r="5.5" fill="#202020" stroke="#ff3333" stroke-width="1.2"/>
+    <rect x="5" y="7" width="4" height="4" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+    <path d="M 7 7 L 7 5 L 11 5 L 11 9 L 9 9" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+  </g>
+</svg>
