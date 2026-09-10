@@ -33,7 +33,7 @@ A complete Plasma 6 theme consists of 6 interconnected visual layers:
 
 Always adhere to the **60-30-10 Chromatic Balance**:
 * **60% Dominant Canvas:** Deep Obsidian (`#0A0A0A`, `#0D0D0D`, `#121212`)
-* **30% Structural Panels:** Translucent Dark Glass (`#181818`, 88%–92% opacity, 1.5px crimson borders `#CC0000`)
+* **30% Structural Panels:** Translucent Dark Glass (`#181818`, 88%-92% opacity, 1.5px crimson borders `#CC0000`)
 * **10% High-Energy Accents:** Laser Crimson & Neon Red (`#FF0000`, `#FF2222`, `#CC0000`)
 
 ---
@@ -76,14 +76,14 @@ Rectangle {
 
 ```text
 usr/share/plasma/look-and-feel/org.umbrella.redqueen.desktop/
-├── metadata.json
-└── contents/
-    ├── defaults                # Default configs for kdeglobals, kwinrc, etc.
-    ├── splash/
-    │   ├── Splash.qml          # Post-login animated video/QML splash
-    │   └── splash.mp4          # 1080p 60FPS video asset
-    └── lockscreen/
-        └── LockScreenUi.qml    # Screen locker UI component
+|-- metadata.json
+\-- contents/
+    |-- defaults                # Default configs for kdeglobals, kwinrc, etc.
+    |-- splash/
+    |   |-- Splash.qml          # Post-login animated video/QML splash
+    |   \-- splash.mp4          # 1080p 60FPS video asset
+    \-- lockscreen/
+        \-- LockScreenUi.qml    # Screen locker UI component
 ```
 
 ---
