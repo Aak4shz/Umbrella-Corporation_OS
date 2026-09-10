@@ -18,18 +18,18 @@ This skill provides deterministic systems engineering patterns for mastering Arc
 
 ```text
 archiso/
-├── profiledef.sh              # Master ISO metadata, file permissions matrix & boot modes
-├── pacman.conf                # Pacman mirrorlist, multilib, and repository configs
-├── packages.x86_64            # Flat declarative list of packages to install
-├── syslinux/                  # BIOS legacy bootloader configs & themes
-├── grub/                      # UEFI bootloader configs & themes
-└── airootfs/                  # Root filesystem overlay applied to live environment
-    ├── etc/
-    │   ├── skel/              # User profile skeleton copied to /home/umbrella on creation
-    │   ├── sudoers.d/         # Strict permission (0:0:440) sudo rule definitions
-    │   ├── mkinitcpio.conf.d/ # Early boot initramfs hooks (kms, plymouth, udev)
-    │   └── systemd/system/    # System services (sddm, ollama, docker, pipewire)
-    └── usr/share/             # Visual assets, wallpapers, Plymouth & SDDM themes
+|-- profiledef.sh              # Master ISO metadata, file permissions matrix & boot modes
+|-- pacman.conf                # Pacman mirrorlist, multilib, and repository configs
+|-- packages.x86_64            # Flat declarative list of packages to install
+|-- syslinux/                  # BIOS legacy bootloader configs & themes
+|-- grub/                      # UEFI bootloader configs & themes
+\-- airootfs/                  # Root filesystem overlay applied to live environment
+    |-- etc/
+    |   |-- skel/              # User profile skeleton copied to /home/umbrella on creation
+    |   |-- sudoers.d/         # Strict permission (0:0:440) sudo rule definitions
+    |   |-- mkinitcpio.conf.d/ # Early boot initramfs hooks (kms, plymouth, udev)
+    |   \-- systemd/system/    # System services (sddm, ollama, docker, pipewire)
+    \-- usr/share/             # Visual assets, wallpapers, Plymouth & SDDM themes
 ```
 
 ---
