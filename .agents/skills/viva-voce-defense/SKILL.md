@@ -70,7 +70,7 @@ flowchart TD
 
 ## 4. Live Viva Demonstration Protocol
 
-1. **Demonstrate Boot Sequence:** Launch `./scripts/run-qemu.sh uefi` and explain the GRUB ➔ Plymouth ➔ SDDM ➔ Splash ➔ Desktop flow.
+1. **Demonstrate Boot Sequence:** Launch `./scripts/run-qemu.sh uefi` and explain the GRUB -> Plymouth -> SDDM -> Splash -> Desktop flow.
 2. **Demonstrate Fastfetch Telemetry:** Open Konsole and show hardware telemetry with fastfetch and Red Queen ASCII emblem.
 3. **Demonstrate Local AI:** Run `curl http://localhost:11434/api/tags` to prove Ollama background service initialization.
 4. **Demonstrate Isolated Theme Previews:** Run `./scripts/preview-plymouth.sh` and `./scripts/preview-login.sh`.
