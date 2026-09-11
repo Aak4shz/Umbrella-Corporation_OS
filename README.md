@@ -158,7 +158,6 @@ graph LR
 * **Ollama Daemon:** Pre-installed systemd service (`ollama.service`) exposing local REST endpoints at `http://127.0.0.1:11434`.
 * **Aider CLI:** Terminal pair-programmer pre-configured (`.config/aider/.aider.conf.yml`) to communicate directly with local Ollama model instances.
 * **OpenCode CLI:** The open-source autonomous coding agent pre-configured (`.config/opencode/config.json`) with local Ollama backends.
-* **Claude Code CLI:** Anthropic developer CLI pre-integrated for cloud-assisted engineering sessions.
 
 ### 5.3 Privacy and Secure Communication
 * **Encrypted Communication Tools:** Signal Desktop, Element (Matrix), Session Messenger, SimpleX Chat, and Briar offline mesh communicator.
@@ -169,30 +168,30 @@ graph LR
 
 ```text
 Umbrella-Corporation_OS/
-├── DESIGN.md                          # Master A-Z Design System Specification
-├── MEMORY.md                          # Master Project Memory & State Ledger
-├── PHASES.md                          # 8-Phase Engineering Lifecycle Roadmap
-├── README.md                          # Executive Project Overview & Navigation Hub
-├── archiso/                           # Archiso Build Directory
-│   ├── pacman.conf                    # Pacman Repositories & Parallel Downloads
-│   ├── packages.x86_64                # Complete Declarative Package Manifest
-│   ├── profiledef.sh                  # Archiso Profile Definition & Permissions
-│   └── airootfs/                      # Root Filesystem Overlay Tree
-│       ├── etc/                       # System Configurations & Skeletons (/etc/skel)
-│       └── usr/                       # System Themes, SDDM, Plymouth, Wallpapers
-├── assets/                            # Raw Source Media, GRUB Banners & Wallpapers
-├── docs/                              # Project Technical Documentation Suite
-│   ├── LIVE_USER_AUTOLOGIN_PLAN.md    # Live User Autologin Architecture
-│   ├── USER_GUIDE.md                  # End-User Manual & Shortcuts
-│   ├── VIVA_PREPARATION.md            # Academic Viva Voce Defense Guide
-│   ├── architecture.md                # System Architecture Specification
-│   ├── prd.md                         # Product Requirements Document
-│   └── rules.md                       # Engineering Standards & Anti-Patterns
-├── out/                               # Compiled Distribution Output
-│   └── umbrella-os-1.0.0-x86_64.iso   # Bootable ISO Binary (4.24 GB)
-├── scripts/                           # Automation & Verification Scripts
-│   └── run-qemu.sh                    # QEMU Virtual Machine Test Script
-└── work/                              # Archiso Temporary Build Cache
+|-- DESIGN.md                          # Master A-Z Design System Specification
+|-- MEMORY.md                          # Master Project Memory & State Ledger
+|-- PHASES.md                          # 8-Phase Engineering Lifecycle Roadmap
+|-- README.md                          # Executive Project Overview & Navigation Hub
+|-- archiso/                           # Archiso Build Directory
+|   |-- pacman.conf                    # Pacman Repositories & Parallel Downloads
+|   |-- packages.x86_64                # Complete Declarative Package Manifest
+|   |-- profiledef.sh                  # Archiso Profile Definition & Permissions
+|   \-- airootfs/                      # Root Filesystem Overlay Tree
+|       |-- etc/                       # System Configurations & Skeletons (/etc/skel)
+|       \-- usr/                       # System Themes, SDDM, Plymouth, Wallpapers
+|-- assets/                            # Raw Source Media, GRUB Banners & Wallpapers
+|-- docs/                              # Project Technical Documentation Suite
+|   |-- LIVE_USER_AUTOLOGIN_PLAN.md    # Live User Autologin Architecture
+|   |-- USER_GUIDE.md                  # End-User Manual & Shortcuts
+|   |-- VIVA_PREPARATION.md            # Academic Viva Voce Defense Guide
+|   |-- architecture.md                # System Architecture Specification
+|   |-- prd.md                         # Product Requirements Document
+|   \-- rules.md                       # Engineering Standards & Anti-Patterns
+|-- out/                               # Compiled Distribution Output
+|   \-- umbrella-os-1.0.0-x86_64.iso   # Bootable ISO Binary (4.24 GB)
+|-- scripts/                           # Automation & Verification Scripts
+|   \-- run-qemu.sh                    # QEMU Virtual Machine Test Script
+\-- work/                              # Archiso Temporary Build Cache
 ```
 
 ---
