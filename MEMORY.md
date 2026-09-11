@@ -17,7 +17,7 @@
 This document serves as the persistent memory engine for the Umbrella OS project. When returning to this repository, there is no need to re-scan the entire codebase from scratch. This section provides an instant high-level summary of what this system is, how it is constructed, and its current operating state.
 
 ### 1.1 What Is Umbrella OS?
-Umbrella OS is an autonomous, bootable, Arch-based 64-bit Linux distribution compiled using the `archiso` build framework. It is engineered as a zero-configuration workstation for software developers (Java 21 LTS, Python 3.12, Docker) and local artificial intelligence researchers (Ollama, Aider, Claude Code, OpenCode). The visual interface is modeled after the Red Queen AI and Umbrella Corporation aesthetic from *Resident Evil*, featuring a high-contrast dark palette (`#0A0A0A` canvas, `#CC0000` accents).
+Umbrella OS is an autonomous, bootable, Arch-based 64-bit Linux distribution compiled using the `archiso` build framework. It is engineered as a zero-configuration workstation for software developers (Java 21 LTS, Python 3.12, Docker) and local artificial intelligence researchers (Ollama, Aider, OpenCode). The visual interface is modeled after the Red Queen AI and Umbrella Corporation aesthetic from *Resident Evil*, featuring a high-contrast dark palette (`#0A0A0A` canvas, `#CC0000` accents).
 
 ### 1.2 Instant Operational Context
 * **Current Lifecycle State:** Phase 9 Active / Hardened. Core ISO compiled (`out/umbrella-os-1.0.0-x86_64.iso` - 4.0 GB). Red Queen Full-Stack Theming and live interactive simulation tooling fully established.
@@ -236,55 +236,55 @@ graph LR
 
 ```text
 Umbrella-Corporation_OS/
-├── DESIGN.md                          # Master A-Z Design System Specification
-├── MEMORY.md                          # Master Project Memory & State Ledger
-├── PHASES.md                          # 9-Phase Engineering Lifecycle Roadmap
-├── README.md                          # Master Repository Documentation
-├── archiso/                           # Archiso Build Directory
-│   ├── pacman.conf                    # Pacman Repositories & Parallel Downloads
-│   ├── packages.x86_64                # Complete Declarative Package Manifest
-│   ├── profiledef.sh                  # Archiso Profile Definition & Permissions
-│   └── airootfs/                      # Root Filesystem Overlay Tree
-│       ├── etc/
-│       │   ├── fastfetch/             # System Telemetry & ASCII Art Logo
-│       │   ├── motd                   # Classified Security Clearance Banner
-│       │   ├── plymouth/              # Plymouth Splash Daemon Config
-│       │   ├── sddm.conf.d/           # Autologin SDDM Configuration
-│       │   ├── skel/                  # Skeletal Home Directory for New Users
-│       │   │   ├── .config/           # Plasma, KWin, Fastfetch, VS Code, GTK 3/4, kcminputrc
-│       │   │   ├── .local/share/      # Konsole Red Queen Color Schemes & Profiles
-│       │   │   ├── .p10k.zsh          # Powerlevel10k Prompt Settings
-│       │   │   └── .zshrc             # Interactive Zsh Configuration
-│       │   ├── sudoers.d/             # Sudo Rules for Live User
-│       │   └── systemd/system/        # Custom Livecd & Initialization Units
-│       └── usr/
-│           ├── local/bin/             # Live Initialization & Post-Install Scripts
-│           └── share/
-│               ├── color-schemes/     # RedQueen.colors for KDE Plasma
-│               ├── pixmaps/           # System Branding Insignia
-│               ├── plasma/            # Look-and-Feel (org.umbrella.redqueen.desktop) & Style
-│               ├── plymouth/themes/   # Umbrella Plymouth 36-Frame Splash
-│               ├── sddm/themes/       # Umbrella SDDM Greeter Theme
-│               └── wallpapers/        # 4K & FHD Curated Wallpapers
-├── assets/                            # Raw High-Definition Source Assets
-│   ├── grub/                          # GRUB Bootloader Banners & Backgrounds
-│   └── wallpapers/                    # 4K Desktop Background Artwork
-├── docs/                              # Project Documentation Suite
-│   ├── DESIGN.md                      # Design System Specification Copy
-│   ├── LIVE_USER_AUTOLOGIN_PLAN.md    # Live User Autologin Architecture
-│   ├── RED_QUEEN_THEME_ARCHITECTURE.md# Master 10-Layer Theming Blueprint
-│   ├── USER_GUIDE.md                  # End-User Manual & Shortcuts
-│   ├── VIVA_PREPARATION.md            # Technical Viva Voce Defense Guide
-│   ├── architecture.md                # System Architecture Specification
-│   ├── prd.md                         # Product Requirements Document
-│   └── rules.md                       # Engineering Standards & Anti-Patterns
-├── out/                               # Compiled Distribution Output
-│   └── umbrella-os-1.0.0-x86_64.iso   # Compiled Bootable ISO Binary (4.0 GB)
-├── scripts/                           # Automation & Verification Suite
-│   ├── preview-login.qml              # Interactive SDDM Login Screen QML
-│   ├── preview-login.sh               # Live SDDM Login Runner
-│   ├── preview-splash.qml             # Staged Boot Splash QML
-│   ├── preview-splash.sh              # Live Boot Splash Runner
-│   └── run-qemu.sh                    # QEMU Virtual Machine Launch Script
-└── work/                              # Archiso Temporary Build Directory
+|-- DESIGN.md                          # Master A-Z Design System Specification
+|-- MEMORY.md                          # Master Project Memory & State Ledger
+|-- PHASES.md                          # 9-Phase Engineering Lifecycle Roadmap
+|-- README.md                          # Master Repository Documentation
+|-- archiso/                           # Archiso Build Directory
+|   |-- pacman.conf                    # Pacman Repositories & Parallel Downloads
+|   |-- packages.x86_64                # Complete Declarative Package Manifest
+|   |-- profiledef.sh                  # Archiso Profile Definition & Permissions
+|   \-- airootfs/                      # Root Filesystem Overlay Tree
+|       |-- etc/
+|       |   |-- fastfetch/             # System Telemetry & ASCII Art Logo
+|       |   |-- motd                   # Classified Security Clearance Banner
+|       |   |-- plymouth/              # Plymouth Splash Daemon Config
+|       |   |-- sddm.conf.d/           # Autologin SDDM Configuration
+|       |   |-- skel/                  # Skeletal Home Directory for New Users
+|       |   |   |-- .config/           # Plasma, KWin, Fastfetch, VS Code, GTK 3/4, kcminputrc
+|       |   |   |-- .local/share/      # Konsole Red Queen Color Schemes & Profiles
+|       |   |   |-- .p10k.zsh          # Powerlevel10k Prompt Settings
+|       |   |   \-- .zshrc             # Interactive Zsh Configuration
+|       |   |-- sudoers.d/             # Sudo Rules for Live User
+|       |   \-- systemd/system/        # Custom Livecd & Initialization Units
+|       \-- usr/
+|           |-- local/bin/             # Live Initialization & Post-Install Scripts
+|           \-- share/
+|               |-- color-schemes/     # RedQueen.colors for KDE Plasma
+|               |-- pixmaps/           # System Branding Insignia
+|               |-- plasma/            # Look-and-Feel (org.umbrella.redqueen.desktop) & Style
+|               |-- plymouth/themes/   # Umbrella Plymouth 36-Frame Splash
+|               |-- sddm/themes/       # Umbrella SDDM Greeter Theme
+|               \-- wallpapers/        # 4K & FHD Curated Wallpapers
+|-- assets/                            # Raw High-Definition Source Assets
+|   |-- grub/                          # GRUB Bootloader Banners & Backgrounds
+|   \-- wallpapers/                    # 4K Desktop Background Artwork
+|-- docs/                              # Project Documentation Suite
+|   |-- DESIGN.md                      # Design System Specification Copy
+|   |-- LIVE_USER_AUTOLOGIN_PLAN.md    # Live User Autologin Architecture
+|   |-- RED_QUEEN_THEME_ARCHITECTURE.md# Master 10-Layer Theming Blueprint
+|   |-- USER_GUIDE.md                  # End-User Manual & Shortcuts
+|   |-- VIVA_PREPARATION.md            # Technical Viva Voce Defense Guide
+|   |-- architecture.md                # System Architecture Specification
+|   |-- prd.md                         # Product Requirements Document
+|   \-- rules.md                       # Engineering Standards & Anti-Patterns
+|-- out/                               # Compiled Distribution Output
+|   \-- umbrella-os-1.0.0-x86_64.iso   # Compiled Bootable ISO Binary (4.0 GB)
+|-- scripts/                           # Automation & Verification Suite
+|   |-- preview-login.qml              # Interactive SDDM Login Screen QML
+|   |-- preview-login.sh               # Live SDDM Login Runner
+|   |-- preview-splash.qml             # Staged Boot Splash QML
+|   |-- preview-splash.sh              # Live Boot Splash Runner
+|   \-- run-qemu.sh                    # QEMU Virtual Machine Launch Script
+\-- work/                              # Archiso Temporary Build Directory
 ```
