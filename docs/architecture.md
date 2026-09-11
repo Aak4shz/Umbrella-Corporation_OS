@@ -18,7 +18,7 @@
 ### 1.1 Architectural Pillars
 1. **Declarative Image Assembly:** The system build pipeline is completely reproducible using the Archiso framework, consuming package manifests and file overlay trees to construct compressed SquashFS images.
 2. **Skeletal Configuration Inheritance:** User environment states (shell profiles, desktop themes, IDE configurations) are baked into `/etc/skel/`, ensuring that all newly provisioned user accounts instantly inherit full environment setup without post-boot scripts.
-3. **Decoupled AI Infrastructure:** Local AI model execution is managed via a dedicated system service (`ollama.service`), decoupling backend model hosting from frontend pairing tools (`aider`, `claude-code`).
+3. **Decoupled AI Infrastructure:** Local AI model execution is managed via a dedicated system service (`ollama.service`), decoupling backend model hosting from frontend pairing tools (`aider`, `opencode`).
 4. **Visual Interface Encapsulation:** Visual assets, display manager configurations, boot splashes, and desktop themes adhere to a central design tokens specification (Red Queen Theme: `#0A0A0A` base, `#CC0000` highlight).
 
 ---
@@ -87,14 +87,14 @@ To adhere to the **Zero Setup** directive, configuration assets are structured w
 
 ```
 airootfs/etc/skel/
-├── .zshrc                           # Shell entry point & environment variables
-├── .p10k.zsh                        # Powerlevel10k prompt configuration
-├── .config/
-│   ├── fastfetch/config.jsonc       # Custom system info display
-│   ├── Code/User/settings.json      # VS Code preferences & extension settings
-│   └── aider/.aider.conf.yml        # Local AI model endpoint definitions
-└── .local/share/konsole/
-    └── RedQueen.profile             # Terminal profile & color scheme
+|-- .zshrc                           # Shell entry point & environment variables
+|-- .p10k.zsh                        # Powerlevel10k prompt configuration
+|-- .config/
+|   |-- fastfetch/config.jsonc       # Custom system info display
+|   |-- Code/User/settings.json      # VS Code preferences & extension settings
+|   \-- aider/.aider.conf.yml        # Local AI model endpoint definitions
+\-- .local/share/konsole/
+    \-- RedQueen.profile             # Terminal profile & color scheme
 ```
 
 When a user session is initialized (live boot or installed system), `useradd` clones `/etc/skel/` into `/home/$USER/`. Path resolution uses dynamic environment variables (`$HOME`, `$USER`) to prevent hardcoded directory breaks.
@@ -107,39 +107,39 @@ The repository workspace maintains strict segregation between build specs, syste
 
 ```
 Umbrella-Corporation_OS/
-├── README.md                           # Project academic overview and build guide
-├── docs/
-│   ├── prd.md                          # Product Requirements Document
-│   └── architecture.md                 # System Architecture & Design Specification
-├── archiso/                            # Archiso Profile Directory
-│   ├── profiledef.sh                   # ISO metadata, build modes, file permissions
-│   ├── packages.x86_64                 # Comprehensive package manifest
-│   ├── pacman.conf                     # Build-time repository and mirror configuration
-│   ├── bootstrap_packages              # Minimal packages for base chroot bootstrap
-│   ├── airootfs/                       # Root Filesystem Overlay (Copied to ISO Root)
-│   │   ├── etc/
-│   │   │   ├── hostname                # System hostname (umbrella-os)
-│   │   │   ├── locale.conf             # Environment locale (en_US.UTF-8)
-│   │   │   ├── default/useradd         # Default shell assignment (/usr/bin/zsh)
-│   │   │   ├── systemd/system/         # Custom systemd target symlinks & services
-│   │   │   │   └── multi-user.target.wants/
-│   │   │   │       ├── docker.service -> /usr/lib/systemd/system/docker.service
-│   │   │   │       └── NetworkManager.service -> /usr/lib/systemd/system/NetworkManager.service
-│   │   │   ├── shadow                  # Shadow password file with pre-set hashes
-│   │   │   └── skel/                   # Default template home directory
-│   │   └── usr/local/bin/
-│   │       ├── umbrella-post-install.sh # First-boot orchestration script
-│   │       ├── choose-mirror           # Interactive mirror selection utility
-│   │       └── Installation_guide      # CLI installer helper command
-│   ├── efiboot/                        # EFI boot binaries and configuration
-│   ├── grub/                           # Live GRUB bootloader configuration files
-│   │   ├── grub.cfg                    # Primary GRUB menu definition
-│   │   └── loopback.cfg                # ISO loopback boot entries
-│   └── syslinux/                       # Legacy BIOS boot configuration files
-├── assets/                             # Raw Media and Graphical Source Assets
-│   ├── grub/                           # High-res GRUB theme images & logos
-│   ├── wallpapers/                     # Umbrella Corp 1080p/4K wallpapers
-│   └── txt/                            # Raw text resources & ASCII banners
+|-- README.md                           # Project academic overview and build guide
+|-- docs/
+|   |-- prd.md                          # Product Requirements Document
+|   \-- architecture.md                 # System Architecture & Design Specification
+|-- archiso/                            # Archiso Profile Directory
+|   |-- profiledef.sh                   # ISO metadata, build modes, file permissions
+|   |-- packages.x86_64                 # Comprehensive package manifest
+|   |-- pacman.conf                     # Build-time repository and mirror configuration
+|   |-- bootstrap_packages              # Minimal packages for base chroot bootstrap
+|   |-- airootfs/                       # Root Filesystem Overlay (Copied to ISO Root)
+|   |   |-- etc/
+|   |   |   |-- hostname                # System hostname (umbrella-os)
+|   |   |   |-- locale.conf             # Environment locale (en_US.UTF-8)
+|   |   |   |-- default/useradd         # Default shell assignment (/usr/bin/zsh)
+|   |   |   |-- systemd/system/         # Custom systemd target symlinks & services
+|   |   |   |   \-- multi-user.target.wants/
+|   |   |   |       |-- docker.service -> /usr/lib/systemd/system/docker.service
+|   |   |   |       \-- NetworkManager.service -> /usr/lib/systemd/system/NetworkManager.service
+|   |   |   |-- shadow                  # Shadow password file with pre-set hashes
+|   |   |   \-- skel/                   # Default template home directory
+|   |   \-- usr/local/bin/
+|   |       |-- umbrella-post-install.sh # First-boot orchestration script
+|   |       |-- choose-mirror           # Interactive mirror selection utility
+|   |       \-- Installation_guide      # CLI installer helper command
+|   |-- efiboot/                        # EFI boot binaries and configuration
+|   |-- grub/                           # Live GRUB bootloader configuration files
+|   |   |-- grub.cfg                    # Primary GRUB menu definition
+|   |   \-- loopback.cfg                # ISO loopback boot entries
+|   \-- syslinux/                       # Legacy BIOS boot configuration files
+|-- assets/                             # Raw Media and Graphical Source Assets
+|   |-- grub/                           # High-res GRUB theme images & logos
+|   |-- wallpapers/                     # Umbrella Corp 1080p/4K wallpapers
+|   \-- txt/                            # Raw text resources & ASCII banners
 ```
 
 ---
@@ -155,7 +155,7 @@ The system architecture is divided into six logical layers:
 | **Boot & Display** | Bootloader & Desktop | GRUB 2, Plymouth, SDDM, KDE Plasma 6 | Boot sequence, graphical login, desktop manager |
 | **Shell Environment**| User Interface Shell | Zsh, Oh My Zsh, Powerlevel10k, Konsole | Interactive CLI, custom prompt, developer aliases |
 | **Developer Stack** | Language Runtimes | OpenJDK 21, Python 3.12+, Docker, Git | Core software development runtimes and containers |
-| **AI Stack** | Artificial Intelligence | Ollama Daemon, Aider CLI, Claude Code | Local model inference, terminal pair programming |
+| **AI Stack** | Artificial Intelligence | Ollama Daemon, Aider CLI, OpenCode | Local model inference, terminal pair programming |
 
 ---
 
