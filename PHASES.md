@@ -7,7 +7,7 @@
 | **Target Version** | `1.0.0-ACADEMIC` / `1.0.0-RELEASE` |
 | **Build Framework** | Archiso / Arch Linux (x86_64) |
 | **Current Project Phase** | **Phase 9: Red Queen Full-Stack Theming Hardening & Interactive Visual QA** |
-| **Overall Progress** | `[████████████████████] 100% Core + Hardening Active` |
+| **Overall Progress** | `[####################] 100% Core + Hardening Active` |
 | **Last Updated** | August 2026 |
 
 ---
@@ -122,7 +122,7 @@ mindmap
 ---
 
 ### Phase 5: Developer Stack & Local AI Integration
-> **Goal:** Bundle out-of-the-box development runtimes (Java, Python, Docker) and local LLM tooling (Ollama, Aider, Claude Code).
+> **Goal:** Bundle out-of-the-box development runtimes (Java, Python, Docker) and local LLM tooling (Ollama, Aider, OpenCode).
 
 * **Modules & Tasks:**
   - [x] Configure Java 21 LTS environment variables (`JAVA_HOME`) and pre-integrate build tools.
@@ -197,15 +197,15 @@ mindmap
 
 | Phase | Phase Description | Status | Progress | Completion Level |
 | :---: | :--- | :---: | :---: | :---: |
-| **Phase 1** | Architecture & Requirements Specification | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 2** | Archiso Base Framework & Package Manifest Setup | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 3** | Visual Identity & Branding Assets | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 4** | Red Queen Desktop & User Profile Provisioning | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 5** | Developer Stack & Local AI Integration | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 6** | Bootloader, Plymouth & Systemd Services Integration | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 7** | ISO Compilation, VM Testing & QA Verification | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 8** | Master Documentation Suite & State Ledger | `[COMPLETED]` | `100%` | `[██████████]` |
-| **Phase 9** | Red Queen Full-Stack Theming Hardening & QA | `[COMPLETED]` | `100%` | `[██████████]` |
+| **Phase 1** | Architecture & Requirements Specification | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 2** | Archiso Base Framework & Package Manifest Setup | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 3** | Visual Identity & Branding Assets | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 4** | Red Queen Desktop & User Profile Provisioning | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 5** | Developer Stack & Local AI Integration | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 6** | Bootloader, Plymouth & Systemd Services Integration | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 7** | ISO Compilation, VM Testing & QA Verification | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 8** | Master Documentation Suite & State Ledger | `[COMPLETED]` | `100%` | `[##########]` |
+| **Phase 9** | Red Queen Full-Stack Theming Hardening & QA | `[COMPLETED]` | `100%` | `[##########]` |
 
 ---
 
@@ -242,7 +242,7 @@ Use these deterministic scripts to test and preview all visual subsystems on dem
    sudo rm -rf /tmp/archiso-tmp ./work
    sudo mkarchiso -v -w /tmp/archiso-tmp -o ./out ./archiso
    ```
-2. **VM Full Boot Verification:** Test the complete end-to-end boot sequence (GRUB ➔ Plymouth ➔ SDDM ➔ Splash ➔ Plasma Desktop) in QEMU VM.
+2. **VM Full Boot Verification:** Test the complete end-to-end boot sequence (GRUB -> Plymouth -> SDDM -> Splash -> Plasma Desktop) in QEMU VM.
 3. **Viva Voce Defense Walkthrough:** Review architecture blueprints in [`docs/RED_QUEEN_THEME_ARCHITECTURE.md`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/docs/RED_QUEEN_THEME_ARCHITECTURE.md) and [`docs/VIVA_PREPARATION.md`](file:///home/aakash/Code/CODE-SOURCE/Umbrella-Corporation_OS/docs/VIVA_PREPARATION.md).
 
 
