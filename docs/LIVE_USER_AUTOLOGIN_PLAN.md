@@ -1,4 +1,4 @@
-# Umbrella OS — Live User, Authentication & Auto-Login Implementation Plan
+# Umbrella OS - Live User, Authentication & Auto-Login Implementation Plan
 
 | **Document Type** | Systems Engineering & Authentication Plan |
 | **Target Version** | `1.0.0-ACADEMIC` |
