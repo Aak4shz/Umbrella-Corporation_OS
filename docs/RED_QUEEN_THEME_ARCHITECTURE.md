@@ -16,7 +16,7 @@
 
 The **Red Queen Theme Architecture** is an end-to-end, declarative visual engineering framework designed to transform **Umbrella OS** into a unified, immersive, zero-leak dark-crimson workstation inspired by the *Red Queen AI* security mainframe from *Resident Evil*.
 
-Unlike conventional Linux desktop themes that merely swap window colors, the Red Queen subsystem operates across **10 distinct system layers**—propagating identical design tokens, contrast ratios, and typography from the initial UEFI firmware handshake all the way into userland shells, IDEs, and GTK toolkits.
+Unlike conventional Linux desktop themes that merely swap window colors, the Red Queen subsystem operates across **10 distinct system layers**-propagating identical design tokens, contrast ratios, and typography from the initial UEFI firmware handshake all the way into userland shells, IDEs, and GTK toolkits.
 
 ```mermaid
 mindmap
@@ -123,37 +123,37 @@ flowchart TD
 The Red Queen aesthetic implements a strict **60-30-10 Interior Spatial Color Distribution**:
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│ 60% DOMINANT CANVAS                                                         │
-│ Obsidian / Void Black (#0A0A0A) & Carbon (#121212)                          │
-│                                                                             │
-│               ┌──────────────────────────────────────────────┐              │
-│               │ 30% STRUCTURAL SURFACES                      │              │
-│               │ Translucent Dark Acrylic (#181818, Opacity 0.88)            │
-│               │ Text: Crisp Studio White (#F0F0F0 / #FFFFFF) │              │
-│               │                                              │              │
-│               │        ┌────────────────────────────┐        │              │
-│               │        │ 10% CRIMSON ACCENTS        │        │              │
-│               │        │ Primary: #CC0000           │        │              │
-│               │        │ Laser Glow: #FF3333        │        │              │
-│               │        │ Deep Maroon: #260000       │        │              │
-│               │        └────────────────────────────┘        │              │
-│               └──────────────────────────────────────────────┘              │
-└─────────────────────────────────────────────────────────────────────────────┘
++-----------------------------------------------------------------------------+
+| 60% DOMINANT CANVAS                                                         |
+| Obsidian / Void Black (#0A0A0A) & Carbon (#121212)                          |
+|                                                                             |
+|               +----------------------------------------------+              |
+|               | 30% STRUCTURAL SURFACES                      |              |
+|               | Translucent Dark Acrylic (#181818, Opacity 0.88)            |
+|               | Text: Crisp Studio White (#F0F0F0 / #FFFFFF) |              |
+|               |                                              |              |
+|               |        +----------------------------+        |              |
+|               |        | 10% CRIMSON ACCENTS        |        |              |
+|               |        | Primary: #CC0000           |        |              |
+|               |        | Laser Glow: #FF3333        |        |              |
+|               |        | Deep Maroon: #260000       |        |              |
+|               |        \----------------------------+        |              |
+|               \----------------------------------------------+              |
+\-----------------------------------------------------------------------------+
 ```
 
 ### 4.1 Master Color Token Palette
 
 | Token Identifier | Hex Code | RGB | HSV | Semantic Application |
 | :--- | :---: | :---: | :---: | :--- |
-| `COLOR_CANVAS_PRIMARY` | `#0A0A0A` | `10, 10, 10` | `0°, 0%, 4%` | Root workspace, desktop backdrop, Plymouth canvas |
-| `COLOR_SURFACE_ELEVATED`| `#121212` | `18, 18, 18` | `0°, 0%, 7%` | Window bodies, cards, sidebar panels, SDDM card |
-| `COLOR_SURFACE_HOVER` | `#1A1A1A` | `26, 26, 26` | `0°, 0%, 10%`| List item hover, inactive button fills |
-| `COLOR_BORDER_SUBTLE` | `#2A0000` | `42, 0, 0` | `0°, 100%, 16%` | Inactive window boundaries, divider lines |
-| `COLOR_ACCENT_PRIMARY` | `#CC0000` | `204, 0, 0` | `0°, 100%, 80%`| Umbrella Crimson, selection backings, primary CTAs |
-| `COLOR_ACCENT_LASER` | `#FF3333` | `255, 51, 51` | `0°, 80%, 100%`| Active titlebars, glowing outlines, active tab badges |
-| `COLOR_TEXT_PRIMARY` | `#F0F0F0` | `240, 240, 240`| `0°, 0%, 94%`| Headers, standard reading body text |
-| `COLOR_TEXT_MUTED` | `#888888` | `136, 136, 136`| `0°, 0%, 53%`| Subtitles, terminal timestamp tags, inactive tabs |
+| `COLOR_CANVAS_PRIMARY` | `#0A0A0A` | `10, 10, 10` | `0 deg, 0%, 4%` | Root workspace, desktop backdrop, Plymouth canvas |
+| `COLOR_SURFACE_ELEVATED`| `#121212` | `18, 18, 18` | `0 deg, 0%, 7%` | Window bodies, cards, sidebar panels, SDDM card |
+| `COLOR_SURFACE_HOVER` | `#1A1A1A` | `26, 26, 26` | `0 deg, 0%, 10%`| List item hover, inactive button fills |
+| `COLOR_BORDER_SUBTLE` | `#2A0000` | `42, 0, 0` | `0 deg, 100%, 16%` | Inactive window boundaries, divider lines |
+| `COLOR_ACCENT_PRIMARY` | `#CC0000` | `204, 0, 0` | `0 deg, 100%, 80%`| Umbrella Crimson, selection backings, primary CTAs |
+| `COLOR_ACCENT_LASER` | `#FF3333` | `255, 51, 51` | `0 deg, 80%, 100%`| Active titlebars, glowing outlines, active tab badges |
+| `COLOR_TEXT_PRIMARY` | `#F0F0F0` | `240, 240, 240`| `0 deg, 0%, 94%`| Headers, standard reading body text |
+| `COLOR_TEXT_MUTED` | `#888888` | `136, 136, 136`| `0 deg, 0%, 53%`| Subtitles, terminal timestamp tags, inactive tabs |
 
 ---
 
