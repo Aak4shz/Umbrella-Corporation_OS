@@ -26,7 +26,7 @@ graph TD
     E -->|Desktop Session| F[KDE Plasma - Red Queen Dark Theme]
     F -->|Terminal| G[Konsole Profile - Zsh + Powerlevel10k]
     F -->|Development Stack| H[JDK 21 / Python 3 / Docker]
-    F -->|AI Stack| I[Ollama Local Inference / Aider / Claude Code]
+    F -->|AI Stack| I[Ollama Local Inference / Aider / OpenCode]
 ```
 
 ### 1.2 Purpose & Core Philosophy
@@ -49,7 +49,7 @@ Umbrella OS targets three distinct user personas, each with unique needs:
 ### 2.2 The AI/ML & LLM Enthusiast
 * **Needs:** Local model running capability, offline AI-assisted coding tools, and modern AI/ML package libraries.
 * **Pain Point:** Complex orchestration of CUDA/OpenCL, local model downloads, setting up APIs, and configuring terminal interfaces for AI utilities.
-* **Umbrella OS Value:** Pre-configured Ollama server service, Aider pair-programming CLI tool pre-pointed to local model endpoints, Claude Code CLI tools, and core Python ML packages (`torch`, `transformers`, `numpy`, `pandas`) pre-installed.
+* **Umbrella OS Value:** Pre-configured Ollama server service, Aider pair-programming CLI tool pre-pointed to local model endpoints, and core Python ML packages (`torch`, `transformers`, `numpy`, `pandas`) pre-installed.
 
 ### 2.3 The Academic Evaluation Panel (VIVA Evaluators)
 * **Needs:** Demonstrable proof of system-level skills, technical depth, and understanding of OS architecture.
@@ -64,7 +64,7 @@ Umbrella OS targets three distinct user personas, each with unique needs:
 
 | ID | Feature | Specification |
 | --- | --- | --- |
-| **FR-VIS-01** | **Custom GRUB Theme** | Black background, crimson red select highlights, clinical white text, and an explicit warning banner: `"UMBRELLA CORPORATION — AUTHORIZED PERSONNEL ONLY"`. |
+| **FR-VIS-01** | **Custom GRUB Theme** | Black background, crimson red select highlights, clinical white text, and an explicit warning banner: `"UMBRELLA CORPORATION - AUTHORIZED PERSONNEL ONLY"`. |
 | **FR-VIS-02** | **Plymouth Boot Splash** | An animation showing the rotating Umbrella Corp logo alongside a subtle red glowing progress bar during system startup. |
 | **FR-VIS-03** | **SDDM Login Theme** | A matching custom login manager interface containing Umbrella branding elements and matching dark-red color palettes. |
 | **FR-VIS-04** | **System Wallpapers** | High-definition (1080p and 4K) Umbrella Corp wallpapers placed in `/usr/share/wallpapers/UmbrellaOS/` and applied to the user desktop by default. |
@@ -104,7 +104,7 @@ Umbrella OS targets three distinct user personas, each with unique needs:
 | --- | --- | --- |
 | **FR-AI-01** | **Ollama Service** | Ollama local model runner installed, and `ollama.service` enabled under systemd to host a local server at `127.0.0.1:11434`. |
 | **FR-AI-02** | **Aider Integration** | Command-line pair-programming helper pre-configured via `~/.config/aider/.aider.conf.yml` to automatically interface with local Ollama endpoints (e.g. `llama3.2`). |
-| **FR-AI-03** | **Claude Code** | Anthropic's official Claude Code utility installed globally via npm. |
+| **FR-AI-03** | **OpenCode CLI** | OpenCode autonomous coding agent pre-configured with local Ollama endpoints. |
 
 ### 3.6 Automated User Distribution (`/etc/skel` Mechanism)
 
@@ -121,30 +121,30 @@ The project directory will organize custom configuration structures and copy the
 
 ```
 Umbrella-Corporation_OS/
-├── README.md                              # Academic Overview
-├── docs/
-│   └── prd.md                             # This document (Project Requirements)
-├── archiso/                               # Profile files
-│   ├── packages.x86_64                    # Declarative package list
-│   ├── profiledef.sh                      # Custom ISO permissions & label specs
-│   ├── pacman.conf                        # Build repository configurations
-│   ├── airootfs/                          # System overlay folder
-│   │   ├── etc/
-│   │   │   ├── hostname                   # Set to "umbrella-os"
-│   │   │   ├── locale.conf                # Default locale (en_US.UTF-8)
-│   │   │   ├── default/useradd            # Sets Zsh as default user shell
-│   │   │   ├── systemd/system/            # Services setup
-│   │   │   └── skel/                      # Default user configuration files
-│   │   │       ├── .zshrc
-│   │   │       ├── .p10k.zsh
-│   │   │       ├── .config/
-│   │   │       │   ├── fastfetch/
-│   │   │       │   └── Code/User/settings.json
-│   │   │       └── .local/share/konsole/
-│   │   └── usr/local/bin/
-│   │       └── umbrella-post-install.sh   # Post-boot setup script (yay, AUR packages)
-│   └── grub/
-│       └── grub.cfg                       # Live environment boot loader config
+|-- README.md                              # Academic Overview
+|-- docs/
+|   \-- prd.md                             # This document (Project Requirements)
+|-- archiso/                               # Profile files
+|   |-- packages.x86_64                    # Declarative package list
+|   |-- profiledef.sh                      # Custom ISO permissions & label specs
+|   |-- pacman.conf                        # Build repository configurations
+|   |-- airootfs/                          # System overlay folder
+|   |   |-- etc/
+|   |   |   |-- hostname                   # Set to "umbrella-os"
+|   |   |   |-- locale.conf                # Default locale (en_US.UTF-8)
+|   |   |   |-- default/useradd            # Sets Zsh as default user shell
+|   |   |   |-- systemd/system/            # Services setup
+|   |   |   \-- skel/                      # Default user configuration files
+|   |   |       |-- .zshrc
+|   |   |       |-- .p10k.zsh
+|   |   |       |-- .config/
+|   |   |       |   |-- fastfetch/
+|   |   |       |   \-- Code/User/settings.json
+|   |   |       \-- .local/share/konsole/
+|   |   \-- usr/local/bin/
+|   |       \-- umbrella-post-install.sh   # Post-boot setup script (yay, AUR packages)
+|   \-- grub/
+|       \-- grub.cfg                       # Live environment boot loader config
 ```
 
 ---
