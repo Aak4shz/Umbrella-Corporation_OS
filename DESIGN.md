@@ -40,7 +40,7 @@ graph TD
         S1[Boot & Session: GRUB / Plymouth / SDDM]
         S2[Desktop Shell: Plasma / KWin / Look-And-Feel]
         S3[Developer HUD: Konsole / Fastfetch / Zsh]
-        S4[IDE & Tooling: VS Code / Aider / Claude Code / OpenCode]
+        S4[IDE & Tooling: VS Code / Aider / OpenCode]
     end
 
     P1 --> S1
@@ -233,7 +233,7 @@ flowchart TD
         J1[JetBrains Mono / Nerd Font] --> CODE_ED[VS Code Editor Core]
         J1 --> TERM_SH[Konsole Shell & Zsh Prompt]
         J1 --> HUD_FF[Fastfetch ASCII & Stats Engine]
-        J1 --> AI_CLI[Aider, Claude Code & OpenCode Interfaces]
+        J1 --> AI_CLI[Aider & OpenCode Interfaces]
     end
 ```
 
@@ -544,7 +544,7 @@ The default VS Code configuration located in `/etc/skel/.config/Code/User/settin
 * **Cursor Dynamics:** `smooth` blinking animation with a solid `block` cursor for exact terminal-style insertion feedback.
 * **Bracket Pair Colorization:** Rainbow bracket matching with active depth guide lines to simplify complex AST navigation in nested Java and Python code.
 
-### 9.2 AI Coding Terminals (Aider CLI, Claude Code, and OpenCode)
+### 9.2 AI Coding Terminals (Aider CLI and OpenCode)
 
 * **Configuration:** `.config/aider/.aider.conf.yml` and `.config/opencode/config.json` pre-configured for local Ollama endpoints (`http://127.0.0.1:11434/v1`).
 * **OpenCode Agent:** Autonomous coding CLI integrated natively into developer PATH and terminal shortcuts.
