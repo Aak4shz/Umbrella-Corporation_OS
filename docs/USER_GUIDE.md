@@ -1,4 +1,4 @@
-# Umbrella OS — User Guide & Installation Manual
+# Umbrella OS - User Guide & Installation Manual
 
 ## 1. System Overview
 
