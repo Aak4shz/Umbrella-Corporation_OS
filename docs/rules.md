@@ -119,7 +119,7 @@ mindmap
     AI Infrastructure
       Ollama Service
       Aider CLI
-      Claude Code CLI
+      OpenCode CLI
       PyTorch & Transformers
 ```
 
@@ -138,7 +138,7 @@ mindmap
    - *Rule:* Installed globally via declarative package manifests; environment variables exported in `/etc/skel/.zshrc`.
 
 4. **Tier 4: Artificial Intelligence Stack (AI Infrastructure Layer)**
-   - Includes `ollama`, `aider`, `@anthropic-ai/claude-code`, `python-pytorch`, `python-transformers`.
+   - Includes `ollama`, `aider`, `opencode`, `python-pytorch`, `python-transformers`.
    - *Rule:* Services enabled via systemd symlinks; configuration defaults stored under `/etc/skel/.config/aider/`.
 
 ---
