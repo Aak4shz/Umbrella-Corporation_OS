@@ -4,7 +4,7 @@
 iso_name="umbrella-os"
 iso_label="UMBRELLA_OS_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="Umbrella Corporation OS Project <https://github.com/Aak4shz/Umbrella-Corporation_OS>"
-iso_application="Umbrella OS — Developer & AI Workstation"
+iso_application="Umbrella OS - Developer & AI Workstation"
 iso_version="1.0.0"
 install_dir="arch"
 buildmodes=('iso')
@@ -21,6 +21,8 @@ file_permissions=(
   ["/etc/gshadow"]="0:0:400"
   ["/etc/sudoers.d"]="0:0:750"
   ["/etc/sudoers.d/umbrella"]="0:0:440"
+  ["/etc/ssh/sshd_config.d"]="0:0:755"
+  ["/etc/ssh/sshd_config.d/10-archiso.conf"]="0:0:644"
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
   ["/root/.gnupg"]="0:0:700"
@@ -30,3 +32,4 @@ file_permissions=(
   ["/usr/local/bin/umbrella-live-init.sh"]="0:0:755"
   ["/usr/local/bin/umbrella-post-install.sh"]="0:0:755"
 )
+
