@@ -36,4 +36,5 @@ video:x:983:umbrella
 users:x:982:umbrella
 systemd-journal:x:981:
 rfkill:x:980:umbrella
+docker:x:979:umbrella
 umbrella:x:1000:umbrella
