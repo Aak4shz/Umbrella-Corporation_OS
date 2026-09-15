@@ -8,7 +8,7 @@ Window {
     width: 1366
     height: 768
     visible: true
-    title: "Umbrella OS — Red Queen SDDM Login Screen (Raccoon City Edition)"
+    title: "Umbrella OS - Red Queen SDDM Login Screen (Raccoon City Edition)"
     color: "#0a0a0a"
 
     // Load Custom Fonts
@@ -69,7 +69,7 @@ Window {
             anchors.fill: parent
             spacing: 12
 
-            // ── TIME & DATE HUD (CF Glitch City Font - Uppercase) ──────────────
+            // -- TIME & DATE HUD (CF Glitch City Font - Uppercase) --------------
             ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
                 spacing: 2
@@ -93,7 +93,7 @@ Window {
                         onTriggered: {
                             var d = new Date();
                             timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                            dateText.text = Qt.formatDateTime(d, "dddd  •  d MMMM yyyy").toUpperCase();
+                            dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
                         }
                     }
                 }
@@ -113,7 +113,7 @@ Window {
 
             Item { Layout.preferredHeight: 4 }
 
-            // ── COMPLETELY FRAMELESS / TRANSPARENT LOGIN INTERFACE ─────────────
+            // -- COMPLETELY FRAMELESS / TRANSPARENT LOGIN INTERFACE -------------
             Item {
                 id: loginCard
                 Layout.fillWidth: true
@@ -248,7 +248,7 @@ Window {
                         radius: 8
 
                         function triggerAuth() {
-                            authLabel.text = "AUTHENTICATED ✓";
+                            authLabel.text = "AUTHENTICATED [OK]";
                             authButton.color = "#00aa44";
                         }
 
@@ -275,12 +275,12 @@ Window {
 
             Item { Layout.preferredHeight: 8 }
 
-            // ── PERFECTLY CENTERED 3D NEON POWER BUTTONS (SOLID VECTOR SVG ICONS) ───
+            // -- POWER BUTTONS (SOLID VECTOR SVG ICONS) -------------------------
             RowLayout {
                 Layout.alignment: Qt.AlignHCenter
                 spacing: 40
 
-                // 🔴 1. 3D NEON RED SHUTDOWN BUTTON
+                // 1. NEON RED SHUTDOWN BUTTON
                 ColumnLayout {
                     spacing: 6
                     Layout.alignment: Qt.AlignHCenter
@@ -346,7 +346,7 @@ Window {
                     }
                 }
 
-                // 🟠 2. 3D NEON AMBER REBOOT BUTTON
+                // 2. NEON AMBER REBOOT BUTTON
                 ColumnLayout {
                     spacing: 6
                     Layout.alignment: Qt.AlignHCenter
@@ -411,7 +411,7 @@ Window {
                     }
                 }
 
-                // 🔵 3. 3D NEON ELECTRIC BLUE SLEEP BUTTON
+                // 3. NEON ELECTRIC BLUE SLEEP BUTTON
                 ColumnLayout {
                     spacing: 6
                     Layout.alignment: Qt.AlignHCenter

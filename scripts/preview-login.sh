@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# ════════════════════════════════════════════════════════════════════════════
-# Umbrella OS — Live SDDM Login Screen Preview Runner
-# ════════════════════════════════════════════════════════════════════════════
+# ==============================================================================
+# Umbrella OS - Live SDDM Login Screen Preview Runner
+# ==============================================================================
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,7 +14,7 @@ fi
 
 QML_BIN="$(command -v qml6 || command -v qml)"
 
-echo "▶ Launching Red Queen Login Screen Interactive Preview Window..."
+echo "[+] Launching Red Queen Login Screen Interactive Preview Window..."
 echo "  You can interactively test username, password, and click AUTHENTICATE."
 echo "  Press Ctrl+C or close window to exit."
 
