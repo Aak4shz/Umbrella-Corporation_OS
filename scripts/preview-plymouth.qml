@@ -8,7 +8,7 @@ Window {
     width: 1280
     height: 720
     visible: true
-    title: "Umbrella OS — Red Queen Plymouth Boot Splash (Biohazard Edition)"
+    title: "Umbrella OS - Red Queen Plymouth Boot Splash (Biohazard Edition)"
     color: "#0a0a0a"
 
     property int frameIndex: 0

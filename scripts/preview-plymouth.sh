@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# ════════════════════════════════════════════════════════════════════════════
-# Umbrella OS — Live Plymouth Boot Splash Animation Preview Runner
-# ════════════════════════════════════════════════════════════════════════════
+# ==============================================================================
+# Umbrella OS - Live Plymouth Boot Splash Animation Preview Runner
+# ==============================================================================
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,7 +14,7 @@ fi
 
 QML_BIN="$(command -v qml6 || command -v qml)"
 
-echo "▶ Launching Plymouth 36-Frame Boot Splash Animation Preview Window..."
+echo "[+] Launching Plymouth 36-Frame Boot Splash Animation Preview Window..."
 echo "  Press Ctrl+C or close window to exit."
 
 "${QML_BIN}" "${QML_FILE}"
