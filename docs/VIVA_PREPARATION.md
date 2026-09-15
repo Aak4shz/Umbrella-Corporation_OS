@@ -1,4 +1,4 @@
-# Umbrella OS — Academic Viva Voce Preparation & Q&A Defense Guide
+# Umbrella OS - Academic Viva Voce Preparation & Q&A Defense Guide
 
 ## 1. Project Architecture & Engineering Foundation
 
