@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import SddmComponents
 
 /*
- * Umbrella Corporation — Red Queen SDDM Login Interface (Raccoon City Edition)
+ * Umbrella Corporation - Red Queen SDDM Login Interface (Raccoon City Edition)
  */
 Rectangle {
     id: container
@@ -72,7 +72,7 @@ Rectangle {
             anchors.fill: parent
             spacing: 12
 
-            // ── TIME & DATE HUD (CF Glitch City Font - Uppercase) ──────────────
+            // --- TIME & DATE HUD (CF Glitch City Font - Uppercase) ---
             ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
                 spacing: 2
@@ -96,7 +96,7 @@ Rectangle {
                         onTriggered: {
                             var d = new Date();
                             timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                            dateText.text = Qt.formatDateTime(d, "dddd  •  d MMMM yyyy").toUpperCase();
+                            dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
                         }
                     }
                 }
@@ -116,7 +116,7 @@ Rectangle {
 
             Item { Layout.preferredHeight: 4 }
 
-            // ── COMPLETELY FRAMELESS / TRANSPARENT LOGIN INTERFACE ─────────────
+            // --- COMPLETELY FRAMELESS / TRANSPARENT LOGIN INTERFACE ---
             Item {
                 id: loginCard
                 Layout.fillWidth: true
@@ -238,15 +238,16 @@ Rectangle {
 
             Item { Layout.preferredHeight: 8 }
 
-            // ── PERFECTLY CENTERED 3D NEON POWER BUTTONS (SOLID VECTOR SVG ICONS) ───
+            // --- POWER BUTTONS (SOLID VECTOR SVG ICONS) ---
             RowLayout {
                 Layout.alignment: Qt.AlignHCenter
                 spacing: 40
 
-                // 🔴 1. 3D NEON RED SHUTDOWN BUTTON
+                // 1. NEON RED SHUTDOWN BUTTON
                 ColumnLayout {
                     spacing: 6
                     Layout.alignment: Qt.AlignHCenter
+
 
                     Rectangle {
                         id: shutBtn
@@ -305,7 +306,7 @@ Rectangle {
                     }
                 }
 
-                // 🟠 2. 3D NEON AMBER REBOOT BUTTON
+                // 2. NEON AMBER REBOOT BUTTON
                 ColumnLayout {
                     spacing: 6
                     Layout.alignment: Qt.AlignHCenter
@@ -367,7 +368,7 @@ Rectangle {
                     }
                 }
 
-                // 🔵 3. 3D NEON ELECTRIC BLUE SLEEP BUTTON
+                // 3. NEON ELECTRIC BLUE SLEEP BUTTON
                 ColumnLayout {
                     spacing: 6
                     Layout.alignment: Qt.AlignHCenter
