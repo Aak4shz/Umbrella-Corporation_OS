@@ -8,7 +8,7 @@ Window {
     width: 1366
     height: 768
     visible: true
-    title: "Umbrella OS — Red Queen Lock Screen Preview (Simulation)"
+    title: "Umbrella OS - Red Queen Lock Screen Preview (Simulation)"
     color: "#0a0a0a"
 
     // Load Custom Fonts
@@ -64,7 +64,7 @@ Window {
         spacing: 16
         width: 440
 
-        // ── TIME & DATE HUD (CF Glitch City Font) ──────────────────────────
+        // -- TIME & DATE HUD (CF Glitch City Font) --------------------------
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
             spacing: 2
@@ -87,7 +87,7 @@ Window {
                     onTriggered: {
                         var d = new Date();
                         timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                        dateText.text = Qt.formatDateTime(d, "dddd  •  d MMMM yyyy").toUpperCase();
+                        dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
                     }
                 }
             }
@@ -106,7 +106,7 @@ Window {
 
         Item { Layout.preferredHeight: 10 }
 
-        // ── USER PROFILE & UNLOCK FORM ─────────────────────────────────────
+        // -- USER PROFILE & UNLOCK FORM -------------------------------------
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
@@ -205,7 +205,7 @@ Window {
                 radius: 8
 
                 function triggerUnlock() {
-                    unlockLabel.text = "UNLOCKED ✓";
+                    unlockLabel.text = "UNLOCKED [OK]";
                     unlockButton.color = "#00aa44";
                 }
 
@@ -237,7 +237,7 @@ Window {
         anchors.bottomMargin: 32
         spacing: 36
 
-        // 🔴 Shutdown
+        // 1. Shutdown
         Rectangle {
             width: 46
             height: 46
@@ -273,7 +273,7 @@ Window {
             }
         }
 
-        // 🟠 Reboot
+        // 2. Reboot
         Rectangle {
             width: 46
             height: 46
@@ -309,7 +309,7 @@ Window {
             }
         }
 
-        // 🔵 Sleep
+        // 3. Sleep
         Rectangle {
             width: 46
             height: 46

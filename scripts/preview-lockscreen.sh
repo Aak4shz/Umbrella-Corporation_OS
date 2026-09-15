@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# ════════════════════════════════════════════════════════════════════
-# Umbrella OS — Live Lock Screen Preview Runner
-# ════════════════════════════════════════════════════════════════════
+# ====================================================================
+# Umbrella OS - Live Lock Screen Preview Runner
+# ====================================================================
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -9,7 +9,7 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 QML_FILE="$SCRIPT_DIR/preview-lockscreen.qml"
 
 echo "========================================================"
-echo "  UMBRELLA OS — RED QUEEN LOCK SCREEN SIMULATION"
+echo "  UMBRELLA OS - RED QUEEN LOCK SCREEN SIMULATION"
 echo "========================================================"
 echo "  [+] Loading Lock Screen UI: $QML_FILE"
 echo "  [+] Interactive password testing enabled."
