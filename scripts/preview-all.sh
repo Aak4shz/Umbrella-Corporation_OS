@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# ════════════════════════════════════════════════════════════════════
-# Umbrella OS — Master All-in-One Boot Lifecycle Simulator
-# ════════════════════════════════════════════════════════════════════
+# ====================================================================
+# Umbrella OS - Master All-in-One Boot Lifecycle Simulator
+# ====================================================================
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -9,7 +9,7 @@ ROOT_DIR="$(dirname "$SCRIPT_DIR")"
 QML_FILE="$SCRIPT_DIR/preview-all.qml"
 
 echo "========================================================"
-echo "  UMBRELLA OS — MASTER END-TO-END BOOT SIMULATOR"
+echo "  UMBRELLA OS - MASTER END-TO-END BOOT SIMULATOR"
 echo "========================================================"
 echo "  [+] Loading All-in-One Lifecycle Simulator: $QML_FILE"
 echo "  [+] Stages:"

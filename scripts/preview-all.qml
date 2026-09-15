@@ -8,7 +8,7 @@ Window {
     width: 1366
     height: 768
     visible: true
-    title: "Umbrella OS — Full Boot Lifecycle (Plymouth → SDDM → Splash → Lockscreen)"
+    title: "Umbrella OS - Full Boot Lifecycle (Plymouth -> SDDM -> Splash -> Lockscreen)"
     color: "#050505"
 
     // 0: Plymouth Boot -> 1: SDDM Login -> 2: Video Splash -> 3: Lock Screen
@@ -16,7 +16,7 @@ Window {
     property int plymouthFrameIndex: 0
     property real plymouthProgress: 0.0
 
-    // ── LOAD CUSTOM SYSTEM FONTS ──────────────────────────────────────────────
+    // -- LOAD CUSTOM SYSTEM FONTS ----------------------------------------------
     FontLoader { id: glitchFont; source: "../archiso/airootfs/usr/share/fonts/TTF/CfGlitchCityRegular_L1vZ.ttf" }
     FontLoader { id: transformersFont; source: "../archiso/airootfs/usr/share/fonts/TTF/Transformers_Movie.ttf" }
     FontLoader { id: uniNeueBold; source: "../archiso/airootfs/usr/share/fonts/TTF/UniNeue-Trial-Bold.ttf" }
@@ -24,9 +24,9 @@ Window {
     FontLoader { id: hackedFont; source: "../archiso/airootfs/usr/share/fonts/TTF/Hacked-KerX.ttf" }
     FontLoader { id: bladeRunnerFont; source: "../archiso/airootfs/usr/share/fonts/TTF/BLADRMF_.ttf" }
 
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     // STAGE 0: PLYMOUTH EARLY BOOT SPLASH
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     Rectangle {
         id: plymouthView
         anchors.fill: parent
@@ -123,9 +123,9 @@ Window {
         }
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     // STAGE 1: SDDM LOGIN GREETER (RACCOON CITY EDITION)
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     Item {
         id: sddmView
         anchors.fill: parent
@@ -180,7 +180,7 @@ Window {
                             onTriggered: {
                                 var d = new Date();
                                 sddmTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                                sddmDate.text = Qt.formatDateTime(d, "dddd  •  d MMMM yyyy").toUpperCase();
+                                sddmDate.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
                             }
                         }
                     }
@@ -300,9 +300,9 @@ Window {
         }
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     // STAGE 2: POST-LOGIN NATIVE QML SPLASH SCREEN
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     Rectangle {
         id: splashView
         anchors.fill: parent
@@ -386,7 +386,7 @@ Window {
 
                     Text {
                         anchors.centerIn: parent
-                        text: "LOCK SCREEN →"
+                        text: "LOCK SCREEN ->"
                         font.family: uniNeueBold.name || "Uni Neue"
                         font.pixelSize: 12
                         font.bold: true
@@ -403,9 +403,9 @@ Window {
         }
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     // STAGE 3: RED QUEEN LOCK SCREEN
-    // ═════════════════════════════════════════════════════════════════════════
+    // =========================================================================
     Item {
         id: lockscreenView
         anchors.fill: parent
@@ -439,7 +439,7 @@ Window {
                         onTriggered: {
                             var d = new Date();
                             lockTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                            lockDate.text = Qt.formatDateTime(d, "dddd  •  d MMMM yyyy").toUpperCase();
+                            lockDate.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
                         }
                     }
                 }
@@ -480,7 +480,7 @@ Window {
                     id: unlockBtn
                     Layout.fillWidth: true; height: 44; color: unlockMouse.containsMouse ? "#e60000" : "#cc0000"; radius: 8
                     function triggerUnlock() {
-                        unlockText.text = "UNLOCKED ✓";
+                        unlockText.text = "UNLOCKED [OK]";
                         unlockBtn.color = "#00aa44";
                     }
                     Text { id: unlockText; anchors.centerIn: parent; text: "UNLOCK WORKSPACE"; font.family: uniNeueBold.name || "Uni Neue"; font.bold: true; font.pixelSize: 13; color: "#ffffff" }
