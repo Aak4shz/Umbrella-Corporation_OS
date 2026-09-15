@@ -1,4 +1,4 @@
-# Powerlevel10k theme configuration for Umbrella OS — Red Queen Theme
+# Powerlevel10k theme configuration for Umbrella OS - Red Queen Theme
 # File: ~/.p10k.zsh
 
 'builtin' 'local' '-a' 'p10k_config_opts'
@@ -21,7 +21,7 @@
     os_icon                 # OS identifier icon (Arch Linux logo)
     dir                     # current directory
     vcs                     # git status
-    prompt_char             # prompt symbol (❯)
+    prompt_char             # prompt symbol (>)
   )
 
   # Right prompt elements
@@ -34,7 +34,7 @@
     time                    # current time
   )
 
-  # Visual styling & colors — Red Queen Theme Palette
+  # Visual styling & colors - Red Queen Theme Palette
   typeset -g POWERLEVEL9K_MODE='nerdfont-v2'
   typeset -g POWERLEVEL9K_ICON_PADDING=none
   typeset -g POWERLEVEL9K_BACKGROUND=none
