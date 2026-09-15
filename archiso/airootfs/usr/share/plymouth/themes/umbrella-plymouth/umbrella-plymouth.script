@@ -1,7 +1,7 @@
-# ════════════════════════════════════════════════════════════════════
-# UMBRELLA OS — Plymouth Boot Animation Script
+# ====================================================================
+# UMBRELLA OS - Plymouth Boot Animation Script
 # Red Queen Biohazard System Boot Sequence
-# ════════════════════════════════════════════════════════════════════
+# ====================================================================
 
 # Set dark background (#0A0A0A)
 Window.SetBackgroundTopColor(0.04, 0.04, 0.04);
