@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Window
 
 /*
- * Umbrella Corporation — Red Queen Post-Login Native QML Splash Screen
+ * Umbrella Corporation - Red Queen Post-Login Native QML Splash Screen
  * Lightweight, hardware-accelerated, zero video codec dependency.
  */
 Item {
