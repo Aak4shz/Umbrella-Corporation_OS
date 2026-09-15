@@ -6,7 +6,7 @@ Window {
     width: 1024
     height: 600
     visible: true
-    title: "Umbrella OS — Red Queen Native Splash Screen Preview"
+    title: "Umbrella OS - Red Queen Native Splash Screen Preview"
     color: "#0a0a0a"
 
     property int stage: 0

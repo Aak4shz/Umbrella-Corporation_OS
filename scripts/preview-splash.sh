@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# ════════════════════════════════════════════════════════════════════════════
-# Umbrella OS — Live Native QML Splash Screen Preview Runner
-# ════════════════════════════════════════════════════════════════════════════
+# ==============================================================================
+# Umbrella OS - Live Native QML Splash Screen Preview Runner
+# ==============================================================================
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 QML_FILE="${SCRIPT_DIR}/preview-splash.qml"
 
 echo "========================================================"
-echo "  UMBRELLA OS — RED QUEEN NATIVE SPLASH SIMULATION"
+echo "  UMBRELLA OS - RED QUEEN NATIVE SPLASH SIMULATION"
 echo "========================================================"
 echo "  [+] Loading Splash Screen UI: ${QML_FILE}"
 echo "  [+] Staged Plasma boot simulation active."
