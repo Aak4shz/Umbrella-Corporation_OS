@@ -5,7 +5,7 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.components as PlasmaComponents
 
 /*
- * Umbrella Corporation — Red Queen Lock Screen Component (KDE Plasma 6)
+ * Umbrella Corporation - Red Queen Lock Screen Component (KDE Plasma 6)
  */
 Item {
     id: lockScreenRoot
@@ -61,7 +61,7 @@ Item {
         spacing: 16
         width: 440
 
-        // ── TIME & DATE HUD (CF Glitch City Font) ──────────────────────────
+        // -- TIME & DATE HUD (CF Glitch City Font) --------------------------
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
             spacing: 2
@@ -84,7 +84,7 @@ Item {
                     onTriggered: {
                         var d = new Date();
                         timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                        dateText.text = Qt.formatDateTime(d, "dddd  •  d MMMM yyyy").toUpperCase();
+                        dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
                     }
                 }
             }
@@ -103,7 +103,7 @@ Item {
 
         Item { Layout.preferredHeight: 10 }
 
-        // ── USER PROFILE & UNLOCK FORM ─────────────────────────────────────
+        // -- USER PROFILE & UNLOCK FORM -------------------------------------
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
@@ -179,6 +179,11 @@ Item {
                         verticalAlignment: TextInput.AlignVCenter
                         focus: true
                         selectByMouse: true
+                        onAccepted: {
+                            if (typeof authenticator !== "undefined" && authenticator) {
+                                authenticator.respond(passwordInput.text);
+                            }
+                        }
                     }
                 }
             }
@@ -204,6 +209,11 @@ Item {
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        if (typeof authenticator !== "undefined" && authenticator) {
+                            authenticator.respond(passwordInput.text);
+                        }
+                    }
                 }
             }
         }
