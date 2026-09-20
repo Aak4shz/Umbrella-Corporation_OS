@@ -62,8 +62,11 @@ This section contains every command needed to build, clean, test, verify, and ma
 # 2. Launch Interactive SDDM Security Terminal Login Screen Preview (Raccoon City Edition)
 ./scripts/preview-login.sh
 
-# 3. Launch Post-Login Native QML Splash Screen Preview (Red Queen Staged Protocol Animation)
-./scripts/preview-splash.sh
+# 3. Launch Red Queen Lock Screen Preview
+./scripts/preview-lockscreen.sh
+
+# 4. Launch Master End-to-End Boot Simulator
+./scripts/preview-all.sh
 ```
 
 ### 2.2 Virtual Machine Testing Commands
@@ -185,9 +188,11 @@ graph LR
     end
 
     subgraph Interactive QA Suite
-        Q1[scripts/preview-splash.sh & qml]
-        Q2[scripts/preview-login.sh & qml]
-        Q3[scripts/run-qemu.sh]
+        Q1[scripts/preview-login.sh & qml]
+        Q2[scripts/preview-lockscreen.sh & qml]
+        Q3[scripts/preview-plymouth.sh & qml]
+        Q4[scripts/preview-all.sh & qml]
+        Q5[scripts/run-qemu.sh]
     end
 
     subgraph Documentation Suite
@@ -206,8 +211,10 @@ graph LR
 * **`archiso/airootfs/etc/skel/.config/kcminputrc`:** Configures mouse cursor theme (`breeze_cursors` size 24).
 
 ### 4.2 Interactive Preview & Verification Suite
-* **`scripts/preview-splash.sh` & `scripts/preview-splash.qml`:** Live QML simulation of staged Red Queen boot splash animation.
 * **`scripts/preview-login.sh` & `scripts/preview-login.qml`:** Live interactive simulation of SDDM authentication terminal.
+* **`scripts/preview-lockscreen.sh` & `scripts/preview-lockscreen.qml`:** Live interactive simulation of Red Queen lock screen.
+* **`scripts/preview-plymouth.sh` & `scripts/preview-plymouth.qml`:** Live QML simulation of 36-frame Plymouth boot sequence.
+* **`scripts/preview-all.sh` & `scripts/preview-all.qml`:** End-to-end boot lifecycle simulation (Plymouth -> SDDM -> Lockscreen).
 * **`scripts/run-qemu.sh`:** Automated VM test runner with OVMF UEFI detection.
 
 ---
@@ -281,10 +288,14 @@ Umbrella-Corporation_OS/
 |-- out/                               # Compiled Distribution Output
 |   \-- umbrella-os-1.0.0-x86_64.iso   # Compiled Bootable ISO Binary (4.0 GB)
 |-- scripts/                           # Automation & Verification Suite
+|   |-- preview-all.qml                # End-to-End Boot Lifecycle QML
+|   |-- preview-all.sh                 # End-to-End Boot Lifecycle Runner
+|   |-- preview-lockscreen.qml         # Interactive Lock Screen QML
+|   |-- preview-lockscreen.sh          # Live Lock Screen Runner
 |   |-- preview-login.qml              # Interactive SDDM Login Screen QML
 |   |-- preview-login.sh               # Live SDDM Login Runner
-|   |-- preview-splash.qml             # Staged Boot Splash QML
-|   |-- preview-splash.sh              # Live Boot Splash Runner
+|   |-- preview-plymouth.qml           # Early Boot Plymouth Splash QML
+|   |-- preview-plymouth.sh            # Live Plymouth Splash Runner
 |   \-- run-qemu.sh                    # QEMU Virtual Machine Launch Script
 \-- work/                              # Archiso Temporary Build Directory
 ```
