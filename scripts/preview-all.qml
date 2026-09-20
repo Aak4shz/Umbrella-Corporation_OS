@@ -8,10 +8,10 @@ Window {
     width: 1366
     height: 768
     visible: true
-    title: "Umbrella OS - Full Boot Lifecycle (Plymouth -> SDDM -> Splash -> Lockscreen)"
+    title: "Umbrella OS - Full Boot Lifecycle (Plymouth -> SDDM -> Lockscreen)"
     color: "#050505"
 
-    // 0: Plymouth Boot -> 1: SDDM Login -> 2: Video Splash -> 3: Lock Screen
+    // 0: Plymouth Boot -> 1: SDDM Login -> 2: Lock Screen
     property int currentStage: 0
     property int plymouthFrameIndex: 0
     property real plymouthProgress: 0.0
@@ -301,116 +301,13 @@ Window {
     }
 
     // =========================================================================
-    // STAGE 2: POST-LOGIN NATIVE QML SPLASH SCREEN
-    // =========================================================================
-    Rectangle {
-        id: splashView
-        anchors.fill: parent
-        color: "#0a0a0a"
-        visible: root.currentStage === 2
-        opacity: root.currentStage === 2 ? 1.0 : 0.0
-
-        Behavior on opacity { NumberAnimation { duration: 400 } }
-
-        ColumnLayout {
-            anchors.centerIn: parent
-            spacing: 16
-
-            Image {
-                Layout.alignment: Qt.AlignHCenter
-                width: 120; height: 120
-                source: "../assets/Resident-Evil-Logo.png"
-                fillMode: Image.PreserveAspectFit
-                smooth: true
-
-                SequentialAnimation on scale {
-                    loops: Animation.Infinite
-                    NumberAnimation { from: 0.96; to: 1.04; duration: 1100; easing.type: Easing.InOutQuad }
-                    NumberAnimation { from: 1.04; to: 0.96; duration: 1100; easing.type: Easing.InOutQuad }
-                }
-            }
-
-            Text {
-                Layout.alignment: Qt.AlignHCenter
-                text: "UMBRELLA CORPORATION"
-                font.family: transformersFont.name || "Transformers Movie"
-                font.pixelSize: 26
-                font.bold: true
-                color: "#ffffff"
-                style: Text.Outline
-                styleColor: "#660000"
-            }
-
-            Text {
-                Layout.alignment: Qt.AlignHCenter
-                text: "INITIALIZING RED QUEEN CORE SERVICES..."
-                font.family: hackedFont.name || "HACKED"
-                font.pixelSize: 13
-                font.bold: true
-                color: "#ff2222"
-            }
-
-            Rectangle {
-                Layout.alignment: Qt.AlignHCenter
-                width: 320
-                height: 4
-                color: "#220000"
-                radius: 2
-
-                Rectangle {
-                    height: parent.height
-                    width: parent.width * 0.75
-                    color: "#cc0000"
-                    radius: 2
-                }
-            }
-
-            Text {
-                Layout.alignment: Qt.AlignHCenter
-                text: "SECURITY CLEARANCE LEVEL 5 // RED QUEEN AI ACTIVE"
-                font.family: "JetBrains Mono"
-                font.pixelSize: 10
-                color: "#555555"
-            }
-
-            Item { Layout.preferredHeight: 12 }
-
-            RowLayout {
-                Layout.alignment: Qt.AlignHCenter
-                spacing: 16
-
-                Rectangle {
-                    width: 200; height: 46; radius: 23
-                    color: lockBtnMouse.containsMouse ? "#cc0000" : "#1a1a1a"
-                    border.color: "#444444"
-
-                    Text {
-                        anchors.centerIn: parent
-                        text: "LOCK SCREEN ->"
-                        font.family: uniNeueBold.name || "Uni Neue"
-                        font.pixelSize: 12
-                        font.bold: true
-                        color: "#ffffff"
-                    }
-
-                    MouseArea {
-                        id: lockBtnMouse
-                        anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
-                        onClicked: root.currentStage = 3
-                    }
-                }
-            }
-        }
-    }
-
-    // =========================================================================
-    // STAGE 3: RED QUEEN LOCK SCREEN
+    // STAGE 2: RED QUEEN LOCK SCREEN
     // =========================================================================
     Item {
         id: lockscreenView
         anchors.fill: parent
-        visible: root.currentStage === 3
-        opacity: root.currentStage === 3 ? 1.0 : 0.0
+        visible: root.currentStage === 2
+        opacity: root.currentStage === 2 ? 1.0 : 0.0
 
         Behavior on opacity { NumberAnimation { duration: 400 } }
 
@@ -435,7 +332,7 @@ Window {
                     font.pixelSize: 56; font.bold: true; color: "#ffffff"
                     style: Text.Outline; styleColor: "#660000"
                     Timer {
-                        interval: 1000; running: root.currentStage === 3; repeat: true; triggeredOnStart: true
+                        interval: 1000; running: root.currentStage === 2; repeat: true; triggeredOnStart: true
                         onTriggered: {
                             var d = new Date();
                             lockTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
