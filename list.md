@@ -14,10 +14,10 @@
 ## 📋 Task Checklist
 
 ### Phase 1: Authentication & Desktop Splash (SDDM & Plasma)
-- [ ] **Task 1.1: SDDM Login Screen (`umbrella-sddm`)**
+- [x] **Task 1.1: SDDM Login Screen (`umbrella-sddm`)**
   - **File:** `archiso/airootfs/usr/share/sddm/themes/umbrella-sddm/`
   - Action: Naye Umbrella logo PNG ko copy karna aur `Main.qml` mein `biohazard-logo.png` ki jagah Umbrella logo link karna.
-  - Status: `PENDING`
+  - Status: `COMPLETED` ✅
 
 - [ ] **Task 1.2: KDE Post-Login Splash Screen (`Splash.qml`)**
   - **File:** `archiso/airootfs/usr/share/plasma/look-and-feel/org.umbrella.redqueen.desktop/contents/splash/`
@@ -111,6 +111,6 @@
 
 ## 📌 Progress Summary
 - **Total Tasks:** 14
-- **Completed:** 2
-- **Pending:** 12
-- **Current Active Task:** Fastfetch (Tasks 3.1 & 3.2 Completed)
+- **Completed:** 3
+- **Pending:** 11
+- **Current Active Task:** SDDM Login Screen (Task 1.1 Completed)
