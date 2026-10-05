@@ -1,6 +1,6 @@
 # ====================================================================
 # UMBRELLA OS - Plymouth Boot Animation Script
-# Red Queen Biohazard System Boot Sequence
+# Red Queen System Boot Sequence (Umbrella Corporation Edition)
 # ====================================================================
 
 # Set dark background (#0A0A0A)
@@ -10,7 +10,7 @@ Window.SetBackgroundBottomColor(0.02, 0.02, 0.02);
 screen_width = Window.GetWidth();
 screen_height = Window.GetHeight();
 
-# Load 36 rotated Biohazard emblem frames
+# Load 36 rotated Umbrella Corporation emblem frames
 NUM_FRAMES = 36;
 for (i = 0; i < NUM_FRAMES; i++) {
     spinner_images[i] = Image("spinner-" + i + ".png");
