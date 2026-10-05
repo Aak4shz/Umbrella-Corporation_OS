@@ -3,26 +3,212 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 
+/*
+ * Umbrella OS - Master End-to-End Boot Lifecycle Simulator
+ * Simulates complete boot sequence:
+ *   Stage 0: Plymouth Early Kernel Boot (Rotating Spinner & Progress)
+ *   Stage 1: SDDM Login Greeter (Raccoon City Edition)
+ *   Stage 2: KDE Post-Login Splash Screen (Fullscreen Cinematic Umbrella GIF)
+ *   Stage 3: Red Queen Lock Screen UI & Workspace
+ */
 Window {
     id: root
     width: 1366
     height: 768
     visible: true
-    title: "Umbrella OS - Full Boot Lifecycle (Plymouth -> SDDM -> Lockscreen)"
+    title: "Umbrella OS - Complete Boot & Login Lifecycle Simulator"
     color: "#050505"
 
-    // 0: Plymouth Boot -> 1: SDDM Login -> 2: Lock Screen
+    // 0: Plymouth Boot -> 1: SDDM Login -> 2: Post-Login Splash (GIF) -> 3: Lock Screen
     property int currentStage: 0
     property int plymouthFrameIndex: 0
     property real plymouthProgress: 0.0
+    property bool isFullscreen: false
 
-    // -- LOAD CUSTOM SYSTEM FONTS ----------------------------------------------
+    onCurrentStageChanged: {
+        if (currentStage === 0) {
+            plymouthProgress = 0.0
+        } else if (currentStage === 1) {
+            if (typeof authBtn !== "undefined") {
+                authBtn.color = "#cc0000"
+                authText.text = "AUTHENTICATE"
+            }
+            if (typeof autoLoginTimer !== "undefined") {
+                autoLoginTimer.restart()
+            }
+        } else if (currentStage === 2) {
+            if (typeof splashGif !== "undefined") {
+                splashGif.currentFrame = 0
+            }
+            if (typeof autoSplashToLockTimer !== "undefined") {
+                autoSplashToLockTimer.restart()
+            }
+        }
+    }
+
+    // -- LOAD SYSTEM FONTS -----------------------------------------------------
     FontLoader { id: glitchFont; source: "../archiso/airootfs/usr/share/fonts/TTF/CfGlitchCityRegular_L1vZ.ttf" }
     FontLoader { id: transformersFont; source: "../archiso/airootfs/usr/share/fonts/TTF/Transformers_Movie.ttf" }
     FontLoader { id: uniNeueBold; source: "../archiso/airootfs/usr/share/fonts/TTF/UniNeue-Trial-Bold.ttf" }
     FontLoader { id: uniNeueRegular; source: "../archiso/airootfs/usr/share/fonts/TTF/UniNeue-Trial-Regular.ttf" }
     FontLoader { id: hackedFont; source: "../archiso/airootfs/usr/share/fonts/TTF/Hacked-KerX.ttf" }
     FontLoader { id: bladeRunnerFont; source: "../archiso/airootfs/usr/share/fonts/TTF/BLADRMF_.ttf" }
+
+    // =========================================================================
+    // TOP FLOATING SWITCHER TOOLBAR
+    // =========================================================================
+    Rectangle {
+        id: topToolbar
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 12
+        width: Math.min(parent.width - 24, 1020)
+        height: 48
+        radius: 8
+        color: "#121212"
+        opacity: toolbarMouse.containsMouse ? 0.96 : (root.currentStage === 2 ? 0.25 : 0.88)
+        border.color: "#330000"
+        border.width: 1.5
+        z: 9999
+
+        Behavior on opacity { NumberAnimation { duration: 300 } }
+
+        MouseArea {
+            id: toolbarMouse
+            anchors.fill: parent
+            hoverEnabled: true
+        }
+
+        RowLayout {
+            anchors.fill: parent
+            anchors.margins: 8
+            spacing: 8
+
+            Text {
+                text: "LIFECYCLE:"
+                color: "#ff2222"
+                font.bold: true
+                font.pixelSize: 11
+                font.family: "monospace"
+            }
+
+            // Stage Switchers
+            Repeater {
+                model: [
+                    { name: "1. Plymouth Boot", stage: 0 },
+                    { name: "2. SDDM Login", stage: 1 },
+                    { name: "3. Post-Login Splash", stage: 2 },
+                    { name: "4. Lock Screen", stage: 3 }
+                ]
+
+                Rectangle {
+                    width: 150
+                    height: 32
+                    radius: 6
+                    color: root.currentStage === modelData.stage ? "#cc0000" : (stageBtnMouse.containsMouse ? "#2a0000" : "#1a1a1a")
+                    border.color: root.currentStage === modelData.stage ? "#ff4444" : "#333333"
+                    border.width: 1
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: modelData.name
+                        color: root.currentStage === modelData.stage ? "#ffffff" : "#aaaaaa"
+                        font.bold: root.currentStage === modelData.stage
+                        font.pixelSize: 11
+                        font.family: "monospace"
+                    }
+
+                    MouseArea {
+                        id: stageBtnMouse
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            if (modelData.stage === 0) {
+                                root.plymouthProgress = 0.0
+                            }
+                            root.currentStage = modelData.stage
+                        }
+                    }
+                }
+            }
+
+            Rectangle { width: 1; height: 24; color: "#330000" }
+
+            // Auto-Play Sequence Button
+            Rectangle {
+                width: 130
+                height: 32
+                radius: 6
+                color: autoSeqMouse.containsMouse ? "#005522" : "#003311"
+                border.color: "#00cc55"
+                border.width: 1
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "▶ REPLAY ALL"
+                    color: "#00ff77"
+                    font.bold: true
+                    font.pixelSize: 11
+                    font.family: "monospace"
+                }
+
+                MouseArea {
+                    id: autoSeqMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        root.plymouthProgress = 0.0
+                        root.currentStage = 0
+                    }
+                }
+            }
+
+            // Fullscreen Button
+            Rectangle {
+                width: 32
+                height: 32
+                radius: 6
+                color: fsMouse.containsMouse ? "#333333" : "#222222"
+                border.color: "#444444"
+                border.width: 1
+
+                Text {
+                    anchors.centerIn: parent
+                    text: root.isFullscreen ? "🗗" : "⛶"
+                    color: "#ffffff"
+                    font.pixelSize: 14
+                }
+
+                MouseArea {
+                    id: fsMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: root.toggleFullscreen()
+                }
+            }
+        }
+    }
+
+    function toggleFullscreen() {
+        if (root.visibility === Window.FullScreen) {
+            root.visibility = Window.Windowed
+            root.isFullscreen = false
+        } else {
+            root.visibility = Window.FullScreen
+            root.isFullscreen = true
+        }
+    }
+
+    // Keyboard Shortcuts
+    Shortcut { sequence: "F11"; onActivated: root.toggleFullscreen() }
+    Shortcut { sequence: "Escape"; onActivated: Qt.quit() }
+    Shortcut { sequence: "1"; onActivated: { root.plymouthProgress = 0.0; root.currentStage = 0 } }
+    Shortcut { sequence: "2"; onActivated: root.currentStage = 1 }
+    Shortcut { sequence: "3"; onActivated: root.currentStage = 2 }
+    Shortcut { sequence: "4"; onActivated: root.currentStage = 3 }
 
     // =========================================================================
     // STAGE 0: PLYMOUTH EARLY BOOT SPLASH
@@ -44,22 +230,21 @@ Window {
         }
 
         Timer {
-            interval: 45
+            interval: 38
             running: root.currentStage === 0
             repeat: true
             onTriggered: {
                 if (root.plymouthProgress < 1.0) {
-                    root.plymouthProgress = Math.min(1.0, root.plymouthProgress + 0.012);
+                    root.plymouthProgress = Math.min(1.0, root.plymouthProgress + 0.015)
                 } else {
-                    // Natural seamless transition to SDDM Login on 100% completion
-                    transitionToSddmTimer.start();
+                    transitionToSddmTimer.start()
                 }
             }
         }
 
         Timer {
             id: transitionToSddmTimer
-            interval: 600
+            interval: 500
             repeat: false
             onTriggered: root.currentStage = 1
         }
@@ -91,9 +276,8 @@ Window {
                 styleColor: "#440000"
             }
 
-            Item { Layout.preferredHeight: 12 }
+            Item { Layout.preferredHeight: 10 }
 
-            // CF Glitch City Loading Percentage
             Text {
                 Layout.alignment: Qt.AlignHCenter
                 text: Math.floor(root.plymouthProgress * 100) + " %"
@@ -108,7 +292,7 @@ Window {
             // Cyberpunk Rectangular Loading Bar
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
-                width: 480; height: 36
+                width: 480; height: 32
                 color: "#0d0d0d"
                 border.color: "#cc0000"; border.width: 2
                 radius: 4
@@ -142,7 +326,7 @@ Window {
 
             Rectangle {
                 anchors.top: parent.top; anchors.bottom: parent.bottom; anchors.left: parent.left
-                width: parent.width * 0.50
+                width: parent.width * 0.52
                 gradient: Gradient {
                     orientation: Gradient.Horizontal
                     GradientStop { position: 0.0; color: "#d8000000" }
@@ -156,14 +340,14 @@ Window {
             anchors.left: parent.left
             anchors.leftMargin: Math.max(70, parent.width * 0.08)
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -35
-            width: 440; height: 620
+            anchors.verticalCenterOffset: 10
+            width: 440; height: 600
 
             ColumnLayout {
                 anchors.fill: parent
-                spacing: 12
+                spacing: 10
 
-                // CF Glitch City HUD Clock & Date
+                // HUD Clock & Date
                 ColumnLayout {
                     Layout.alignment: Qt.AlignHCenter
                     spacing: 2
@@ -172,15 +356,15 @@ Window {
                         id: sddmTime
                         Layout.alignment: Qt.AlignHCenter
                         font.family: glitchFont.name || "CF Glitch City"
-                        font.pixelSize: 50; font.bold: true; color: "#ffffff"
+                        font.pixelSize: 46; font.bold: true; color: "#ffffff"
                         style: Text.Outline; styleColor: "#660000"
 
                         Timer {
                             interval: 1000; running: root.currentStage === 1; repeat: true; triggeredOnStart: true
                             onTriggered: {
-                                var d = new Date();
-                                sddmTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                                sddmDate.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
+                                var d = new Date()
+                                sddmTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase()
+                                sddmDate.text = Qt.formatDateTime(d, "dddd - d MMMM yyyy").toUpperCase()
                             }
                         }
                     }
@@ -189,23 +373,23 @@ Window {
                         id: sddmDate
                         Layout.alignment: Qt.AlignHCenter
                         font.family: glitchFont.name || "CF Glitch City"
-                        font.pixelSize: 20; font.bold: true; color: "#ff2222"
+                        font.pixelSize: 18; font.bold: true; color: "#ff2222"
                     }
                 }
 
                 Item { Layout.preferredHeight: 4 }
 
-                // Frameless Login Form
+                // Login Form
                 Item {
-                    Layout.fillWidth: true; Layout.preferredHeight: 380
+                    Layout.fillWidth: true; Layout.preferredHeight: 360
 
                     ColumnLayout {
-                        anchors.fill: parent; spacing: 12
+                        anchors.fill: parent; spacing: 10
 
                         Image {
                             Layout.alignment: Qt.AlignHCenter
                             source: "../assets/branding/umbrella-corporation-logo.png"
-                            sourceSize.width: 90; sourceSize.height: 90
+                            sourceSize.width: 84; sourceSize.height: 84
                             fillMode: Image.PreserveAspectFit
                         }
 
@@ -227,73 +411,76 @@ Window {
                             color: "#ff2222"
                         }
 
-                        Item { Layout.preferredHeight: 4 }
-
-                        ColumnLayout {
-                            Layout.fillWidth: true; spacing: 4
-                            Text { text: "User"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 14; font.bold: true; color: "#ff2222" }
-                            Rectangle {
-                                Layout.fillWidth: true; height: 42; color: "#181818"; radius: 8; border.color: "#383838"
-                                TextInput { anchors.fill: parent; anchors.margins: 10; text: "umbrella"; font.family: "JetBrains Mono"; font.pixelSize: 14; font.bold: true; color: "#ffffff"; verticalAlignment: TextInput.AlignVCenter }
-                            }
-                        }
-
-                        ColumnLayout {
-                            Layout.fillWidth: true; spacing: 4
-                            Text { text: "Password"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 14; font.bold: true; color: "#ff2222" }
-                            Rectangle {
-                                Layout.fillWidth: true; height: 42; color: "#181818"; radius: 8; border.color: "#383838"
-                                TextInput { id: pwdField; anchors.fill: parent; anchors.margins: 10; text: "umbrella"; echoMode: TextInput.Password; font.family: "JetBrains Mono"; font.pixelSize: 14; font.bold: true; color: "#ffffff"; verticalAlignment: TextInput.AlignVCenter; Keys.onReturnPressed: authBtn.triggerLogin() }
-                            }
-                        }
-
                         Item { Layout.preferredHeight: 2 }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true; spacing: 4
+                            Text { text: "User"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 13; font.bold: true; color: "#ff2222" }
+                            Rectangle {
+                                Layout.fillWidth: true; height: 38; color: "#181818"; radius: 6; border.color: "#383838"
+                                TextInput { anchors.fill: parent; anchors.margins: 8; text: "umbrella"; font.family: "JetBrains Mono"; font.pixelSize: 13; font.bold: true; color: "#ffffff"; verticalAlignment: TextInput.AlignVCenter }
+                            }
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true; spacing: 4
+                            Text { text: "Password"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 13; font.bold: true; color: "#ff2222" }
+                            Rectangle {
+                                Layout.fillWidth: true; height: 38; color: "#181818"; radius: 6; border.color: "#383838"
+                                TextInput {
+                                    id: pwdField
+                                    anchors.fill: parent; anchors.margins: 8
+                                    text: "umbrella"
+                                    echoMode: TextInput.Password
+                                    font.family: "JetBrains Mono"; font.pixelSize: 13; font.bold: true; color: "#ffffff"
+                                    verticalAlignment: TextInput.AlignVCenter
+                                    Keys.onReturnPressed: { autoLoginTimer.stop(); authBtn.triggerLogin() }
+                                    onTextEdited: autoLoginTimer.stop()
+                                }
+                            }
+                        }
+
+                        Item { Layout.preferredHeight: 4 }
 
                         Rectangle {
                             id: authBtn
-                            Layout.fillWidth: true; height: 44; color: authMouse.containsMouse ? "#e60000" : "#cc0000"; radius: 8
+                            Layout.fillWidth: true; height: 42; color: authMouse.containsMouse ? "#e60000" : "#cc0000"; radius: 6
 
                             function triggerLogin() {
-                                root.currentStage = 2;
+                                authBtn.color = "#00aa44"
+                                authText.text = "ACCESS GRANTED // INITIALIZING SPLASH..."
+                                transitionToSplashTimer.start()
                             }
 
-                            Text { anchors.centerIn: parent; text: "AUTHENTICATE"; font.family: hackedFont.name || "HACKED"; font.bold: true; font.pixelSize: 14; color: "#ffffff" }
-                            MouseArea { id: authMouse; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: authBtn.triggerLogin() }
+                            Text { id: authText; anchors.centerIn: parent; text: "AUTHENTICATE"; font.family: hackedFont.name || "HACKED"; font.bold: true; font.pixelSize: 13; color: "#ffffff" }
+                            MouseArea {
+                                id: authMouse
+                                anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    autoLoginTimer.stop()
+                                    authBtn.triggerLogin()
+                                }
+                            }
                         }
-                    }
-                }
 
-                Item { Layout.preferredHeight: 4 }
-
-                // 3D Neon Power Buttons
-                RowLayout {
-                    Layout.alignment: Qt.AlignHCenter; spacing: 40
-
-                    ColumnLayout {
-                        spacing: 6; Layout.alignment: Qt.AlignHCenter
-                        Rectangle {
-                            width: 52; height: 52; radius: 26; color: "#99001b"; border.color: "#ff1133"; border.width: 2
-                            Image { anchors.centerIn: parent; width: 24; height: 24; source: "../assets/icon-shutdown.svg" }
+                        Timer {
+                            id: autoLoginTimer
+                            interval: 3200
+                            running: root.currentStage === 1
+                            repeat: false
+                            onTriggered: authBtn.triggerLogin()
                         }
-                        Text { Layout.alignment: Qt.AlignHCenter; text: "SHUTDOWN"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 11; font.bold: true; color: "#999999" }
-                    }
 
-                    ColumnLayout {
-                        spacing: 6; Layout.alignment: Qt.AlignHCenter
-                        Rectangle {
-                            width: 52; height: 52; radius: 26; color: "#92400e"; border.color: "#f59e0b"; border.width: 2
-                            Image { anchors.centerIn: parent; width: 24; height: 24; source: "../assets/icon-reboot.svg" }
+                        Timer {
+                            id: transitionToSplashTimer
+                            interval: 400
+                            repeat: false
+                            onTriggered: {
+                                authBtn.color = "#cc0000"
+                                authText.text = "AUTHENTICATE"
+                                root.currentStage = 2
+                            }
                         }
-                        Text { Layout.alignment: Qt.AlignHCenter; text: "REBOOT"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 11; font.bold: true; color: "#999999" }
-                    }
-
-                    ColumnLayout {
-                        spacing: 6; Layout.alignment: Qt.AlignHCenter
-                        Rectangle {
-                            width: 52; height: 52; radius: 26; color: "#0369a1"; border.color: "#0ea5e9"; border.width: 2
-                            Image { anchors.centerIn: parent; width: 24; height: 24; source: "../assets/icon-sleep.svg" }
-                        }
-                        Text { Layout.alignment: Qt.AlignHCenter; text: "SLEEP"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 11; font.bold: true; color: "#999999" }
                     }
                 }
             }
@@ -301,13 +488,64 @@ Window {
     }
 
     // =========================================================================
-    // STAGE 2: RED QUEEN LOCK SCREEN
+    // STAGE 2: KDE POST-LOGIN SPLASH SCREEN (FULLSCREEN UMBRELLA GIF)
+    // =========================================================================
+    Item {
+        id: splashView
+        anchors.fill: parent
+        visible: root.currentStage === 2
+        opacity: root.currentStage === 2 ? 1.0 : 0.0
+
+        Behavior on opacity { NumberAnimation { duration: 400 } }
+
+        // Background
+        Rectangle {
+            anchors.fill: parent
+            color: "#000000"
+        }
+
+        // Fullscreen Cinematic Animated GIF
+        AnimatedImage {
+            id: splashGif
+            anchors.fill: parent
+            source: "../archiso/airootfs/usr/share/plasma/look-and-feel/org.umbrella.redqueen.desktop/contents/splash/images/umbrella-splash.gif"
+            fillMode: Image.PreserveAspectCrop
+            smooth: true
+            mipmap: true
+            playing: root.currentStage === 2
+
+            // Cinematic fade-in
+            opacity: 0.0
+            NumberAnimation on opacity {
+                running: root.currentStage === 2
+                from: 0.0; to: 1.0; duration: 400; easing.type: Easing.InOutQuad
+            }
+        }
+
+        // Auto transition to Desktop / Lock Screen after full cycle (3.5 seconds)
+        Timer {
+            id: autoSplashToLockTimer
+            interval: 3800
+            running: root.currentStage === 2
+            repeat: false
+            onTriggered: root.currentStage = 3
+        }
+
+        // Click anywhere to advance immediately
+        MouseArea {
+            anchors.fill: parent
+            onClicked: root.currentStage = 3
+        }
+    }
+
+    // =========================================================================
+    // STAGE 3: RED QUEEN LOCK SCREEN & WORKSPACE
     // =========================================================================
     Item {
         id: lockscreenView
         anchors.fill: parent
-        visible: root.currentStage === 2
-        opacity: root.currentStage === 2 ? 1.0 : 0.0
+        visible: root.currentStage === 3
+        opacity: root.currentStage === 3 ? 1.0 : 0.0
 
         Behavior on opacity { NumberAnimation { duration: 400 } }
 
@@ -315,14 +553,14 @@ Window {
             anchors.fill: parent
             source: "../assets/wallpapers/Welcome_Wallpaper.png"
             fillMode: Image.PreserveAspectCrop; smooth: true
-            Rectangle { anchors.fill: parent; color: "#000000"; opacity: 0.65 }
+            Rectangle { anchors.fill: parent; color: "#000000"; opacity: 0.68 }
         }
 
         ColumnLayout {
             anchors.centerIn: parent
-            spacing: 16; width: 440
+            spacing: 14; width: 440
 
-            // CF Glitch City HUD Clock & Date
+            // HUD Clock & Date
             ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter; spacing: 2
                 Text {
@@ -332,11 +570,11 @@ Window {
                     font.pixelSize: 56; font.bold: true; color: "#ffffff"
                     style: Text.Outline; styleColor: "#660000"
                     Timer {
-                        interval: 1000; running: root.currentStage === 2; repeat: true; triggeredOnStart: true
+                        interval: 1000; running: root.currentStage === 3; repeat: true; triggeredOnStart: true
                         onTriggered: {
-                            var d = new Date();
-                            lockTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                            lockDate.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
+                            var d = new Date()
+                            lockTime.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase()
+                            lockDate.text = Qt.formatDateTime(d, "dddd - d MMMM yyyy").toUpperCase()
                         }
                     }
                 }
@@ -344,32 +582,66 @@ Window {
                     id: lockDate
                     Layout.alignment: Qt.AlignHCenter
                     font.family: glitchFont.name || "CF Glitch City"
-                    font.pixelSize: 20; font.bold: true; color: "#ff2222"
+                    font.pixelSize: 18; font.bold: true; color: "#ff2222"
                 }
             }
 
-            Item { Layout.preferredHeight: 10 }
+            Item { Layout.preferredHeight: 8 }
 
             ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter; Layout.fillWidth: true; spacing: 14
-                Image {
+
+                // Animated Umbrella Corporation Emblem / User Badge
+                Item {
                     Layout.alignment: Qt.AlignHCenter
-                    width: 86; height: 86
-                    source: "../assets/Resident-Evil-Logo.png"
-                    fillMode: Image.PreserveAspectFit
+                    width: 90
+                    height: 90
+
+                    Image {
+                        anchors.centerIn: parent
+                        width: 86
+                        height: 86
+                        source: "../assets/branding/umbrella-corporation-logo.png"
+                        fillMode: Image.PreserveAspectFit
+                        smooth: true
+
+                        SequentialAnimation on opacity {
+                            loops: Animation.Infinite
+                            NumberAnimation { from: 0.85; to: 1.0; duration: 1200; easing.type: Easing.InOutQuad }
+                            NumberAnimation { from: 1.0; to: 0.85; duration: 1200; easing.type: Easing.InOutQuad }
+                        }
+                    }
                 }
 
-                Text { Layout.alignment: Qt.AlignHCenter; text: "umbrella"; font.family: transformersFont.name || "Transformers Movie"; font.pixelSize: 22; font.bold: true; color: "#ffffff" }
-                Text { Layout.alignment: Qt.AlignHCenter; text: "Red Queen Security Protocol"; font.family: uniNeueBold.name || "Uni Neue"; font.pixelSize: 13; font.bold: true; color: "#ff2222" }
+                // User Name Label
+                Text {
+                    Layout.alignment: Qt.AlignHCenter
+                    text: "umbrella"
+                    font.family: glitchFont.name || "CF Glitch City"
+                    font.pixelSize: 22
+                    font.bold: true
+                    color: "#ffffff"
+                    style: Text.Outline
+                    styleColor: "#440000"
+                }
+
+                Text {
+                    Layout.alignment: Qt.AlignHCenter
+                    text: "Red Queen Security Protocol"
+                    font.family: hackedFont.name || "HACKED"
+                    font.pixelSize: 13
+                    font.bold: true
+                    color: "#ff2222"
+                }
 
                 Item { Layout.preferredHeight: 4 }
 
                 ColumnLayout {
                     Layout.fillWidth: true; spacing: 4
-                    Text { text: "Password"; font.family: uniNeueBold.name || "Uni Neue"; font.pixelSize: 13; font.bold: true; color: "#ff2222" }
+                    Text { text: "Password"; font.family: hackedFont.name || "HACKED"; font.pixelSize: 13; font.bold: true; color: "#ff2222" }
                     Rectangle {
-                        Layout.fillWidth: true; height: 42; color: "#181818"; radius: 8; border.color: "#383838"
-                        TextInput { anchors.fill: parent; anchors.margins: 10; text: ""; echoMode: TextInput.Password; font.family: "JetBrains Mono"; font.pixelSize: 14; font.bold: true; color: "#ffffff"; verticalAlignment: TextInput.AlignVCenter; Keys.onReturnPressed: unlockBtn.triggerUnlock() }
+                        Layout.fillWidth: true; height: 42; color: "#181818"; radius: 8; border.color: lockPwdField.activeFocus ? "#ff2222" : "#383838"; border.width: lockPwdField.activeFocus ? 2 : 1
+                        TextInput { id: lockPwdField; anchors.fill: parent; anchors.margins: 10; text: ""; echoMode: TextInput.Password; font.family: "JetBrains Mono"; font.pixelSize: 14; font.bold: true; color: "#ffffff"; verticalAlignment: TextInput.AlignVCenter; Keys.onReturnPressed: unlockBtn.triggerUnlock() }
                     }
                 }
 
@@ -377,38 +649,12 @@ Window {
                     id: unlockBtn
                     Layout.fillWidth: true; height: 44; color: unlockMouse.containsMouse ? "#e60000" : "#cc0000"; radius: 8
                     function triggerUnlock() {
-                        unlockText.text = "UNLOCKED [OK]";
-                        unlockBtn.color = "#00aa44";
+                        unlockText.text = "UNLOCKED [OK]"
+                        unlockBtn.color = "#00aa44"
                     }
-                    Text { id: unlockText; anchors.centerIn: parent; text: "UNLOCK WORKSPACE"; font.family: uniNeueBold.name || "Uni Neue"; font.bold: true; font.pixelSize: 13; color: "#ffffff" }
+                    Text { id: unlockText; anchors.centerIn: parent; text: "UNLOCK WORKSPACE"; font.family: hackedFont.name || "HACKED"; font.bold: true; font.pixelSize: 14; color: "#ffffff" }
                     MouseArea { id: unlockMouse; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: unlockBtn.triggerUnlock() }
                 }
-
-                Text {
-                    Layout.alignment: Qt.AlignHCenter
-                    text: "// WORKSPACE SECURE // AUTHORIZED ACCESS ONLY //"
-                    font.family: hackedFont.name || "HACKED"
-                    font.pixelSize: 10
-                    color: "#555555"
-                }
-            }
-        }
-
-        // Bottom Power Controls
-        RowLayout {
-            anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottomMargin: 32; spacing: 36
-            Rectangle {
-                width: 46; height: 46; radius: 23; color: "#99001b"; border.color: "#ff1133"; border.width: 2
-                Image { anchors.centerIn: parent; width: 20; height: 20; source: "../assets/icon-shutdown.svg" }
-            }
-            Rectangle {
-                width: 46; height: 46; radius: 23; color: "#92400e"; border.color: "#f59e0b"; border.width: 2
-                Image { anchors.centerIn: parent; width: 20; height: 20; source: "../assets/icon-reboot.svg" }
-            }
-            Rectangle {
-                width: 46; height: 46; radius: 23; color: "#0369a1"; border.color: "#0ea5e9"; border.width: 2
-                Image { anchors.centerIn: parent; width: 20; height: 20; source: "../assets/icon-sleep.svg" }
             }
         }
     }
