@@ -93,7 +93,7 @@ Window {
                         onTriggered: {
                             var d = new Date();
                             timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                            dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
+                            dateText.text = Qt.formatDateTime(d, "dddd - d MMMM yyyy").toUpperCase();
                         }
                     }
                 }
