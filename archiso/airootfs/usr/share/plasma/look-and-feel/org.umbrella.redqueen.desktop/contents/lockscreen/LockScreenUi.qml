@@ -84,7 +84,7 @@ Item {
                     onTriggered: {
                         var d = new Date();
                         timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                        dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
+                        dateText.text = Qt.formatDateTime(d, "dddd - d MMMM yyyy").toUpperCase();
                     }
                 }
             }
@@ -118,9 +118,15 @@ Item {
                     anchors.centerIn: parent
                     width: 86
                     height: 86
-                    source: "/usr/share/sddm/themes/umbrella-sddm/images/biohazard-logo.png"
+                    source: "images/umbrella-logo.png"
                     fillMode: Image.PreserveAspectFit
                     smooth: true
+
+                    SequentialAnimation on opacity {
+                        loops: Animation.Infinite
+                        NumberAnimation { from: 0.85; to: 1.0; duration: 1200; easing.type: Easing.InOutQuad }
+                        NumberAnimation { from: 1.0; to: 0.85; duration: 1200; easing.type: Easing.InOutQuad }
+                    }
                 }
             }
 
