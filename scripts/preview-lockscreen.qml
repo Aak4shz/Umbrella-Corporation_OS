@@ -87,7 +87,7 @@ Window {
                     onTriggered: {
                         var d = new Date();
                         timeText.text = Qt.formatDateTime(d, "hh:mm:ss AP").toUpperCase();
-                        dateText.text = Qt.formatDateTime(d, "dddd  -  d MMMM yyyy").toUpperCase();
+                        dateText.text = Qt.formatDateTime(d, "dddd - d MMMM yyyy").toUpperCase();
                     }
                 }
             }
@@ -112,7 +112,7 @@ Window {
             Layout.fillWidth: true
             spacing: 14
 
-            // Animated Biohazard Emblem / User Badge
+            // Animated Umbrella Emblem / User Badge
             Item {
                 Layout.alignment: Qt.AlignHCenter
                 width: 90
@@ -122,7 +122,7 @@ Window {
                     anchors.centerIn: parent
                     width: 86
                     height: 86
-                    source: "../assets/Resident-Evil-Logo.png"
+                    source: "../assets/branding/umbrella-corporation-logo.png"
                     fillMode: Image.PreserveAspectFit
                     smooth: true
 
