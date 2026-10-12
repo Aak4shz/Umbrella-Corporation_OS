@@ -22,7 +22,7 @@ Rectangle {
 
     FontLoader {
         id: transformersFont
-        source: "/usr/share/fonts/TTF/Transformers_Movie.ttf"
+        source: "Transformers_Movie.ttf"
     }
 
     FontLoader {
