@@ -11,6 +11,14 @@ Window {
     title: "Umbrella OS - Red Queen SDDM Login Screen (Raccoon City Edition)"
     color: "#0a0a0a"
 
+    Shortcut { sequence: "Escape"; onActivated: Qt.quit() }
+    Shortcut {
+        sequence: "F11"
+        onActivated: {
+            root.visibility = (root.visibility === Window.FullScreen ? Window.Windowed : Window.FullScreen)
+        }
+    }
+
     // Load Custom Fonts
     FontLoader {
         id: glitchFont
