@@ -14,6 +14,14 @@ Window {
     property int frameIndex: 0
     property real bootProgress: 0.0
 
+    Shortcut { sequence: "Escape"; onActivated: Qt.quit() }
+    Shortcut {
+        sequence: "F11"
+        onActivated: {
+            root.visibility = (root.visibility === Window.FullScreen ? Window.Windowed : Window.FullScreen)
+        }
+    }
+
     // Load Custom Fonts
     FontLoader {
         id: glitchFont
