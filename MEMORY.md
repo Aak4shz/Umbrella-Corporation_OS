@@ -67,6 +67,9 @@ This section contains every command needed to build, clean, test, verify, and ma
 
 # 4. Launch Master End-to-End Boot Simulator
 ./scripts/preview-all.sh
+
+# 5. Launch Calamares Installer Presentation Preview
+./scripts/preview-installer.sh
 ```
 
 ### 2.2 Virtual Machine Testing Commands
@@ -216,6 +219,13 @@ graph LR
 * **`scripts/preview-plymouth.sh` & `scripts/preview-plymouth.qml`:** Live QML simulation of 36-frame Plymouth boot sequence.
 * **`scripts/preview-all.sh` & `scripts/preview-all.qml`:** End-to-end boot lifecycle simulation (Plymouth -> SDDM -> Lockscreen).
 * **`scripts/run-qemu.sh`:** Automated VM test runner with OVMF UEFI detection.
+* **`scripts/preview-installer.sh`:** Live QML simulation of Calamares installer Red Queen presentation.
+
+### 4.3 Calamares Disk Installation Engine
+* **`archiso/airootfs/etc/calamares/settings.conf`:** Master sequence orchestrating disk partitioning, system extraction (`unpackfs`), user setup, mkinitcpio compilation, and bootloader deployment.
+* **`archiso/airootfs/etc/calamares/modules/`:** Full declarative module suite (`unpackfs.conf`, `partition.conf`, `users.conf`, `bootloader.conf`, `grubcfg.conf`, `fstab.conf`, `services-systemd.conf`, `packages.conf`, `shellprocess-archisocleanup.conf`, `machineid.conf`, `networkcfg.conf`, `localecfg.conf`, `initcpiocfg.conf`).
+* **`archiso/airootfs/etc/calamares/branding/umbrella/`:** Red Queen branded QML presentation and high-contrast dark theme (`#0d0202` canvas, `#cc0000` accents).
+* **`archiso/airootfs/etc/skel/Desktop/install-umbrella.desktop` & `/usr/local/bin/umbrella-installer`:** Seamless 1-click live desktop installer launcher with automatic Wayland/X11 display handling.
 
 ---
 
