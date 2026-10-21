@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Umbrella OS - Calamares Installer Launcher
+# ==============================================================================
+set -e
+
+# Prevent duplicate installer instances
+if pgrep -x "calamares" >/dev/null 2>&1; then
+    echo "[!] Umbrella OS Installer is already running."
+    exit 0
+fi
+
+# Allow root display access under X11 if xhost is available
+if [ -n "${DISPLAY}" ] && command -v xhost >/dev/null 2>&1; then
+    xhost +local:root >/dev/null 2>&1 || true
+fi
+
+# Export display environment for root
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_QPA_PLATFORM="wayland;xcb"
+
+# Launch Calamares with debug output redirected to /tmp/calamares.log
+exec sudo -E calamares -d "$@" > /tmp/calamares.log 2>&1
