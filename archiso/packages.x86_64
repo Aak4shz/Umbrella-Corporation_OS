@@ -8,7 +8,10 @@ bash-completion
 bat
 bind
 btop
+calamares
+ckbcomp
 code
+cryptsetup
 curl
 dbus
 docker
@@ -27,6 +30,7 @@ fzf
 git
 git-lfs
 github-cli
+gptfdisk
 gradle
 grub
 gst-libav
@@ -36,6 +40,7 @@ gst-plugins-good
 gst-plugins-ugly
 gwenview
 htop
+hwinfo
 httpie
 inter-font
 ipython
@@ -46,6 +51,7 @@ kcalc
 kde-system-meta
 kde-utilities-meta
 konsole
+kpmcore
 kvantum
 lazygit
 linux
@@ -112,6 +118,7 @@ sddm-kcm
 signal-desktop
 spectacle
 sqlite
+squashfs-tools
 strace
 syslinux
 sysstat
@@ -127,6 +134,7 @@ ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-roboto
 unzip
+upower
 uvicorn
 wayland
 wget
@@ -135,6 +143,7 @@ wireplumber
 wpa_supplicant
 xorg-server
 xorg-xrandr
+yaml-cpp
 zip
 zsh
 zsh-autosuggestions
