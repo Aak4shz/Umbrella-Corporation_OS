@@ -20,5 +20,6 @@ fi
 # Set correct user ownership and permissions
 chown -R 1000:1000 "${USER_HOME}" 2>/dev/null || chown -R "${USER_NAME}:${USER_NAME}" "${USER_HOME}" 2>/dev/null || true
 chmod 750 "${USER_HOME}"
+chmod +x "${USER_HOME}/Desktop/"*.desktop 2>/dev/null || true
 
 exit 0
