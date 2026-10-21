@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Umbrella OS
+GenericName=Live System Installer
+Comment=Deploy Umbrella OS Developer & AI Workstation to disk
+Exec=/usr/local/bin/umbrella-installer
+Icon=umbrella-logo
+Terminal=false
+StartupNotify=true
+Categories=System;Qt;
