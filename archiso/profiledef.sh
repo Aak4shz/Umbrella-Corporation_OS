@@ -29,7 +29,10 @@ file_permissions=(
   ["/usr/local/bin/choose-mirror"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/umbrella-installer"]="0:0:755"
   ["/usr/local/bin/umbrella-live-init.sh"]="0:0:755"
   ["/usr/local/bin/umbrella-post-install.sh"]="0:0:755"
+  ["/etc/skel/Desktop/install-umbrella.desktop"]="0:0:755"
+  ["/usr/share/applications/install-umbrella.desktop"]="0:0:644"
 )
 
